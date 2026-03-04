@@ -45,7 +45,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <div className="mt-6">
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-semibold tracking-tight text-neutral-900">
-                  ¥24,900
+                  24,900 KRW
                 </span>
                 <span className="text-sm text-neutral-500">買い切り</span>
               </div>
@@ -98,7 +98,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
               <div className="mt-6">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-semibold tracking-tight">¥49,000</span>
+                  <span className="text-4xl font-semibold tracking-tight">49,000 KRW</span>
                   <span className="text-sm text-white/70">買い切り</span>
                 </div>
                 <p className="mt-2 text-sm text-white/70">教材 + 3ヶ月サポート</p>
@@ -153,7 +153,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <div className="mt-6">
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-semibold tracking-tight text-neutral-900">
-                  ¥99,000 
+                  99,000 KRW
                 </span>
                 <span className="text-sm text-neutral-500">買い切り</span>
               </div>
