@@ -5,9 +5,9 @@ type PricingSectionProps = {
 };
 
 // ✅ 너 레몬스퀴즈에서 Share로 복사한 링크 3개를 여기에 붙여넣기
-const STARTER_CHECKOUT_URL = "https://YOURSTORE.lemonsqueezy.com/checkout/buy/STARTER_ID";
-const COACHING_CHECKOUT_URL = "https://YOURSTORE.lemonsqueezy.com/checkout/buy/COACHING_ID";
-const VIP_CHECKOUT_URL = "https://YOURSTORE.lemonsqueezy.com/checkout/buy/VIP_ID";
+const STARTER_CHECKOUT_URL = "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/0cbaad82-3dc3-4b95-93ca-a0e7f48300c5";
+const COACHING_CHECKOUT_URL = "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/81ff43aa-fa6e-4e6d-b646-b1aa56795769";
+const VIP_CHECKOUT_URL = "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/af526bef-e447-4905-8f62-61923bc2fa12";
 
 export function PricingSection({ id = "pricing" }: PricingSectionProps) {
   return (
