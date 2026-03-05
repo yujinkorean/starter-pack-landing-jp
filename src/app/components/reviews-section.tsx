@@ -1,4 +1,4 @@
-import { Quote } from "lucide-react";
+import { Quote, Star } from "lucide-react";
 
 type Review = {
   quote: string;
@@ -8,17 +8,17 @@ type Review = {
 
 const reviews: Review[] = [
   {
-    quote: "「____」\n\n（※ここにレビュー本文。2〜4行程度が最適）",
+    quote: "物語形式なので続きが気になって、気づいたら最後まで読んでいました。最初の一歩に最適です。",
     name: "K.S.",
     meta: "都内大学生（法学部）",
   },
   {
-    quote: "「____」\n\n（※ここにレビュー本文。2〜4行程度が最適）",
+    quote: "音声がとても聞き取りやすく、移動중에何度も復習しています。単語帳の構成も使いやすい！",
     name: "A.M.",
     meta: "米国在住・クリエイティブ職",
   },
   {
-    quote: "「____」\n\n（※ここにレビュー本文。2〜4行程度が最適）",
+    quote: "短い時間でも少しずつ進められるのが嬉しいです。エヴァンの成長を応援しながら学べます。",
     name: "みほ",
     meta: "30代・子育て中",
   },
@@ -26,60 +26,67 @@ const reviews: Review[] = [
 
 export function ReviewsSection() {
   return (
-    <section className="w-full px-6 py-20 md:py-28">
+    <section className="w-full bg-white px-6 py-24 md:py-32">
       <div className="mx-auto w-full max-w-[1200px]">
-        {/* ✅ 프레임(섹션 배경 역할) - 여기서 확실히 구분됨 */}
-        <div className="rounded-[36px] border border-neutral-200 bg-[#EEF1F6] px-6 py-14 md:px-10 md:py-16">
-          {/* ✅ 상단 강한 디바이더 */}
-          <div className="mx-auto mb-10 h-[3px] w-24 rounded-full bg-neutral-900/20" />
-
-          <div className="mx-auto w-full max-w-[980px]">
-            {/* Header */}
-            <div className="flex flex-col items-center gap-4 text-center">
-              <h2 className="text-3xl font-semibold tracking-tight text-neutral-900 md:text-5xl">
-                学習者の声
-              </h2>
-              <p className="max-w-[720px] text-base leading-relaxed text-neutral-600 md:text-xl">
-                実際に読んだ人が感じた「続く理由」と「変化」。
-              </p>
-            </div>
-
-            {/* Cards */}
-            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {reviews.map((r, idx) => (
-                <div
-                  key={idx}
-                  className="flex h-full flex-col rounded-3xl border border-neutral-200 bg-white p-6 shadow-md"
-                >
-                  <div className="flex items-start gap-3">
-                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-neutral-100">
-                      <Quote
-                        className="h-5 w-5 text-neutral-700"
-                        strokeWidth={1.5}
-                      />
-                    </div>
-
-                    {/* ✅ 라인클램프: 실제 리뷰 들어가도 카드 높이 안정 */}
-                    <p className="line-clamp-6 whitespace-pre-line text-sm leading-relaxed text-neutral-700 md:text-base">
-                      {r.quote}
-                    </p>
-                  </div>
-
-                  <div className="mt-6 border-t border-neutral-200 pt-4">
-                    <div className="text-sm font-medium text-neutral-900">
-                      {r.name}
-                    </div>
-                    <div className="mt-1 text-xs text-neutral-500">{r.meta}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Note */}
-            <p className="mt-8 text-center text-xs text-neutral-500 md:text-sm">
-              ※レビューは順次追加予定です（先行読者の声）。
+        
+        {/* ✅ 외부 프레임: 배경색을 조금 더 차분한 실버-뉴트럴로 조정 */}
+        <div className="rounded-[3rem] bg-neutral-50 border border-neutral-100 px-6 py-16 md:px-12 md:py-24 shadow-inner">
+          
+          {/* Header */}
+          <div className="mx-auto mb-16 flex max-w-[800px] flex-col items-center gap-5 text-center">
+            <span className="text-sm font-bold tracking-[0.2em] text-indigo-500/80">
+              VOICE
+            </span>
+            <h2 className="text-4xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+              学習者の声
+            </h2>
+            <p className="max-w-[600px] text-lg font-medium leading-relaxed text-neutral-500 md:text-xl">
+              実際に読んだ人が感じた「続く理由」と「変化」。
             </p>
           </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {reviews.map((r, idx) => (
+              <div
+                key={idx}
+                className="group relative flex h-full flex-col rounded-[2.5rem] border border-neutral-200/60 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.12)]"
+              >
+                {/* 🌟 별점: 촌스럽지 않은 연한 파스텔 옐로우 적용 🌟 */}
+                <div className="mb-6 flex gap-1 text-amber-300">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                </div>
+
+                <div className="relative flex flex-1 items-start gap-4">
+                  {/* 🌟 쿼트 아이콘: 파스텔 인디고 배경으로 가시성 확보 🌟 */}
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-400">
+                    <Quote size={18} strokeWidth={2.5} />
+                  </div>
+
+                  <p className="text-base font-semibold leading-relaxed text-neutral-800 md:text-lg">
+                    「{r.quote}」
+                  </p>
+                </div>
+
+                {/* 하단 작성자 정보 */}
+                <div className="mt-8 border-t border-neutral-50 pt-6">
+                  <div className="text-lg font-bold text-neutral-900">
+                    {r.name}
+                  </div>
+                  <div className="mt-1 text-sm font-medium text-neutral-400">
+                    {r.meta}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom Note */}
+          <p className="mt-12 text-center text-xs font-bold tracking-widest text-neutral-400 md:text-sm">
+            ※レビューは順次追加予定です（先行読者の声）。
+          </p>
         </div>
       </div>
     </section>
