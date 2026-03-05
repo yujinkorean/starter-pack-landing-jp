@@ -1,124 +1,150 @@
-import { useState } from "react";
 import { Button } from "./ui/button";
-import { X, Star, ImageIcon, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
-// 1. 레몬스퀴즈 결제 링크 및 리뷰 데이터 (이전과 동일)
+type PricingSectionProps = {
+  id?: string;
+};
+
+// 1. 레몬스퀴즈 결제 URL 상수 정의
 const CHECKOUT_URLS = {
   starter: "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/0cbaad82-3dc3-4b95-93ca-a0e7f48300c5",
   coaching: "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/81ff43aa-fa6e-4e6d-b646-b1aa56795769",
   vip: "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/af526bef-e447-4905-8f62-61923bc2fa12"
 };
 
-const REVIEWS = {
-  starter: {
-    name: "みほ様", attr: "30代・主婦",
-    text: "育児の合間でも楽しく続けられます！",
-    fullText: "독학으로 시작했다 포기했었는데, 이 교재는 이야기가 궁금해서 계속 읽게 돼요. 아이를 키우며 짬짬이 공부하기에 최적입니다.",
-    images: ["/review-starter-1.jpg", "/review-starter-2.jpg"] 
-  },
-  coaching: {
-    name: "K.S.様", attr: "都内大学生",
-    text: "3개월 서포트로 발음 불안이 사라졌습니다.",
-    fullText: "발음 교정 피드백이 정말 정확해요. 로드맵 덕분에 방황하지 않고 목표치까지 도달할 수 있었습니다.",
-    images: ["/review-coaching-1.jpg", "/review-coaching-2.jpg"]
-  },
-  vip: {
-    name: "A.M.様", attr: "クリエイティブ職",
-    text: "나만을 위한 커리큘럼으로 가치 충분!",
-    fullText: "비즈니스 목적으로 급했는데 VIP 플랜 덕분에 실력이 비약적으로 늘었습니다. 가격 이상의 가치를 보장합니다.",
-    images: ["/review-vip-1.jpg", "/review-vip-2.jpg", "/review-vip-3.jpg"]
-  }
-};
-
-export function PricingSection({ id = "pricing" }: { id?: string }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activePlan, setActivePlan] = useState<keyof typeof REVIEWS>("starter");
-  const [imgIndex, setImgIndex] = useState(0); // 슬라이드 인덱스 관리
-
-  const openModal = (plan: keyof typeof REVIEWS) => {
-    setActivePlan(plan);
-    setImgIndex(0);
-    setIsModalOpen(true);
-  };
-
-  const nextImg = () => setImgIndex((prev) => (prev + 1) % REVIEWS[activePlan].images.length);
-  const prevImg = () => setImgIndex((prev) => (prev - 1 + REVIEWS[activePlan].images.length) % REVIEWS[activePlan].images.length);
-
+export function PricingSection({ id = "pricing" }: PricingSectionProps) {
   return (
     <section id={id} className="w-full bg-white px-6 py-24 md:py-32">
       <div className="mx-auto w-full max-w-[1200px]">
-        {/* 헤더 및 카드 영역은 이전과 동일하게 유지 */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          {(Object.keys(REVIEWS) as Array<keyof typeof REVIEWS>).map((plan) => (
-            <div key={plan} className={`relative rounded-3xl border p-8 shadow-sm ${plan === 'coaching' ? 'bg-neutral-900 text-white border-neutral-800' : 'bg-white border-neutral-200'}`}>
-              <h3 className="text-xl font-bold uppercase">{plan}</h3>
-              <div className={`mt-8 mb-6 rounded-2xl p-4 border ${plan === 'coaching' ? 'bg-white/5 border-white/10' : 'bg-neutral-50 border-neutral-100'}`}>
-                <p className={`text-xs italic ${plan === 'coaching' ? 'text-white/80' : 'text-neutral-600'}`}>"{REVIEWS[plan].text}"</p>
-                <button onClick={() => openModal(plan)} className={`text-[10px] underline mt-2 block font-bold ${plan === 'coaching' ? 'text-white' : 'text-neutral-900'}`}>후기 사진 더보기(+12)</button>
-              </div>
-              <a href={CHECKOUT_URLS[plan]} target="_blank" rel="noopener noreferrer">
-                <Button className={`w-full rounded-full h-12 font-bold ${plan === 'coaching' ? 'bg-white text-neutral-900' : 'bg-neutral-900 text-white'}`}>구매하기</Button>
-              </a>
-            </div>
-          ))}
+        {/* Header */}
+        <div className="mx-auto max-w-[900px] text-center">
+          <div className="mb-6 flex justify-center">
+            <span className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-semibold tracking-widest text-neutral-700 md:text-sm">
+              PRICING
+            </span>
+          </div>
+
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-neutral-900 md:text-5xl">
+            料金プラン
+          </h2>
+          <p className="mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-neutral-600 md:text-xl">
+            あなたのペースに合わせて選べます。
+            <br />
+            迷ったら、まずは<span className="font-semibold text-neutral-900">一番人気</span>から.
+          </p>
         </div>
 
-        {/* 팝업 모달 애니메이션 + 슬라이더 적용 */}
-        <AnimatePresence>
-          {isModalOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="relative w-full max-w-2xl rounded-3xl bg-white p-8 overflow-hidden shadow-2xl"
-              >
-                <button onClick={() => setIsModalOpen(false)} className="absolute right-6 top-6 z-10 text-neutral-400 hover:text-neutral-900"><X /></button>
-                
-                <h3 className="text-xl font-bold mb-4 text-neutral-900">{REVIEWS[activePlan].name}님의 실제 후기</h3>
-                <p className="text-neutral-600 mb-8 leading-relaxed">"{REVIEWS[activePlan].fullText}"</p>
-                
-                <div className="space-y-4">
-                  <h4 className="text-sm font-bold flex items-center gap-2 text-neutral-400"><ImageIcon size={16} /> 실제 학습 사진</h4>
-                  
-                  {/* 슬라이더 영역 */}
-                  <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-neutral-100 border border-neutral-100">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={imgIndex}
-                        initial={{ x: 100, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: -100, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex h-full w-full items-center justify-center font-medium text-neutral-400"
-                      >
-                         {/* 실제 이미지가 있다면 아래 <img /> 주석 해제 */}
-                         {/* <img src={REVIEWS[activePlan].images[imgIndex]} alt="Review" className="h-full w-full object-cover" /> */}
-                         실제 리뷰 사진 #{imgIndex + 1}
-                      </motion.div>
-                    </AnimatePresence>
-
-                    {/* 화살표 컨트롤 */}
-                    {REVIEWS[activePlan].images.length > 1 && (
-                      <>
-                        <button onClick={prevImg} className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-sm hover:bg-white"><ChevronLeft size={20} /></button>
-                        <button onClick={nextImg} className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 shadow-sm hover:bg-white"><ChevronRight size={20} /></button>
-                        
-                        {/* 인디케이터 (Dots) */}
-                        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 gap-1.5">
-                          {REVIEWS[activePlan].images.map((_, i) => (
-                            <div key={i} className={`h-1.5 w-1.5 rounded-full transition-all ${i === imgIndex ? 'bg-neutral-800 w-4' : 'bg-neutral-400'}`} />
-                          ))}
-                        </div>
-                      </>
-                    )}
-                  </div>
+        {/* Cards - 세로 3열 배치 (lg:grid-cols-3) */}
+        <div className="mt-14 grid grid-cols-1 gap-6 lg:grid-cols-3">
+          {/* 1. Starter (스타터) */}
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-semibold text-neutral-900">スターター</h3>
+                  <p className="mt-1 text-sm text-neutral-500">まずは教材だけ試したい人へ</p>
                 </div>
-              </motion.div>
+              </div>
+
+              <div className="mt-6">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-semibold tracking-tight text-neutral-900">24,900 KRW</span>
+                  <span className="text-sm text-neutral-500">買い切り</span>
+                </div>
+              </div>
+
+              <ul className="mt-7 space-y-3 text-sm text-neutral-700">
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />メインテキスト（eBook）</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />会話オーディオ（MP3）</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />ボ캐브ラリーノート</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />購入後すぐDL（スマホ/PC対応）</li>
+              </ul>
             </div>
-          )}
-        </AnimatePresence>
+
+            <div className="mt-8">
+              <Button asChild size="lg" variant="outline" className="h-12 w-full rounded-full text-base">
+                <a href={CHECKOUT_URLS.starter} target="_blank" rel="noopener noreferrer">
+                  スター터로 시작하기
+                </a>
+              </Button>
+              <p className="mt-3 text-center text-xs text-neutral-500">迷ったら次の「一番人気」가おすすめ</p>
+            </div>
+          </div>
+
+          {/* 2. Coaching (코칭, 제일 인기) */}
+          <div className="relative rounded-3xl border border-neutral-900 bg-neutral-900 p-8 text-white shadow-sm flex flex-col justify-between">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+              <div className="inline-flex flex-col items-center gap-1 rounded-2xl border border-white/20 bg-white/10 px-5 py-2 text-center backdrop-blur">
+                <span className="text-xs font-semibold tracking-widest text-white/90">一番人気</span>
+                <span className="text-sm font-semibold text-white">迷ったらこれ</span>
+              </div>
+            </div>
+
+            <div className="pt-4">
+              <h3 className="text-xl font-semibold">コーチング付き</h3>
+              <p className="mt-1 text-sm text-white/70">最短で「話せる実感」まで進みたい人へ</p>
+
+              <div className="mt-6">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-semibold tracking-tight">49,000 KRW</span>
+                  <span className="text-sm text-white/70">買い切り</span>
+                </div>
+              </div>
+
+              <ul className="mt-7 space-y-3 text-sm text-white/85">
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-white" />スター터의 전 내용</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-white" />学習計画（ロードマップ）</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-white" />3ヶ月チャットQ&A</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-white" />つまずきポイント의 개별 어드바이스</li>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <Button asChild size="lg" className="h-12 w-full rounded-full bg-white text-neutral-900 hover:bg-white/90 text-base">
+                <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer">
+                  코칭으로 시작하기
+                </a>
+              </Button>
+              <p className="mt-3 text-center text-xs text-white/60">一番人気：迷う 시간을 줄여서, 최초의 일보를 확실히</p>
+            </div>
+          </div>
+
+          {/* 3. VIP */}
+          <div className="rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-xl font-semibold text-neutral-900">VIP</h3>
+                <span className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-xs font-semibold text-neutral-700">先着</span>
+              </div>
+
+              <div className="mt-6">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-semibold tracking-tight text-neutral-900">99,000 KRW</span>
+                  <span className="text-sm text-neutral-500">買い切り</span>
+                </div>
+              </div>
+
+              <ul className="mt-7 space-y-3 text-sm text-neutral-700">
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />코칭의 전 내용</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />優先返信（対応スピード優先）</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />개별 학습 설계 (당신용으로 조정)</li>
+                <li className="flex gap-3"><span className="mt-[0.45em] h-2 w-2 shrink-0 rounded-full bg-neutral-900" />枠수限定（埋まり次第 종료）</li>
+              </ul>
+            </div>
+
+            <div className="mt-8">
+              <Button asChild size="lg" variant="outline" className="h-12 w-full rounded-full text-base">
+                <a href={CHECKOUT_URLS.vip} target="_blank" rel="noopener noreferrer">
+                  VIP로 진행하기
+                </a>
+              </Button>
+              <p className="mt-3 text-center text-xs text-neutral-500">本気で최단 루트를 타고 싶은 사람용</p>
+            </div>
+          </div>
+        </div>
+
+        <p className="mx-auto mt-8 max-w-[900px] text-center text-sm text-neutral-500">
+          ※가격・내용은 예고 없이 변경될 수 있습니다. 구매 후는 바로 다운로드할 수 있습니다.
+        </p>
       </div>
     </section>
   );
