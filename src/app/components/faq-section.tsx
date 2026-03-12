@@ -4,60 +4,56 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "./ui/accordion";
-import { Button } from "./ui/button";
 
 const faqs = [
   {
-    question: "ハングルを知らなくても始められますか？",
+    question: "韓国語をまったく知らなくても始められますか？",
     answer:
-      "はい。最初は挨拶と「音の出し方」から始め、発音（音の仕組み）を段階的に理解しながら進みます。暗記よりも「話し始める順番」を優先しています。",
+      "はい。完全な初心者のために設計されています。ハングルの仕組み（天・地・人）から始まり、22日で最初の一言が出るように構成されています。",
   },
   {
-    question: "完全な初心者でも本当に大丈夫ですか？",
+    question: "市販の2,000円台の教材とは何が違いますか？",
     answer:
-      "はい。このスターターパックは“ゼロから始める人”のためのパッケージです。文法説明から入るのではなく、ストーリーと会話を読みながら自然に口が動く構成になっています。",
+      "一般的な教材は文法説明が中心ですが、この教材はユジンとエヴァンの物語を通して「会話の文脈」から韓国語を学ぶ構成です。さらに、基本形・丁寧語・カジュアルの3つの話し方を同時に学べるインタラクティブ単語帳も含まれています。",
   },
   {
-    question: "購入前に中身を確認できますか？",
+    question: "この教材はどんな人に向いていますか？",
     answer:
-      "はい。最初の10ページをプレビューできます。雰囲気や構成を確認してから購入できるので安心です。",
+      "この教材は、韓国語をゼロから始めたい人、文法中心の勉強が苦手な人、まず会話の流れを理解したい人、楽しく韓国語を始めたい人に向いています。逆に、文法を細かく分析して勉強したい方や、すでに韓国語で日常会話ができる方には少し物足りないかもしれません。このスターターパックは「最初の一言」を出すための教材です。",
   },
   {
-    question: "オーディオはどう使いますか？退屈になりませんか？",
+    question: "この教材はAIで作られたものですか？",
     answer:
-      "会話ベースの音声なので、朗読を聞くだけではなく「聞く → 真似する → 口に出す」流れで自然に使えます。短い音声が中心なので、通勤・スキマ時間でも続けやすい設計です。",
+      "いいえ。すべての文章は、韓国人著者が日本人学習者の発音の特徴や実用性を考慮して直接執筆しました。オーディオもAI音声ではなく、著者と友人の実際の会話を収録したトーキングオーディオブックです。",
   },
   {
-    question: "購入後すぐに使えますか？（いつ届きますか？）",
+    question: "コーチングプランの質問には誰が答えますか？",
     answer:
-      "はい。デジタル商品なので、購入後すぐにダウンロードできます（eBook / 音声）。スマホ・PCどちらでも利用可能です。",
+      "AIチャットボットではなく、著者ユジンと韓国人講師がLINEで直接回答します。発音、単語、表現、学習方法など、韓国語学習に関する疑問に対応します。",
   },
   {
-    question: "支払い方法は？通貨は円ですか？",
+    question: "日本円（JPY）で支払えますか？価格はいくらですか？",
     answer:
-      "クレジットカード / PayPalに対応しています。価格は韓国ウォン（₩）表記で、決済時に自動で日本円に換算されます。",
+      "はい。日本円での決済に対応しています。Starter Pack は 2,750 JPY（約24,900 KRW）です。為替変動に関係なく、固定価格で決済できます。",
   },
   {
-    question: "コーチング（3ヶ月）はオンラインですか？何が含まれますか？",
+    question: "購入後、教材はどう受け取りますか？",
     answer:
-      "基本はメッセージ（テキスト/音声）でのQ&Aと、学習計画の作成・フィードバックです。対応範囲（返信頻度・時間帯・内容）はページ内に明記しています。※通話（Zoom等）は基本プラン外です。",
+      "決済完了後、登録したメールアドレスにダウンロードリンクが送付されます。PDF教材とMP3オーディオを、スマートフォン・タブレット・PCですぐに利用できます。",
   },
   {
-    question: "返品・返金はできますか？",
+    question: "この教材の次のレベルはありますか？",
     answer:
-      "デジタル商品の性質上、購入後の返金は原則お受けしていません。ただし、ダウンロード不具合など提供側の問題が確認できた場合は個別に対応します。購入前にプレビューをご確認ください。",
-  },
-  {
-    question: "次のレベル（Pack1/Pack2）はありますか？",
-    answer:
-      "はい。次の教材は順次制作中です。スターターパック購入者には、先行案内や特典（クーポン等）を優先的にお知らせします。",
+      "はい。Starter Pack（Pack 0.5）のあとに、Pack 1、Pack 2 など、より深い会話を学ぶ教材を順次リリース予定です。レビューを書いていただいた方には、次の教材で使える割引クーポンもお送りします。",
   },
 ];
 
 export function FaqSection() {
-
   return (
-    <section className="w-full flex justify-center px-6 py-24 md:py-32 bg-neutral-50" id="faq">
+    <section
+      className="w-full flex justify-center px-6 py-24 md:py-32 bg-neutral-50"
+      id="faq"
+    >
       <div className="w-full max-w-[1200px] flex justify-center">
         <div className="w-full max-w-[800px] flex flex-col gap-12">
           {/* Header */}
@@ -76,17 +72,19 @@ export function FaqSection() {
                 value={`item-${index}`}
                 className="bg-white rounded-2xl px-6 border border-neutral-200/70"
               >
-                <AccordionTrigger className="text-left hover:no-underline py-6">
+                <AccordionTrigger className="py-6 text-left hover:no-underline">
                   <span className="text-lg">{faq.question}</span>
                 </AccordionTrigger>
-                <AccordionContent className="text-neutral-600 leading-relaxed pb-6">
+                <AccordionContent className="pb-6 leading-relaxed text-neutral-600">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
 
-          
+          <p className="text-center text-sm text-neutral-500">
+            他にも質問があれば、購入前でもお気軽にお問い合わせください。
+          </p>
         </div>
       </div>
     </section>

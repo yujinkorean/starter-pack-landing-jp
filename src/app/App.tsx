@@ -4,11 +4,12 @@ import { DifferenceSection } from "./components/difference-section";
 import { StorySection } from "./components/story-section";
 import { ProblemSection } from "./components/problem-section";
 import { PackageSection } from "./components/package-section";
-import { ReviewsSection } from "./components/reviews-section";
 import { PricingSection } from "./components/pricing-section";
 import { FaqSection } from "./components/faq-section";
 import { FinalCTASection } from "./components/final-cta-section";
 import { AbleToDoSection } from "./components/able-to-do-section";
+import { TrustSection } from "./components/trust-section";
+
 
 export default function App() {
   return (
@@ -18,7 +19,6 @@ export default function App() {
 
       <ProblemSection />
 
-      <DifferenceSection />
 
       <AbleToDoSection />
 
@@ -26,9 +26,10 @@ export default function App() {
         <BookPreviewSection />
       </section>
 
+      <TrustSection />
+
       <StorySection />
 
-      <ReviewsSection />
 
       <PackageSection />
 

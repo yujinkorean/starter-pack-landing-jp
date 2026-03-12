@@ -1,75 +1,73 @@
 export function ProblemSection() {
+  const problems = [
+    "韓国語を始めたけど続かなかった",
+    "参考書を買ったけど途中で止まってしまった",
+    "単語を覚えても会話になると分からない",
+    "勉強しているのに身についている感じがしない",
+  ];
+
   return (
     <section className="w-full bg-neutral-900 px-6 py-24 text-white md:py-32">
-      <div className="mx-auto max-w-[820px] text-center">
+      <div className="mx-auto max-w-[920px]">
+        <div className="text-center">
+          {/* Heading */}
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight md:text-5xl">
+            こんな経験ありませんか？
+          </h2>
 
-        {/* Label */}
-        <div className="mb-8 flex justify-center">
-          <span className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-widest text-white/85 md:text-sm">
-            THE PROBLEM
-          </span>
+          {/* Subtitle */}
+          <p className="mx-auto mt-5 max-w-[680px] text-sm leading-relaxed text-white/70 md:text-lg">
+            韓国語を始めても、
+            <br className="hidden md:block" />
+            途中で止まってしまう人は少なくありません。
+          </p>
         </div>
 
-        {/* Headline */}
-        <h2 className="text-4xl font-semibold leading-tight tracking-tight md:text-6xl">
-          韓国語を始めても、
-          <br />
-          途中で止まってしまう人が多いです。
-        </h2>
-
-        {/* Insight */}
-        <p className="mx-auto mt-7 max-w-[720px] text-base leading-relaxed text-white/75 md:text-xl">
-          つまずきの原因は、
-          <span className="font-semibold text-white">「覚える量」</span>ではなく
-          <span className="font-semibold text-white">「話せないストレス」</span>
-          が先に来ること。
-        </p>
-
-        {/* Problems vertical */}
-        <div className="mx-auto mt-12 max-w-[640px] space-y-6 text-left">
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-base font-semibold md:text-lg">
-              覚えたのに、話せない
-            </p>
-            <p className="mt-2 text-sm text-white/70 md:text-base">
-              単語や文法を学んでも、会話になると口から出てこない。
-            </p>
-          </div>
-
-          <div className="flex justify-center text-white/30">↓</div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-base font-semibold md:text-lg">
-              発音が不安で、自信がなくなる
-            </p>
-            <p className="mt-2 text-sm text-white/70 md:text-base">
-              間違えるのが怖くて、話す前に止まってしまう。
-            </p>
-          </div>
-
-          <div className="flex justify-center text-white/30">↓</div>
-
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-            <p className="text-base font-semibold md:text-lg">
-              何から始めればいいかわからない
-            </p>
-            <p className="mt-2 text-sm text-white/70 md:text-base">
-              教材は多いのに、最初の一歩が決められない。
-            </p>
-          </div>
-
+        {/* Problem cards */}
+        <div className="mx-auto mt-14 grid max-w-[760px] grid-cols-1 gap-4 md:mt-16 md:grid-cols-2 md:gap-5">
+          {problems.map((problem) => (
+            <div
+              key={problem}
+              className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-7"
+            >
+              <p className="text-base font-semibold leading-relaxed text-white md:text-lg">
+                {problem}
+              </p>
+            </div>
+          ))}
         </div>
 
-        {/* Bridge */}
-        <p className="mx-auto mt-12 max-w-[720px] text-base leading-relaxed text-white/75 md:text-xl">
-          だからこそ、この教材は
-          <span className="font-semibold text-white">「説明」</span>
-          ではなく
-          <span className="font-semibold text-white">「会話」</span>
-          から始まります。
-        </p>
+  {/* Summary + Bridge */}
+<div className="mx-auto mt-16 max-w-[760px] md:mt-20">
+  <div className="mx-auto max-w-[520px]">
+    <div className="space-y-6 text-left">
+      <p className="text-[17px] leading-8 text-white/72 md:text-[19px]">
+        多くの人が、参考書から韓国語を始めて
+        <br className="hidden md:block" />
+        途中で止まってしまいます。
+      </p>
 
+      <p className="text-[17px] leading-8 text-white/72 md:text-[19px]">
+        難しいからではなく、
+        <span className="font-semibold text-white">
+          始め方が合わなかった
+        </span>
+        だけかもしれません。
+      </p>
+    </div>
+
+    <div className="mt-10 border-t border-white/10 pt-8 text-left">
+      <p className="text-sm tracking-wide text-white/45 md:text-[15px]">
+        だからこの教材は
+      </p>
+      <p className="mt-3 text-2xl font-semibold leading-relaxed tracking-tight text-white md:text-[34px]">
+        参考書ではなく
+        <span className="mx-1">「物語」</span>
+        で韓国語を始めます。
+      </p>
+    </div>
+  </div>
+</div>
       </div>
     </section>
   );
