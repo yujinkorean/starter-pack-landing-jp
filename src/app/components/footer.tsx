@@ -1,4 +1,6 @@
-export function Footer() {
+import React from 'react';
+
+const Footer = () => {
   return (
     <footer className="w-full py-12 px-6 border-t border-gray-200 bg-white text-gray-500">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] leading-relaxed">
@@ -25,9 +27,10 @@ export function Footer() {
       
       <div className="mt-8 pt-8 border-t border-gray-100 text-center text-[10px]">
         <p>© 2026 Yujin Korean. All rights reserved.</p>
-        {/* 사장님 이메일 주소로 꼭 바꿔주세요 */}
-        <p className="mt-1 font-medium text-gray-400">Contact: your-email@example.com</p> 
+        <p className="mt-1 font-medium text-gray-400">Contact: [사장님 이메일 주소]</p>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
