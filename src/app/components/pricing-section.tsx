@@ -64,10 +64,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             【全プラン対象】レビュー投稿キャンペーン
           </p>
           <p className="text-xs font-medium leading-relaxed text-amber-800 md:text-sm">
-            ご購入後、レビューをご投稿いただいた方全員に、次回（Pack2やコーチング等）使える
+            ご購入後、レビューをご投稿いただいた方全員に、次回使える
             <br className="hidden md:block" />
             <span className="text-base font-bold text-amber-950 underline decoration-amber-400 decoration-2 underline-offset-4">
-              3,000ウォン割引クーポン
+              特典クーポン
             </span>
             をプレゼントいたします！
           </p>
@@ -83,19 +83,20 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
               <div className="mt-8">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="text-sm font-medium text-neutral-400 line-through">34,900 KRW</span>
                   <span className="rounded-full bg-green-50 px-2 py-1 text-[10px] font-bold text-green-700">
-                    10,000 KRW OFF
+                    リリース記念価格
                   </span>
                 </div>
                 <div className="flex items-end gap-1">
                   <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-                    24,900
+                    ¥2,200
                   </span>
-                  <span className="mb-1 text-lg font-bold text-neutral-900">KRW</span>
                 </div>
                 <p className="mt-2 text-xs font-medium text-neutral-500">
                   迷ったらまずここから。教材だけでも十分に始められます。
+                </p>
+                <p className="mt-1 text-xs font-medium text-neutral-500">
+                  日本円でそのまま決済できます。
                 </p>
               </div>
 
@@ -144,17 +145,18 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
               <div className="mt-8">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="text-sm font-medium text-white/40 line-through">69,000 KRW</span>
                   <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-bold text-white/90">
-                    20,000 KRW OFF
+                    初期リリース限定価格
                   </span>
                 </div>
                 <div className="flex items-end gap-1">
-                  <span className="text-4xl font-bold tracking-tight md:text-5xl">49,000</span>
-                  <span className="mb-1 text-lg font-bold">KRW</span>
+                  <span className="text-4xl font-bold tracking-tight md:text-5xl">¥4,900</span>
                 </div>
                 <p className="mt-2 text-xs font-medium text-white/60">
                   教材だけで終わらず、学習の流れまで整えたい方におすすめです。
+                </p>
+                <p className="mt-1 text-xs font-medium text-white/60">
+                  日本円でそのまま決済できます。
                 </p>
               </div>
 
@@ -163,6 +165,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </p>
               <p className="mt-2 text-xs text-white/60">
                 ※ 本プランに含まれるサポートであり、別途課金はありません。
+              </p>
+              <p className="mt-2 text-xs text-white/60">
+                ※ 初期リリース限定価格です。今後は価格が変更される可能性があります。
               </p>
 
               <ul className="mt-8 space-y-4 text-sm text-white/90">
@@ -210,19 +215,20 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
               <div className="mt-8">
                 <div className="mb-2 flex items-center gap-2">
-                  <span className="text-sm font-medium text-neutral-400 line-through">129,000 KRW</span>
                   <span className="rounded-full bg-amber-50 px-2 py-1 text-[10px] font-bold text-amber-700">
-                    最上位プラン
+                    初期リリース限定価格
                   </span>
                 </div>
                 <div className="flex items-end gap-1">
                   <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-                    99,000
+                    ¥9,900
                   </span>
-                  <span className="mb-1 text-lg font-bold text-neutral-900">KRW</span>
                 </div>
                 <p className="mt-2 text-xs font-medium text-neutral-500">
                   一人では続けにくい方、毎週の確認まで欲しい方向けです。
+                </p>
+                <p className="mt-1 text-xs font-medium text-neutral-500">
+                  日本円でそのまま決済できます。
                 </p>
               </div>
 
@@ -231,6 +237,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </p>
               <p className="mt-2 text-xs text-neutral-400">
                 ※ 本プランに含まれるサポートであり、別途課金はありません。
+              </p>
+              <p className="mt-2 text-xs text-neutral-400">
+                ※ 初期リリース限定価格です。今後は価格が変更される可能性があります。
               </p>
 
               <ul className="mt-8 space-y-4 text-sm text-neutral-600">
@@ -424,7 +433,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
         {/* Bottom note */}
         <div className="mx-auto mt-12 max-w-[900px] text-center">
           <p className="text-xs font-medium leading-relaxed text-neutral-400">
-            ※ リリース特別価格は30日間限定です。期間終了後は通常価格での販売となります。
+            ※ リリース特別価格は30日間限定です。期間終了後は価格が変更される可能性があります。
             <br />
             ご購入後、すぐに教材をダウンロードいただけます。
             <br />
