@@ -17,8 +17,8 @@ const comparisonRows = [
   { label: "メインテキスト eBook", starter: true, coaching: true, vip: true },
   { label: "必須単語帳リスト", starter: true, coaching: true, vip: true },
   { label: "会話音声 MP3", starter: true, coaching: true, vip: true },
-  { label: "3ヶ月学習ロードマップ", starter: false, coaching: true, vip: true },
-  { label: "LINEオープンチャット質問対応", starter: false, coaching: true, vip: true },
+  { label: "6週間学習ロードマップ", starter: false, coaching: true, vip: true },
+  { label: "LINE質問サポート", starter: false, coaching: true, vip: true },
   { label: "週1回の学習ログチェック", starter: false, coaching: false, vip: true },
   { label: "個別フィードバック", starter: false, coaching: false, vip: true },
   { label: "次週ミッション提示", starter: false, coaching: false, vip: true },
@@ -51,6 +51,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           <p className="mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-neutral-600 md:text-xl">
             リリース記念特別価格（オープンから30日間限定）
           </p>
+
+          <p className="mx-auto mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-500 md:text-base">
+            まずは教材だけで始めることも、サポート付きで確実に進めることもできます。
+          </p>
         </div>
 
         {/* Review Banner */}
@@ -59,7 +63,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <Star size={18} fill="currentColor" className="text-amber-500" />
             【全プラン対象】レビュー投稿キャンペーン
           </p>
-          <p className="text-xs font-medium text-amber-800 md:text-sm">
+          <p className="text-xs font-medium leading-relaxed text-amber-800 md:text-sm">
             ご購入後、レビューをご投稿いただいた方全員に、次回（Pack2やコーチング等）使える
             <br className="hidden md:block" />
             <span className="text-base font-bold text-amber-950 underline decoration-amber-400 decoration-2 underline-offset-4">
@@ -75,16 +79,24 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
             <div>
               <h3 className="text-xl font-bold text-neutral-900">Starter Pack</h3>
-              <p className="mt-2 text-sm text-neutral-500">独学で着実に始めたい方へ</p>
+              <p className="mt-2 text-sm text-neutral-500">まずは一人で始めてみたい方へ</p>
 
               <div className="mt-8">
-                <div className="mb-1 flex items-center gap-2">
+                <div className="mb-2 flex items-center gap-2">
                   <span className="text-sm font-medium text-neutral-400 line-through">34,900 KRW</span>
+                  <span className="rounded-full bg-green-50 px-2 py-1 text-[10px] font-bold text-green-700">
+                    10,000 KRW OFF
+                  </span>
                 </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-900">24,900</span>
-                  <span className="text-lg font-bold text-neutral-900">KRW</span>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+                    24,900
+                  </span>
+                  <span className="mb-1 text-lg font-bold text-neutral-900">KRW</span>
                 </div>
+                <p className="mt-2 text-xs font-medium text-neutral-500">
+                  迷ったらまずここから。教材だけでも十分に始められます。
+                </p>
               </div>
 
               <ul className="mt-10 space-y-4 text-sm text-neutral-600">
@@ -127,34 +139,44 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <div>
               <h3 className="text-xl font-bold">Coaching バンドル</h3>
               <p className="mt-2 text-sm text-white/70">
-                3ヶ月間の学習ロードマップ＋LINE質問サポート
+                6週間の学習サポート（期間限定）＋LINE質問サポート
               </p>
 
               <div className="mt-8">
-                <div className="mb-1 flex items-center gap-2">
+                <div className="mb-2 flex items-center gap-2">
                   <span className="text-sm font-medium text-white/40 line-through">69,000 KRW</span>
+                  <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-bold text-white/90">
+                    20,000 KRW OFF
+                  </span>
                 </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tight">49,000</span>
-                  <span className="text-lg font-bold">KRW</span>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight md:text-5xl">49,000</span>
+                  <span className="mb-1 text-lg font-bold">KRW</span>
                 </div>
+                <p className="mt-2 text-xs font-medium text-white/60">
+                  教材だけで終わらず、学習の流れまで整えたい方におすすめです。
+                </p>
               </div>
 
-              <ul className="mt-10 space-y-4 text-sm text-white/90">
-               <p className="mt-4 text-xs text-neutral-400">
-  ※ 本プランに含まれるサポートであり、別途課金はありません。
-</p>
+              <p className="mt-4 text-xs text-white/60">
+                ※ 6週間限定のサポートです。無期限サポートではありません。
+              </p>
+              <p className="mt-2 text-xs text-white/60">
+                ※ 本プランに含まれるサポートであり、別途課金はありません。
+              </p>
+
+              <ul className="mt-8 space-y-4 text-sm text-white/90">
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-white" />
                   <span>Starter Pack 全内容</span>
                 </li>
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-white" />
-                  <span>3ヶ月間の学習計画作成（診断＋ロードマップ）</span>
+                  <span>6週間の学習計画作成（診断＋ロードマップ）</span>
                 </li>
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-white" />
-                  <span>LINEオープンチャット質問対応（通常24時間以内）</span>
+                  <span>LINE質問サポート（通常24時間以内）</span>
                 </li>
               </ul>
             </div>
@@ -176,7 +198,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold text-neutral-900">VIP 集中管理</h3>
-                  <p className="mt-2 text-sm text-neutral-500">3ヶ月間、あなたの学習を徹底サポート</p>
+                  <p className="mt-2 text-sm text-neutral-500">
+                    6週間、あなたの学習を徹底サポート（期間限定）
+                  </p>
                 </div>
 
                 <span className="inline-flex shrink-0 items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
@@ -185,19 +209,31 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
 
               <div className="mt-8">
-                <div className="mb-1 flex items-center gap-2">
+                <div className="mb-2 flex items-center gap-2">
                   <span className="text-sm font-medium text-neutral-400 line-through">129,000 KRW</span>
+                  <span className="rounded-full bg-amber-50 px-2 py-1 text-[10px] font-bold text-amber-700">
+                    最上位プラン
+                  </span>
                 </div>
-                <div className="flex items-baseline gap-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-900">99,000</span>
-                  <span className="text-lg font-bold text-neutral-900">KRW</span>
+                <div className="flex items-end gap-1">
+                  <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
+                    99,000
+                  </span>
+                  <span className="mb-1 text-lg font-bold text-neutral-900">KRW</span>
                 </div>
+                <p className="mt-2 text-xs font-medium text-neutral-500">
+                  一人では続けにくい方、毎週の確認まで欲しい方向けです。
+                </p>
               </div>
 
-              <ul className="mt-10 space-y-4 text-sm text-neutral-600">
-               <p className="mt-4 text-xs text-neutral-400">
-  ※ 本プランに含まれるサポートであり、別途課金はありません。
-</p>
+              <p className="mt-4 text-xs text-neutral-400">
+                ※ 6週間集中サポートプランです。
+              </p>
+              <p className="mt-2 text-xs text-neutral-400">
+                ※ 本プランに含まれるサポートであり、別途課金はありません。
+              </p>
+
+              <ul className="mt-8 space-y-4 text-sm text-neutral-600">
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-green-500" />
                   <span>バンドルプランの全内容</span>
@@ -231,6 +267,16 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           </div>
         </div>
 
+        {/* CTA Push */}
+        <div className="mt-12 text-center">
+          <p className="text-sm font-semibold text-neutral-800 md:text-base">
+            最初の一歩を踏み出す人が、一番早く伸びます。
+          </p>
+          <p className="mt-2 text-xs text-neutral-500 md:text-sm">
+            完璧に準備する必要はありません。始めることが一番重要です。
+          </p>
+        </div>
+
         {/* Why support plans exist */}
         <div className="mx-auto mt-20 max-w-[980px] rounded-[28px] border border-neutral-200 bg-neutral-50 px-6 py-10 md:px-10 md:py-12">
           <div className="mx-auto max-w-[760px] text-center">
@@ -258,7 +304,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                 あなたのレベルに合わせて、
                 <br />
                 「何を・どの順番で・どれくらい」
-                学べばいいかを、3ヶ月の流れで整理します。
+                学べばいいかを、6週間の流れで整理します。
               </p>
             </div>
 
@@ -376,12 +422,20 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
         </div>
 
         {/* Bottom note */}
-       <p className="mx-auto mt-12 max-w-[900px] text-center text-xs font-medium text-neutral-400">
-  ※ リリース特別価格は30日間限定です。期間終了後は通常価格での販売となります。
-  ご購入後、すぐに教材をダウンロードいただけます。
-  <br />
-  ※ すべてのコーチングおよびサポートは購入プランに含まれており、追加料金は一切発生しません。
-</p>
+        <div className="mx-auto mt-12 max-w-[900px] text-center">
+          <p className="text-xs font-medium leading-relaxed text-neutral-400">
+            ※ リリース特別価格は30日間限定です。期間終了後は通常価格での販売となります。
+            <br />
+            ご購入後、すぐに教材をダウンロードいただけます。
+            <br />
+            ※ すべてのコーチングおよびサポートは購入プランに含まれており、追加料金は一切発生しません。
+          </p>
+
+          <p className="mt-4 text-xs font-medium leading-relaxed text-neutral-400">
+            ※ デジタルコンテンツの特性上、購入後の返金はできませんが、
+            アクセスやファイルに問題がある場合はサポートいたします。
+          </p>
+        </div>
       </div>
     </section>
   );
