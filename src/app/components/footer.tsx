@@ -52,6 +52,13 @@ export function Footer() {
           </p>
         </div>
 
+        {/* 🔥 추가된 핵심 문장 */}
+        <div className="text-[11px] text-center text-gray-500">
+          <p>
+            ※ すべてのコーチングおよびサポートは購入プランに含まれており、追加料金は一切発生しません。
+          </p>
+        </div>
+
         <div className="pt-4 border-t border-gray-100 text-[11px] text-center">
           <p>© 2026 Yujin Korean</p>
           <p className="mt-1">Contact: yujinkoreanstories@gmail.com</p>

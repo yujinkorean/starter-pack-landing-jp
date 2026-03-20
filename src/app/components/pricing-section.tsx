@@ -141,6 +141,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
 
               <ul className="mt-10 space-y-4 text-sm text-white/90">
+               <p className="mt-4 text-xs text-neutral-400">
+  ※ 本プランに含まれるサポートであり、別途課金はありません。
+</p>
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-white" />
                   <span>Starter Pack 全内容</span>
@@ -192,6 +195,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
 
               <ul className="mt-10 space-y-4 text-sm text-neutral-600">
+               <p className="mt-4 text-xs text-neutral-400">
+  ※ 本プランに含まれるサポートであり、別途課金はありません。
+</p>
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-green-500" />
                   <span>バンドルプランの全内容</span>
@@ -370,10 +376,12 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
         </div>
 
         {/* Bottom note */}
-        <p className="mx-auto mt-12 max-w-[900px] text-center text-xs font-medium text-neutral-400">
-          ※ リリース特別価格は30日間限定です。期間終了後は通常価格での販売となります。
-          ご購入後、すぐに教材をダウンロードいただけます。
-        </p>
+       <p className="mx-auto mt-12 max-w-[900px] text-center text-xs font-medium text-neutral-400">
+  ※ リリース特別価格は30日間限定です。期間終了後は通常価格での販売となります。
+  ご購入後、すぐに教材をダウンロードいただけます。
+  <br />
+  ※ すべてのコーチングおよびサポートは購入プランに含まれており、追加料金は一切発生しません。
+</p>
       </div>
     </section>
   );
