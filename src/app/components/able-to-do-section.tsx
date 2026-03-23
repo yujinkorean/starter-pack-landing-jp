@@ -17,25 +17,18 @@ const ableItems: AbleItem[] = [
       "「もう一回」ではなく、どこを動かせばいいかが明確になります。",
   },
   {
-    title:
-      "会話でよく出る音に自分の中の“基準”ができます。",
+    title: "会話でよく出る音に自分の中の“基準”ができます。",
     desc:
       "基準があると練習が再現できて、発音も会話も一気に楽になります。",
   },
 ];
 
 type AbleToDoSectionProps = {
-  previewId?: string;
+  lineUrl?: string;
 };
 
-function scrollToId(id: string) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 export function AbleToDoSection({
-  previewId = "preview",
+  lineUrl = "https://line.me/R/ti/p/@YOUR_LINE_ID",
 }: AbleToDoSectionProps) {
   return (
     <section className="w-full bg-white px-6 py-20 md:py-28">
@@ -67,15 +60,24 @@ export function AbleToDoSection({
           ))}
         </div>
 
-        {/* Preview CTA */}
+        {/* LINE Preview CTA */}
         <div className="mt-10 md:mt-12">
-          <button
-            type="button"
-            onClick={() => scrollToId(previewId)}
+          <p className="mb-3 text-sm font-medium text-neutral-600 md:text-base">
+            無料プレビューは、LINE追加後に受け取れます。
+          </p>
+
+          <a
+            href={lineUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex h-12 items-center justify-center rounded-xl bg-neutral-900 px-7 text-sm font-semibold text-white transition hover:bg-neutral-800 md:h-13 md:px-8 md:text-base"
           >
-            実際の中身を見てみる
-          </button>
+            LINEで無料プレビューを受け取る
+          </a>
+
+          <p className="mt-3 text-xs leading-relaxed text-neutral-500 md:text-sm">
+            プレビューPDF / 音声案内 / 特典情報をLINEでまとめてお届けします。
+          </p>
         </div>
       </div>
     </section>

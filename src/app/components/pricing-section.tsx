@@ -101,6 +101,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
 
               <ul className="mt-10 space-y-4 text-sm text-neutral-600">
+                
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-green-500" />
                   <span>メインテキスト eBook（日・英対応）</span>
@@ -114,6 +115,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   <span>会話音声 MP3（日・英対応）</span>
                 </li>
               </ul>
+              <p className="mt-6 text-[11px] leading-relaxed text-neutral-400">
+  ※ 単語帳と音声は、毎週LINEを通じて順次提供されます。
+</p>
             </div>
 
             <Button

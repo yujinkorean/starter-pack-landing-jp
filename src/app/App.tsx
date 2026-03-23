@@ -10,7 +10,8 @@ import { FinalCTASection } from "./components/final-cta-section";
 import { AbleToDoSection } from "./components/able-to-do-section";
 import { TrustSection } from "./components/trust-section";
 import { Footer } from "./components/footer";
-
+import { LearningFlowSection } from "./components/learning-flow-section";
+import { RealReviewsSection } from "./components/real-reviews-section";
 export default function App() {
   return (
     <div className="w-full min-h-screen bg-white">
@@ -20,15 +21,18 @@ export default function App() {
 
       <section id="preview">
         <BookPreviewSection />
+        
       </section>
 
       <TrustSection />
+      <RealReviewsSection />
       <StorySection />
       <PackageSection />
-
       <section id="pricing">
+        
         <PricingSection />
       </section>
+      <LearningFlowSection />
 
       <FaqSection />
       <FinalCTASection pricingId="pricing" previewId="preview" />

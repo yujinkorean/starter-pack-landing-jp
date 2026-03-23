@@ -48,7 +48,7 @@ const feedbackItems: FeedbackItem[] = [
 
 export function TrustSection() {
   return (
-    <section className="w-full bg-white px-6 py-24 md:py-32">
+    <section id="reviews" className="w-full bg-white px-6 py-24 md:py-32">
       <div className="mx-auto w-full max-w-[1200px]">
         {/* Reviews / Voice */}
         <div className="rounded-[3rem] border border-neutral-100 bg-neutral-50 px-6 py-16 shadow-inner md:px-12 md:py-24">

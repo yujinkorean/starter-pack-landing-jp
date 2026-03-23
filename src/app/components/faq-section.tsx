@@ -7,6 +7,11 @@ import {
 
 const faqs = [
   {
+    question: "なぜ単語帳と音声は一度にすべて提供されないのですか？",
+    answer:
+      "この教材は、途中で止まらず最後まで続けられるように、あえて段階的に提供する設計になっています。Starter Packは初心者が最初の一言を無理なく出せるよう、ユジンが横で一緒に進める形を想定しています。単語帳と音声は毎週日曜日にLINEで順次お届けします。",
+  },
+  {
     question: "韓国語をまったく知らなくても始められますか？",
     answer:
       "はい。完全な初心者のために設計されています。ハングルの仕組み（天・地・人）から始まり、22日で最初の一言が出るように構成されています。",
@@ -76,7 +81,6 @@ export function FaqSection() {
     >
       <div className="w-full max-w-[1200px] flex justify-center">
         <div className="w-full max-w-[800px] flex flex-col gap-12">
-          {/* Header */}
           <div className="flex flex-col items-center gap-4 text-center">
             <h2 className="text-4xl md:text-5xl tracking-tight">よくある質問</h2>
             <p className="text-base md:text-lg text-neutral-600">
@@ -84,7 +88,6 @@ export function FaqSection() {
             </p>
           </div>
 
-          {/* Accordion */}
           <Accordion type="single" collapsible className="flex flex-col gap-4">
             {faqs.map((faq, index) => (
               <AccordionItem
