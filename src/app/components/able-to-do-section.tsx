@@ -28,7 +28,7 @@ type AbleToDoSectionProps = {
 };
 
 export function AbleToDoSection({
-  lineUrl = "https://line.me/R/ti/p/@YOUR_LINE_ID",
+  lineUrl = "https://lin.ee/YaJg73C",
 }: AbleToDoSectionProps) {
   return (
     <section className="w-full bg-white px-6 py-20 md:py-28">
