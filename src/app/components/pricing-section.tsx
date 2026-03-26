@@ -53,7 +53,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           </p>
 
           <p className="mx-auto mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-500 md:text-base">
-            まずは教材だけで始めることも、サポート付きで確実に進めることもできます。
+            あなたに合った始め方を選べます。まずは教材だけで始めることも、サポート付きで確実に進めることもできます。
           </p>
         </div>
 
@@ -78,8 +78,12 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           {/* Starter */}
           <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
             <div>
+              <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
+                まずはここから
+              </div>
+
               <h3 className="text-xl font-bold text-neutral-900">Starter Pack</h3>
-              <p className="mt-2 text-sm text-neutral-500">まずは一人で始めてみたい方へ</p>
+              <p className="mt-2 text-sm text-neutral-500">一人で始めたい方へ</p>
 
               <div className="mt-8">
                 <div className="mb-2 flex items-center gap-2">
@@ -93,7 +97,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   </span>
                 </div>
                 <p className="mt-2 text-xs font-medium text-neutral-500">
-                  迷ったらまずここから。教材だけでも十分に始められます。
+                  最初の一言を、自分のペースで作りたい方におすすめです。
                 </p>
                 <p className="mt-1 text-xs font-medium text-neutral-500">
                   日本円でそのまま決済できます。
@@ -101,7 +105,6 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
 
               <ul className="mt-10 space-y-4 text-sm text-neutral-600">
-                
                 <li className="flex gap-3">
                   <Check size={18} className="shrink-0 text-green-500" />
                   <span>メインテキスト eBook（日・英対応）</span>
@@ -115,9 +118,14 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   <span>会話音声 MP3（日・英対応）</span>
                 </li>
               </ul>
-              <p className="mt-6 text-[11px] leading-relaxed text-neutral-400">
-  ※ 単語帳と音声は、毎週LINEを通じて順次提供されます。
-</p>
+
+              <p className="mt-6 text-sm font-medium text-neutral-800">
+                まずはここからで大丈夫です。
+              </p>
+
+              <p className="mt-3 text-[11px] leading-relaxed text-neutral-400">
+                ※ 単語帳と音声は、毎週LINEを通じて順次提供されます。
+              </p>
             </div>
 
             <Button
@@ -144,7 +152,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <div>
               <h3 className="text-xl font-bold">Coaching バンドル</h3>
               <p className="mt-2 text-sm text-white/70">
-                6週間の学習サポート（期間限定）＋LINE質問サポート
+                一人だと止まりやすい方へ
               </p>
 
               <div className="mt-8">
@@ -188,6 +196,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   <span>LINE質問サポート（通常24時間以内）</span>
                 </li>
               </ul>
+
+              <p className="mt-6 text-sm font-medium text-white">
+                「これで合ってるのかな？」がなくなります。
+              </p>
             </div>
 
             <Button
@@ -196,7 +208,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               className="mt-10 h-14 w-full rounded-full bg-white text-base font-bold text-neutral-900 hover:bg-white/90"
             >
               <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer">
-                バンドルで確実に始める
+                Coachingで進める
               </a>
             </Button>
           </div>
@@ -204,11 +216,15 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           {/* VIP */}
           <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
             <div>
+              <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
+                本気の人向け
+              </div>
+
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-xl font-bold text-neutral-900">VIP 集中管理</h3>
                   <p className="mt-2 text-sm text-neutral-500">
-                    6週間、あなたの学習を徹底サポート（期間限定）
+                    最短で変わりたい方へ
                   </p>
                 </div>
 
@@ -229,7 +245,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   </span>
                 </div>
                 <p className="mt-2 text-xs font-medium text-neutral-500">
-                  一人では続けにくい方、毎週の確認まで欲しい方向けです。
+                  発音・学習管理まで、個別に深く見てほしい方向けです。
                 </p>
                 <p className="mt-1 text-xs font-medium text-neutral-500">
                   日本円でそのまま決済できます。
@@ -260,6 +276,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   <span>毎週の学習ログ確認＆次週ミッション提示</span>
                 </li>
               </ul>
+
+              <p className="mt-6 text-sm font-medium text-neutral-800">
+                なんとなく勉強する時間を減らせます。
+              </p>
             </div>
 
             <div className="mt-10">
@@ -270,7 +290,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                 className="h-14 w-full rounded-full text-base font-bold transition-all hover:bg-neutral-50"
               >
                 <a href={CHECKOUT_URLS.vip} target="_blank" rel="noopener noreferrer">
-                  VIPプランに申し込む
+                  VIPで申し込む
                 </a>
               </Button>
               <p className="mt-3 text-center text-[11px] font-medium italic text-neutral-400">
@@ -297,16 +317,16 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               なぜサポートプランがあるのか？
             </h3>
             <p className="mt-5 text-sm leading-7 text-neutral-600 md:text-base">
-              多くの日本人学習者は、
+              教材だけでは続かない人がいるからです。
               <br className="hidden md:block" />
               「何をどの順番で学べばいいか分からない」
               「一人で勉強すると続かない」
-              という理由で、韓国語学習を途中でやめてしまいます。
+              という不安を減らすために、サポート付きプランを用意しました。
             </p>
             <p className="mt-4 text-sm leading-7 text-neutral-600 md:text-base">
-              だからこのスターターパックでは、教材だけでなく
-              <span className="font-bold text-neutral-900"> 学習サポート付きプラン </span>
-              を用意しました。
+              ただ教材を渡すのではなく、
+              <span className="font-bold text-neutral-900"> 学習が止まらない流れ </span>
+              まで一緒に作ります。
             </p>
           </div>
 
@@ -314,25 +334,23 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             <div className="rounded-2xl border border-neutral-200 bg-white p-6">
               <h4 className="text-base font-bold text-neutral-900">学習ロードマップ</h4>
               <p className="mt-3 text-sm leading-6 text-neutral-600">
-                あなたのレベルに合わせて、
-                <br />
-                「何を・どの順番で・どれくらい」
-                学べばいいかを、6週間の流れで整理します。
+                何を・どの順番で・どれくらい学べばいいかを整理し、
+                毎回やることが明確になります。
               </p>
             </div>
 
             <div className="rounded-2xl border border-neutral-200 bg-white p-6">
               <h4 className="text-base font-bold text-neutral-900">質問サポート</h4>
               <p className="mt-3 text-sm leading-6 text-neutral-600">
-                発音・単語・文法・勉強方法など、
-                韓国語学習に関する疑問をLINEで質問できます。
+                発音・単語・文法・勉強方法まで、
+                つまずいた時にすぐ方向修正できます。
               </p>
             </div>
 
             <div className="rounded-2xl border border-neutral-200 bg-white p-6">
               <h4 className="text-base font-bold text-neutral-900">学習フィードバック</h4>
               <p className="mt-3 text-sm leading-6 text-neutral-600">
-                VIPプランでは週1回、学習ログを確認し、
+                VIPプランでは週1回の確認を通して、
                 次にやるべきことまで具体的に提案します。
               </p>
             </div>
@@ -396,8 +414,8 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               プラン比較
             </h3>
             <p className="mx-auto mt-4 max-w-[720px] text-sm leading-7 text-neutral-600 md:text-base">
-              価格の違いは、教材量ではなく
-              <span className="font-semibold text-neutral-900"> サポート範囲の違い </span>
+              違いは教材の量ではなく、
+              <span className="font-semibold text-neutral-900"> どこまで一緒に進めるか </span>
               です。
             </p>
           </div>

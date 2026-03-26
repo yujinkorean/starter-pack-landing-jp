@@ -104,51 +104,110 @@ export function TrustSection() {
         </div>
 
         {/* Feedback */}
-        <div className="mt-16 rounded-[2.5rem] border border-neutral-200 bg-white px-6 py-12 md:px-10 md:py-14">
-          <div className="text-center">
-            <p className="text-xs font-semibold tracking-[0.24em] text-neutral-400">
-              FEEDBACK
-            </p>
-            <h3 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
-              実際のサポート例
-            </h3>
-            <p className="mt-4 text-base leading-relaxed text-neutral-600 md:text-lg">
-              ベータテスト期間中に行った学習サポートの一部です。
-            </p>
-          </div>
+<div className="mt-16 rounded-[2.5rem] border border-neutral-200 bg-white px-6 py-12 md:px-10 md:py-14">
+  
+  {/* 🔥 헤더 */}
+  <div className="text-center max-w-[720px] mx-auto">
+    <p className="text-xs font-semibold tracking-[0.24em] text-neutral-400">
+      FEEDBACK
+    </p>
 
-          <div className="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
-            {feedbackItems.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[24px] border border-neutral-200 bg-neutral-50 p-5 md:p-6"
-              >
-                {item.image ? (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full rounded-xl border border-neutral-200 bg-white shadow-sm"
-                  />
-                ) : (
-                  <div className="flex h-[280px] items-center justify-center rounded-xl border border-dashed border-neutral-300 bg-white text-sm text-neutral-400">
-                    LINEキャプチャ予定
-                  </div>
-                )}
+    <h3 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
+      実際のLINEサポート（そのまま公開）
+    </h3>
 
-                <h4 className="mt-4 text-lg font-semibold text-neutral-900 md:text-xl">
-                  {item.title}
-                </h4>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600 md:text-base">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+    <p className="mt-4 text-base leading-relaxed text-neutral-600 md:text-lg">
+      購入後、実際に届くサポートをそのまま掲載しています。
+    </p>
 
-          <p className="mt-6 text-xs leading-relaxed text-neutral-400 md:text-sm">
-            ※個人情報保護のため、一部加工して掲載しています。
+    {/* 🔥 추가: 감정 트리거 */}
+    <p className="mt-4 text-sm text-neutral-500">
+      「これで合ってるのかな？」という不安をなくすためのサポートです。
+    </p>
+  </div>
+
+  {/* 🔥 핵심 구조 */}
+  <div className="mt-14 flex flex-col gap-16">
+
+    {feedbackItems.map((item, index) => (
+      <div key={item.title} className="max-w-[640px] mx-auto">
+
+        {/* 🔥 BEFORE 느낌 (짧게 한 줄만) */}
+        {index === 0 && (
+          <p className="mb-4 text-sm text-neutral-400 text-center">
+            よくある悩み：発音が合っているか分からない
           </p>
-        </div>
+        )}
+
+        {index === 1 && (
+          <p className="mb-4 text-sm text-neutral-400 text-center">
+            よくある悩み：何をすればいいか分からない
+          </p>
+        )}
+
+        {/* 📱 스크린샷 */}
+        {item.image ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="w-full rounded-2xl border border-neutral-200 bg-white shadow-lg"
+          />
+        ) : (
+          <div className="flex h-[320px] items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-white text-sm text-neutral-400">
+            LINEキャプチャ予定
+          </div>
+        )}
+
+        {/* 🔥 제목 */}
+        <h4 className="mt-6 text-xl font-semibold text-neutral-900 text-center">
+          {item.title}
+        </h4>
+
+        {/* 🔥 설명 (짧게 + 강하게) */}
+        <p className="mt-2 text-sm leading-relaxed text-neutral-600 text-center md:text-base">
+          {item.desc}
+        </p>
+
+        {/* 🔥 핵심 한 줄 추가 */}
+        {index === 0 && (
+          <p className="mt-3 text-sm text-neutral-800 text-center font-medium">
+            ただの説明ではなく、実際に直せるレベルまでフィードバックします。
+          </p>
+        )}
+
+        {index === 1 && (
+          <p className="mt-3 text-sm text-neutral-800 text-center font-medium">
+            あなたに合った学習の流れを一緒に作ります。
+          </p>
+        )}
+
+        {/* 🔥 플랜 연결 */}
+        <p className="mt-5 text-xs text-neutral-400 text-center">
+          ※このサポートは Coaching / VIPプラン限定です
+        </p>
+      </div>
+    ))}
+  </div>
+
+  {/* 🔥 CTA (강화 버전) */}
+  <div className="mt-16 text-center">
+    <a
+      href="#pricing"
+      className="inline-block rounded-full bg-black px-8 py-4 text-sm font-semibold text-white hover:opacity-90 transition"
+    >
+      サポート付きプランを見る
+    </a>
+
+    {/* 🔥 변경 */}
+    <p className="mt-4 text-sm text-neutral-500">
+      迷ったら、Coachingプランがおすすめです
+    </p>
+  </div>
+
+  <p className="mt-6 text-xs leading-relaxed text-neutral-400 md:text-sm text-center">
+    ※個人情報保護のため、一部加工して掲載しています。
+  </p>
+</div>
 
         {/* Creator */}
         <div className="mt-16 rounded-[2.5rem] border border-neutral-200 bg-[#fffdf9] px-6 py-12 md:px-10 md:py-14">
