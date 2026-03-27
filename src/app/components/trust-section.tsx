@@ -8,8 +8,10 @@ type TrustReview = {
 
 type FeedbackItem = {
   title: string;
+  problem: string;
   desc: string;
-  image?: string;
+  highlight: string;
+  images: string[];
 };
 
 const reviews: TrustReview[] = [
@@ -35,14 +37,21 @@ const reviews: TrustReview[] = [
 
 const feedbackItems: FeedbackItem[] = [
   {
-    title: "発音フィードバックの例",
-    desc: "日本人がつまずきやすい発音を、「どこをどう動かすか」まで具体的に説明しています。",
-    image: "/line-feedback-1.jpg",
+    title: "発音フィードバックの実例",
+    problem: "発音が合っているか不安な方へ",
+    desc: "日本人がつまずきやすい発音を、口の形や音の流れまで具体的にフィードバックします。",
+    highlight:
+      "説明ではなく、“実際にできるようになる”ところまでサポートします。",
+    images: [
+      "/images/feedback-pronunciation-1.JPG",
+    ],
   },
   {
-    title: "学習相談の例",
-    desc: "進め方や質問にも個別に対応しながら、無理なく続けられるようにサポートしています。",
-    image: "/line-feedback-2.jpg",
+    title: "学習サポートの実例",
+    problem: "何をすればいいか分からない方へ",
+    desc: "進み方や悩みに合わせて、一人ひとりに合った学習の流れを提案します。",
+    highlight: "あなた専用の学習ルートを一緒に作ります。",
+    images: ["/images/feedback-study-1.JPG"],
   },
 ];
 
@@ -111,11 +120,11 @@ export function TrustSection() {
             </p>
 
             <h3 className="mt-4 text-3xl font-semibold tracking-tight text-neutral-900 md:text-4xl">
-              実際のLINEサポート
+              実際のLINEサポート（そのまま公開）
             </h3>
 
             <p className="mt-4 text-base leading-relaxed text-neutral-600 md:text-lg">
-              購入後、実際に届くサポートの雰囲気をそのまま掲載しています。
+              購入後、このようなサポートが実際に届きます。
             </p>
 
             <p className="mt-4 text-sm text-neutral-500">
@@ -123,52 +132,39 @@ export function TrustSection() {
             </p>
           </div>
 
-          <div className="mt-14 flex flex-col gap-16">
-            {feedbackItems.map((item, index) => (
-              <div key={item.title} className="mx-auto max-w-[640px]">
-                {index === 0 && (
-                  <p className="mb-4 text-center text-sm text-neutral-400">
-                    よくある悩み：発音が合っているか分からない
-                  </p>
-                )}
+          <div className="mt-14 flex flex-col gap-20">
+            {feedbackItems.map((item) => (
+              <div key={item.title} className="mx-auto w-full max-w-[760px]">
+                <p className="mb-6 text-center text-sm font-medium text-neutral-500">
+                  {item.problem}
+                </p>
 
-                {index === 1 && (
-                  <p className="mb-4 text-center text-sm text-neutral-400">
-                    よくある悩み：何をすればいいか分からない
-                  </p>
-                )}
+                <div className="flex flex-col items-center gap-6">
+                  {item.images.map((image, imageIndex) => (
+                    <div
+                      key={`${item.title}-${imageIndex}`}
+                      className="w-full max-w-[480px] rounded-[2rem] border border-neutral-200 bg-neutral-100 p-2 shadow-sm"
+                    >
+                      <img
+                        src={image}
+                        alt={`${item.title} ${imageIndex + 1}`}
+                        className="block h-auto w-full rounded-[1.5rem]"
+                      />
+                    </div>
+                  ))}
+                </div>
 
-                {item.image ? (
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full rounded-2xl border border-neutral-200 bg-white shadow-lg"
-                  />
-                ) : (
-                  <div className="flex h-[320px] items-center justify-center rounded-2xl border border-dashed border-neutral-300 bg-white text-sm text-neutral-400">
-                    LINEキャプチャ予定
-                  </div>
-                )}
-
-                <h4 className="mt-6 text-center text-xl font-semibold text-neutral-900">
+                <h4 className="mt-8 text-center text-xl font-semibold text-neutral-900">
                   {item.title}
                 </h4>
 
-                <p className="mt-2 text-center text-sm leading-relaxed text-neutral-600 md:text-base">
+                <p className="mt-3 text-center text-sm leading-relaxed text-neutral-600 md:text-base">
                   {item.desc}
                 </p>
 
-                {index === 0 && (
-                  <p className="mt-3 text-center text-sm font-medium text-neutral-800">
-                    ただの説明ではなく、実際に直せるレベルまでフィードバックします。
-                  </p>
-                )}
-
-                {index === 1 && (
-                  <p className="mt-3 text-center text-sm font-medium text-neutral-800">
-                    あなたに合った学習の流れを一緒に作ります。
-                  </p>
-                )}
+                <p className="mt-3 text-center text-sm font-medium text-neutral-800">
+                  {item.highlight}
+                </p>
 
                 <p className="mt-5 text-center text-xs text-neutral-400">
                   ※このサポートは Coaching / VIPプラン限定です
@@ -186,7 +182,7 @@ export function TrustSection() {
             </a>
 
             <p className="mt-4 text-sm text-neutral-500">
-              迷ったら、Coachingプランがおすすめです
+              一番選ばれているのは Coachingプランです
             </p>
           </div>
 
