@@ -7,10 +7,10 @@ type PricingSectionProps = {
 
 const CHECKOUT_URLS = {
   starter:
-    "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/0cbaad82-3dc3-4b95-93ca-a0e7f48300c5",
+    "https://yujinkorean.gumroad.com/l/eilwqu",
   coaching:
-    "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/af526bef-e447-4905-8f62-61923bc2fa12",
-  vip: "https://koreanwithyujin.lemonsqueezy.com/checkout/buy/81ff43aa-fa6e-4e6d-b646-b1aa56795769",
+    "https://yujinkorean.gumroad.com/l/rknprh",
+  vip: "https://yujinkorean.gumroad.com/l/pnlvsp",
 };
 
 const comparisonRows = [
