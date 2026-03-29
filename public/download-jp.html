@@ -6,11 +6,29 @@
     <title>ダウンロードページ | Yujin Korean</title>
     <meta name="robots" content="noindex, nofollow" />
     <style>
+      :root {
+        --bg: #f7f4ee;
+        --card: #fffdf9;
+        --line-bg: #faf7f2;
+        --border: #e8e1d7;
+        --border-soft: #ece3d8;
+        --text: #111111;
+        --sub: #5f564d;
+        --muted: #7a6f63;
+        --black: #111111;
+        --line: #06c755;
+        --soft-btn: #f1ebe2;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         margin: 0;
         font-family: Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
-        background: #f7f4ee;
-        color: #111;
+        background: var(--bg);
+        color: var(--text);
       }
 
       .wrap {
@@ -20,8 +38,8 @@
       }
 
       .card {
-        background: #fffdf9;
-        border: 1px solid #e8e1d7;
+        background: var(--card);
+        border: 1px solid var(--border);
         border-radius: 24px;
         padding: 28px;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
@@ -30,15 +48,40 @@
 
       .brand {
         font-size: 14px;
-        color: #7a6f63;
+        color: var(--muted);
         margin-bottom: 12px;
         letter-spacing: 0.04em;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #8a7d70;
+        background: #f3ede4;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        padding: 7px 12px;
+        margin-bottom: 14px;
       }
 
       h1 {
         font-size: 32px;
         line-height: 1.3;
         margin: 0 0 14px;
+      }
+
+      h2 {
+        font-size: 22px;
+        line-height: 1.4;
+        margin: 0 0 12px;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+        line-height: 1.5;
       }
 
       p {
@@ -48,30 +91,42 @@
       }
 
       .sub {
-        color: #5f564d;
+        color: var(--sub);
       }
 
-      .line-box {
-        background: #faf7f2;
-        border: 1px solid #ece3d8;
-        border-radius: 18px;
-        padding: 20px;
+      .mini-points {
+        display: grid;
+        gap: 10px;
         margin-top: 18px;
       }
 
-      .line-box h2 {
-        font-size: 20px;
-        margin: 0 0 12px;
-      }
-
-      ul {
-        padding-left: 20px;
-        margin: 0 0 18px;
-      }
-
-      li {
-        margin-bottom: 8px;
+      .mini-point {
+        border: 1px solid var(--border);
+        background: #fff;
+        border-radius: 16px;
+        padding: 14px 16px;
+        font-size: 14px;
         line-height: 1.7;
+        color: var(--sub);
+      }
+
+      .downloads {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .download-item {
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        background: #fff;
+      }
+
+      .download-item p {
+        margin: 0 0 12px;
+        font-size: 14px;
+        color: var(--sub);
       }
 
       .btn {
@@ -83,66 +138,119 @@
         font-weight: 700;
         margin-right: 10px;
         margin-bottom: 10px;
+        transition: transform 0.15s ease, opacity 0.15s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+        opacity: 0.96;
       }
 
       .btn-primary {
-        background: #111;
+        background: var(--black);
         color: white;
       }
 
       .btn-line {
-        background: #06c755;
+        background: var(--line);
         color: white;
       }
 
       .btn-soft {
-        background: #f1ebe2;
-        color: #111;
-      }
-
-      .downloads {
-        display: grid;
-        gap: 14px;
-        margin-top: 18px;
-      }
-
-      .download-item {
-        border: 1px solid #e8e1d7;
-        border-radius: 18px;
-        padding: 18px;
-        background: #fff;
-      }
-
-      .download-item h3 {
-        margin: 0 0 8px;
-        font-size: 18px;
-      }
-
-      .download-item p {
-        margin: 0 0 12px;
-        font-size: 14px;
-        color: #5f564d;
+        background: var(--soft-btn);
+        color: var(--text);
       }
 
       .note {
         font-size: 13px;
-        color: #7a6f63;
-        margin-top: 22px;
+        color: var(--muted);
+        margin-top: 18px;
+        line-height: 1.8;
+      }
+
+      .line-box {
+        background: var(--line-bg);
+        border: 1px solid var(--border-soft);
+        border-radius: 18px;
+        padding: 20px;
+        margin-top: 4px;
+      }
+
+      .line-copy {
+        font-size: 14px;
+        color: var(--sub);
+        margin-bottom: 14px;
+      }
+
+      ul {
+        padding-left: 20px;
+        margin: 0 0 18px;
+      }
+
+      li {
+        margin-bottom: 8px;
+        line-height: 1.7;
+        color: var(--sub);
+      }
+
+      .message-box {
+        margin-top: 18px;
+        background: #fff;
+        border: 1px dashed #d9cdbf;
+        border-radius: 16px;
+        padding: 16px;
+      }
+
+      .message-box-title {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      .message-text {
+        font-size: 15px;
+        line-height: 1.8;
+        color: var(--text);
+        word-break: break-word;
+      }
+
+      .footer-note {
+        text-align: center;
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 24px;
+        line-height: 1.8;
       }
 
       @media (max-width: 640px) {
+        .wrap {
+          padding: 24px 14px 56px;
+        }
+
         h1 {
           font-size: 26px;
         }
 
+        h2 {
+          font-size: 20px;
+        }
+
         .card {
           padding: 22px;
+          border-radius: 20px;
+        }
+
+        .download-item,
+        .line-box,
+        .message-box,
+        .mini-point {
+          border-radius: 16px;
         }
 
         .btn {
           display: block;
           width: 100%;
-          box-sizing: border-box;
           text-align: center;
           margin-right: 0;
         }
@@ -151,54 +259,80 @@
   </head>
   <body>
     <div class="wrap">
+      <!-- HERO / reassurance -->
       <div class="card">
         <div class="brand">Yujin Korean</div>
+        <div class="eyebrow">PURCHASE COMPLETE</div>
         <h1>ご購入ありがとうございます。</h1>
         <p class="sub">
-          Starter Pack (JP) はこのページからダウンロードできます。
+          Starter Pack (JP) は、このページからすぐにダウンロードできます。
         </p>
         <p class="sub">
-          まずは教材を受け取り、その後 LINE に追加して音声ファイルやサポートもご利用ください。
+          まずは教材PDFをお受け取りください。<br />
+          音声ファイルは著作権保護のため、LINE追加後に個別でご案内しております。
         </p>
+
+        <div class="mini-points">
+          <div class="mini-point">✅ このページで教材PDFをすぐに受け取れます</div>
+          <div class="mini-point">✅ 音声ファイルはLINE追加後にご案内します</div>
+          <div class="mini-point">✅ 質問サポートや今後の特典案内もLINEで受け取れます</div>
+        </div>
       </div>
 
+      <!-- Downloads -->
       <div class="card">
-        <h2 style="margin-top: 0; font-size: 22px;">教材ダウンロード</h2>
+        <h2>教材ダウンロード</h2>
+        <p class="sub">
+          以下の2点はこのページからすぐにダウンロードできます。
+        </p>
 
         <div class="downloads">
           <div class="download-item">
             <h3>① メイン教材 PDF</h3>
-            <p>Starter Pack 本編の教材です。</p>
-            <a class="btn btn-primary" href="https://drive.google.com/file/d/1S5-FwLc1UM4WIckib63O9sNxfEwPT6zp/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-              PDFをダウンロード
+            <p>
+              Starter Pack 本編の教材です。まずはこちらからご利用ください。
+            </p>
+            <a
+              class="btn btn-primary"
+              href="https://drive.google.com/file/d/1S5-FwLc1UM4WIckib63O9sNxfEwPT6zp/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              メイン教材PDFをダウンロード
             </a>
           </div>
 
           <div class="download-item">
             <h3>② 単語ノート PDF</h3>
-            <p>単語・表現・ミッションをまとめた補助ノートです。</p>
-            <a class="btn btn-soft" href="https://drive.google.com/file/d/187v997Bf1Tv_2PBbaQZx426nepNBA_8C/view?usp=drive_link" target="_blank" rel="noopener noreferrer">
-              単語ノートをダウンロード
-            </a>
-          </div>
-
-          <div class="download-item">
-            <h3>③ 音声ファイル MP3</h3>
-            <p>音声ガイドは LINE 追加後にも案内します。</p>
-            <a class="btn btn-soft" href="여기에_오디오_링크" target="_blank" rel="noopener noreferrer">
-              音声ファイルを受け取る
+            <p>
+              単語・表現・ミッションをまとめた補助ノートです。教材と一緒にご活用ください。
+            </p>
+            <a
+              class="btn btn-soft"
+              href="https://drive.google.com/file/d/187v997Bf1Tv_2PBbaQZx426nepNBA_8C/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              単語ノートPDFをダウンロード
             </a>
           </div>
         </div>
 
         <p class="note">
-          ※ リンクが開かない場合は、少し時間をおいてから再度お試しください。
+          ※ リンクが開かない場合は、少し時間をおいてから再度お試しください。<br />
+          ※ 音声ファイルはこのページではなく、LINE追加後にご案内しております。
         </p>
       </div>
 
+      <!-- LINE conversion section -->
       <div class="card">
         <div class="line-box">
-          <h2>LINEに追加するとできること</h2>
+          <h2>音声ファイルの受け取り・サポート案内</h2>
+          <p class="line-copy">
+            音声ファイルは著作権保護のため、LINE追加後に個別でご案内しております。<br />
+            あわせて、学習サポートや限定特典のご案内もLINEで受け取れます。
+          </p>
+
           <ul>
             <li>音声ファイルの案内を受け取れます</li>
             <li>学習に関する質問サポートが使えます</li>
@@ -211,13 +345,23 @@
             target="_blank"
             rel="noopener noreferrer"
           >
-            LINEに追加する
+            LINEに追加して音声案内を受け取る
           </a>
+
+          <div class="message-box">
+            <div class="message-box-title">LINE追加後、このまま送ってください</div>
+            <div class="message-text">スターターパック</div>
+          </div>
         </div>
 
         <p class="note">
-          LINE追加後、「スターターパック」と送っていただければ、よりスムーズにご案内できます。
+          LINE追加後に「スターターパック」と送っていただければ、よりスムーズにご案内できます。
         </p>
+      </div>
+
+      <div class="footer-note">
+        Yujin Korean Starter Pack をお選びいただき、ありがとうございます。<br />
+        この教材が、あなたの最初の一歩になりますように。
       </div>
     </div>
   </body>
