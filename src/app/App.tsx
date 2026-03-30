@@ -12,6 +12,8 @@ import { TrustSection } from "./components/trust-section";
 import { Footer } from "./components/footer";
 import { LearningFlowSection } from "./components/learning-flow-section";
 import { RealReviewsSection } from "./components/real-reviews-section";
+import { Analytics } from "@vercel/analytics/react";
+
 export default function App() {
   return (
     <div className="w-full min-h-screen bg-white">
@@ -37,6 +39,7 @@ export default function App() {
       <FaqSection />
       <FinalCTASection pricingId="pricing" previewId="preview" />
       <Footer />
+       <Analytics />
     </div>
   );
 }
