@@ -17,19 +17,13 @@ type FeedbackItem = {
 const reviews: TrustReview[] = [
   {
     quote:
-      "初心者にも安心してすすめられる一冊だと思いました。一般的な教材とは違い、小説形式なので楽しく学べました。次の内容が気になって読み進めるうちに、自然と学習が続く構成になっていると感じました。",
+      "初心者にも安心してすすめられる一冊だと思いました。小説形式なので楽しく学べ、次の内容が気になって読み進めるうちに、自然と学習が続く構成になっていると感じました。",
     name: "Aさん",
     meta: "韓国語講師・医学部在学",
   },
   {
     quote:
-      "ずっと気になっていたのに、なかなか始められなかった私でも読み進められました。以前から韓国語に興味はありましたが、勉強を始めるきっかけがありませんでした。小説形式の教材は初めてでしたが、普通の教材より読みやすく、楽しく学べました。これから韓国語を始めたい人の最初の一冊として、とても良いと思いました。",
-    name: "Bさん",
-    meta: "日本在住・40代主婦",
-  },
-  {
-    quote:
-      "忙しくても、これなら続けられると思いました。仕事が忙しく、勉強を始めるきっかけがなかなか作れませんでした。でも物語を読み進めるうちに、単語や表現が自然に頭に入ってきて、一般的な参考書より負担なく学べたのが良かったです。これからも続けたいと思いました。",
+      "忙しくても、これなら続けられると思いました。物語を読み進めるうちに、単語や表現が自然に頭に入ってきて、一般的な参考書より負担なく学べたのが良かったです。",
     name: "Cさん",
     meta: "日本在住・会社員",
   },
@@ -59,7 +53,38 @@ export function TrustSection() {
   return (
     <section id="reviews" className="w-full bg-white px-6 py-24 md:py-32">
       <div className="mx-auto w-full max-w-[1200px]">
-        {/* Reviews / Voice */}
+        {/* ━━━ LA배우 추천사 ━━━ */}
+        <div className="mb-12 overflow-hidden rounded-[2rem] border border-neutral-100 bg-white px-8 py-8 shadow-sm md:px-12 md:py-10">
+          <div className="flex flex-col items-start gap-6 md:flex-row md:items-center">
+            <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-neutral-100 text-3xl">
+              🎬
+            </div>
+            <div className="flex-1">
+              <p className="text-lg font-semibold leading-relaxed text-neutral-800 md:text-xl">
+                <span className="text-neutral-300 text-2xl mr-1">"</span>
+                An exceptional teacher, knowledgeable in his craft, and caters his lessons to needs.
+                Incredible at teaching language fluency, and his new book is a{" "}
+                <strong className="text-neutral-900 underline decoration-orange-300 decoration-2 underline-offset-4">
+                  language learners dream.
+                </strong>
+                <span className="text-neutral-300 text-2xl ml-1">"</span>
+              </p>
+              <div className="mt-4 flex flex-wrap items-center gap-3">
+                <p className="text-sm font-bold text-neutral-500">
+                  — 俳優 / 脚本家 / 監督（LA在住）
+                </p>
+                <span className="rounded-full bg-neutral-100 px-3 py-1 text-xs font-bold text-neutral-500">
+                  🇺🇸 English Native Speaker
+                </span>
+              </div>
+              <p className="mt-3 text-xs leading-relaxed text-neutral-400">
+                ※ 個人情報保護のため、氏名・詳細プロフィールは非公開にしています
+              </p>
+            </div>
+          </div>
+        </div>
+
+                {/* Reviews / Voice */}
         <div className="rounded-[3rem] border border-neutral-100 bg-neutral-50 px-6 py-16 shadow-inner md:px-12 md:py-24">
           <div className="mx-auto mb-16 flex max-w-[800px] flex-col items-center gap-5 text-center">
             <span className="text-sm font-bold tracking-[0.2em] text-indigo-500/80">
@@ -73,7 +98,7 @@ export function TrustSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {reviews.map((r, idx) => (
               <div
                 key={idx}
@@ -108,7 +133,7 @@ export function TrustSection() {
           </div>
 
           <p className="mt-12 text-center text-xs font-bold tracking-widest text-neutral-400 md:text-sm">
-            ※レビューは順次追加予定です（先行読者の声）。
+            ※ その他のレビューは順次追加予定です（先行読者の声）。
           </p>
         </div>
 

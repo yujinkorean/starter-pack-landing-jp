@@ -1,6 +1,5 @@
 import { HeroSection } from "./components/hero-section";
 import { BookPreviewSection } from "./components/book-preview-section";
-import { DifferenceSection } from "./components/difference-section";
 import { StorySection } from "./components/story-section";
 import { ProblemSection } from "./components/problem-section";
 import { PackageSection } from "./components/package-section";
@@ -12,6 +11,7 @@ import { TrustSection } from "./components/trust-section";
 import { Footer } from "./components/footer";
 import { LearningFlowSection } from "./components/learning-flow-section";
 import { RealReviewsSection } from "./components/real-reviews-section";
+import { CoachingSpotlightSection } from "./components/coaching-spotlight-section";
 import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
@@ -20,26 +20,22 @@ export default function App() {
       <HeroSection previewId="preview" pricingId="pricing" />
       <ProblemSection />
       <AbleToDoSection />
-
+      <RealReviewsSection />
+      <PackageSection />
+      <CoachingSpotlightSection />
+      <LearningFlowSection />
       <section id="preview">
         <BookPreviewSection />
-        
       </section>
-
-      <TrustSection />
-      <RealReviewsSection />
       <StorySection />
-      <PackageSection />
+      <TrustSection />
       <section id="pricing">
-        
         <PricingSection />
       </section>
-      <LearningFlowSection />
-
       <FaqSection />
       <FinalCTASection pricingId="pricing" previewId="preview" />
       <Footer />
-       <Analytics />
+      <Analytics />
     </div>
   );
 }

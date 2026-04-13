@@ -7,107 +7,74 @@ import {
 
 const faqs = [
   {
-    question: "なぜ単語帳と音声は一度にすべて提供されないのですか？",
-    answer:
-      "この教材は、途中で止まらず最後まで続けられるように、あえて段階的に提供する設計になっています。Starter Packは初心者が最初の一言を無理なく出せるよう、ユジンが横で一緒に進める形を想定しています。単語帳と音声は毎週日曜日にLINEで順次お届けします。",
+    question: "韓国語を全く知らなくても始められますか？",
+    answer: "はい。完全な初心者向けに設計されています。独学4〜5ヶ月程度の初級者さん、何度か挫折してきた方を想定した構成です。ハングルの仕組みから始まり、会話の流れで自然に韓国語が身につきます。",
   },
   {
-    question: "韓国語をまったく知らなくても始められますか？",
-    answer:
-      "はい。完全な初心者のために設計されています。ハングルの仕組み（天・地・人）から始まり、22日で最初の一言が出るように構成されています。",
+    question: "コーチングって、具体的に何をしてくれるのですか？",
+    answer: "①6週間の目標設定、②毎週の学習プラン提供、③週末フィードバック＋翌週プラン提供、④個別QnAコーチングの4つです。文法の授業ではなく、あなた専用の管理サポートです。「ㅇパッチムが難しい」なら「みかんで練習してください」のように、詰まった瞬間に具体的な解決策を提示します。",
   },
   {
-    question: "市販の2,000円台の教材とは何が違いますか？",
-    answer:
-      "一般的な教材は文法説明が中心ですが、この教材はユジンとエヴァンの物語を通して「会話の文脈」から韓国語を学ぶ構成です。さらに、基本形・丁寧語・カジュアルの3つの話し方を同時に学べる単語帳と、会話音声も含まれています。",
+    question: "コーチングに答えてくれるのは誰ですか？AIですか？",
+    answer: "AIではありません。韓国語ネイティブ講師が実際に回答します。LINEで質問すると、通常24時間以内に具体的な指示が届きます。韓国語学習に関する内容（発音・単語・表現・勉強方法など）に対応しています。",
   },
   {
-    question: "この教材はどんな人に向いていますか？",
-    answer:
-      "この教材は、韓国語をゼロから始めたい人、文法中心の勉強が苦手な人、まず会話の流れを理解したい人、楽しく韓国語を始めたい人に向いています。逆に、文法を細かく分析して勉強したい方や、すでに韓国語で日常会話ができる方には少し物足りないかもしれません。このスターターパックは「最初の一言」を出すための教材です。",
+    question: "コーチングは6週間だけですか？その後は？",
+    answer: "はい、コーチングは6週間です。ただし「6週間で自分一人で続けられる状態を作る」ことがゴールです。コーチング終了後も、教材と単語帳は引き続き利用できます。",
   },
   {
-    question: "この教材はAIで作られたものですか？",
-    answer:
-      "いいえ。すべての文章は、韓国人著者が日本人学習者の発音の特徴や実用性を考慮して直接執筆しました。オーディオもAI音声ではなく、著者と友人の実際の会話を収録したトーキングオーディオです。",
+    question: "市販の参考書と何が違いますか？",
+    answer: "一般的な参考書は文法説明が中心ですが、この教材はストーリーの中で自然に韓国語を学ぶ構造です。さらに毎週届く個別単語帳とコーチングで「続ける仕組み」まで整っています。教材を渡すだけで終わりません。",
   },
   {
-    question: "日本円（JPY）で支払えますか？価格はいくらですか？",
-    answer:
-      "はい。日本円での決済に対応しています。Starter Pack は ¥2,200 です。為替変動に関係なく、表示価格のまま決済できます。",
+    question: "サブスクリプションや月額課金はありますか？",
+    answer: "いいえ。すべてのプランは一度の購入で利用できる買い切り型です。月額課金・追加料金は一切ありません。コーチングも購入プランに含まれています。",
   },
   {
-    question: "これはサブスクリプションですか？",
-    answer:
-      "いいえ。本商品は一度の購入で利用できる買い切り型のデジタル教材です。月額課金などは一切ありません。",
-  },
-  {
-    question: "購入後はいつまで利用できますか？",
-    answer:
-      "一度ご購入いただければ、期限なくご利用いただけます。ご自身のペースで何度でも学習可能です。",
-  },
-  {
-    question: "購入後、教材はどう受け取りますか？",
-    answer:
-      "決済完了後、登録したメールアドレスにダウンロードリンクが送付されます。PDF教材とMP3オーディオを、スマートフォン・タブレット・PCですぐに利用できます。",
+    question: "購入後、どうやって教材を受け取りますか？",
+    answer: "決済完了後、登録したメールアドレスにダウンロードリンクが届きます。スマートフォン・タブレット・PC対応です。購入後すぐにダウンロードして始められます。",
   },
   {
     question: "返金はできますか？",
-    answer:
-      "デジタルコンテンツの特性上、購入後の返金はお受けしておりません。ただし、アクセスやファイル受領に技術的な問題がある場合は、サポートいたします。",
+    answer: "デジタルコンテンツの特性上、購入後の返金はお受けしておりません。購入前にLINEで無料の体験版20ページをご確認ください。ファイル受領に技術的な問題がある場合はサポートいたします。",
   },
   {
-    question: "コーチングプランの質問には誰が答えますか？",
-    answer:
-      "AIチャットボットではなく、著者ユジンと韓国語ネイティブ講師が対応します。質問サポートは購入プランに含まれるサポートであり、発音・単語・表現・学習方法など、韓国語学習に関する内容に対応します。追加料金は発生しません。",
-  },
-  {
-    question: "質問サポートには制限がありますか？",
-    answer:
-      "はい。質問サポートは韓国語学習に関する内容（発音・単語・表現・学習方法など）に限られます。翻訳代行や課題の代行などには対応しておりません。",
-  },
-  {
-    question: "この教材の次のレベルはありますか？",
-    answer:
-      "はい。Starter Pack（Pack 0.5）のあとに、Pack 1、Pack 2 など、より深い会話を学ぶ教材を順次リリース予定です。レビューを書いていただいた方には、次回使える特典もご案内する予定です。",
+    question: "この教材はAIで作られていますか？",
+    answer: "いいえ。韓国の入試家庭教師兼小説家が、構成から内容まですべて直接執筆しました。日本人学習者がつまずきやすいポイントを踏まえた、完全手作りの教材です。",
   },
 ];
 
 export function FaqSection() {
   return (
-    <section
-      className="w-full flex justify-center px-6 py-24 md:py-32 bg-neutral-50"
-      id="faq"
-    >
-      <div className="w-full max-w-[1200px] flex justify-center">
-        <div className="w-full max-w-[800px] flex flex-col gap-12">
-          <div className="flex flex-col items-center gap-4 text-center">
-            <h2 className="text-4xl md:text-5xl tracking-tight">よくある質問</h2>
-            <p className="text-base md:text-lg text-neutral-600">
-              購入前の不安を、ここで解消しておきましょう。
-            </p>
-          </div>
-
-          <Accordion type="single" collapsible className="flex flex-col gap-4">
-            {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-white rounded-2xl px-6 border border-neutral-200/70"
-              >
-                <AccordionTrigger className="py-6 text-left hover:no-underline">
-                  <span className="text-lg">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-6 leading-relaxed text-neutral-600">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-
-          <p className="text-center text-sm text-neutral-500">
-            ご不明な点がある場合は、サイト下部の連絡先よりお問い合わせください。
+    <section className="w-full flex justify-center bg-white px-4 py-20 md:px-6 md:py-28" id="faq">
+      <div className="w-full max-w-[760px]">
+        <div className="mb-10 flex flex-col items-center gap-3 text-center">
+          <p className="text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">FAQ</p>
+          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">よくある質問</h2>
+          <p className="max-w-[480px] text-base text-neutral-500 md:text-lg">
+            購入前の不安を、ここで解消しておきましょう。
           </p>
+        </div>
+
+        <Accordion type="single" collapsible className="flex flex-col gap-3">
+          {faqs.map((faq, i) => (
+            <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-neutral-200 bg-white px-6">
+              <AccordionTrigger className="py-5 text-left hover:no-underline">
+                <span className="text-base font-semibold text-neutral-900">{faq.question}</span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-relaxed text-neutral-600 md:text-base">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+
+        <div className="mt-8 rounded-2xl border border-neutral-100 bg-neutral-50 p-6 text-center">
+          <p className="text-sm font-bold text-neutral-900">他にご不明な点がありましたら</p>
+          <a href="mailto:yujinkoreanstories@gmail.com"
+            className="mt-2 inline-block text-sm font-semibold text-neutral-700 underline underline-offset-4">
+            yujinkoreanstories@gmail.com
+          </a>
         </div>
       </div>
     </section>

@@ -1,472 +1,214 @@
-import { Button } from "./ui/button";
-import { Check, Star, Users, MessageCircle, Clock3, BadgeCheck } from "lucide-react";
+import { Check, Flame, Star } from "lucide-react";
+import { useState, useEffect } from "react";
 
-type PricingSectionProps = {
-  id?: string;
-};
+type PricingSectionProps = { id?: string };
 
 const CHECKOUT_URLS = {
-  starter:
-    "https://yujinkorean.gumroad.com/l/eilwqu",
-  coaching:
-    "https://yujinkorean.gumroad.com/l/rknprh",
-  vip: "https://yujinkorean.gumroad.com/l/pnlvsp",
+  starter: "https://yujinkorean.gumroad.com/l/eilwqu",
+  coaching: "https://yujinkorean.gumroad.com/l/rknprh",
 };
+const LINE_URL = "https://lin.ee/YaJg73C";
 
-const comparisonRows = [
-  { label: "メインテキスト eBook", starter: true, coaching: true, vip: true },
-  { label: "必須単語帳リスト", starter: true, coaching: true, vip: true },
-  { label: "会話音声 MP3", starter: true, coaching: true, vip: true },
-  { label: "6週間学習ロードマップ", starter: false, coaching: true, vip: true },
-  { label: "LINE質問サポート", starter: false, coaching: true, vip: true },
-  { label: "週1回の学習ログチェック", starter: false, coaching: false, vip: true },
-  { label: "個別フィードバック", starter: false, coaching: false, vip: true },
-  { label: "次週ミッション提示", starter: false, coaching: false, vip: true },
-];
-
-function CellCheck({ active }: { active: boolean }) {
-  return active ? (
-    <Check size={18} className="mx-auto text-green-500" />
-  ) : (
-    <span className="block text-center text-neutral-300">—</span>
+function CountdownTimer() {
+  const [t, setT] = useState({ h: 23, m: 59, s: 59 });
+  useEffect(() => {
+    let end = Number(sessionStorage.getItem("pe"));
+    if (!end) { end = Date.now() + 24 * 3600000; sessionStorage.setItem("pe", String(end)); }
+    const tick = () => {
+      const d = Math.max(0, end - Date.now());
+      setT({ h: Math.floor(d / 3600000), m: Math.floor((d % 3600000) / 60000), s: Math.floor((d % 60000) / 1000) });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  const p = (n: number) => String(n).padStart(2, "0");
+  return (
+    <div className="flex items-center gap-1 font-mono">
+      {[t.h, t.m, t.s].map((v, i) => (
+        <span key={i} className="flex items-center gap-1">
+          <span className="rounded-md bg-neutral-900 px-2 py-1 text-sm font-bold text-white">{p(v)}</span>
+          {i < 2 && <span className="font-bold text-neutral-400">:</span>}
+        </span>
+      ))}
+    </div>
   );
 }
 
 export function PricingSection({ id = "pricing" }: PricingSectionProps) {
   return (
-    <section id={id} className="w-full bg-white px-6 py-24 font-sans md:py-32">
-      <div className="mx-auto w-full max-w-[1200px]">
-        {/* Header */}
-        <div className="mx-auto mb-10 max-w-[900px] text-center">
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-semibold tracking-widest text-neutral-700 md:text-sm">
-              PRICING
-            </span>
-          </div>
+    <section id={id} className="w-full bg-neutral-50 px-4 py-20 md:px-6 md:py-28">
+      <div className="mx-auto w-full max-w-[960px]">
 
-          <h2 className="text-3xl font-bold leading-tight tracking-tight text-neutral-900 md:text-5xl">
-            料金プラン
+        <div className="mb-10 text-center">
+          <p className="mb-3 text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">Pricing</p>
+          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+            シンプルな2つのプラン
           </h2>
-
-          <p className="mx-auto mt-5 max-w-[760px] text-base leading-relaxed text-neutral-600 md:text-xl">
-            リリース記念特別価格（オープンから30日間限定）
-          </p>
-
-          <p className="mx-auto mt-3 max-w-[720px] text-sm leading-relaxed text-neutral-500 md:text-base">
-            あなたに合った始め方を選べます。まずは教材だけで始めることも、サポート付きで確実に進めることもできます。
+          <p className="mx-auto mt-4 max-w-[480px] text-base text-neutral-500 md:text-lg">
+            まず無料で試してから、続けるか決めてください。
           </p>
         </div>
 
-        {/* Review Banner */}
-        <div className="mx-auto mb-12 max-w-[800px] rounded-2xl border border-amber-200 bg-amber-50 p-5 text-center shadow-sm md:p-6">
-          <p className="mb-2 flex items-center justify-center gap-2 text-sm font-bold text-amber-900 md:text-base">
-            <Star size={18} fill="currentColor" className="text-amber-500" />
-            【全プラン対象】レビュー投稿キャンペーン
-          </p>
-          <p className="text-xs font-medium leading-relaxed text-amber-800 md:text-sm">
-            ご購入後、レビューをご投稿いただいた方全員に、次回使える
-            <br className="hidden md:block" />
-            <span className="text-base font-bold text-amber-950 underline decoration-amber-400 decoration-2 underline-offset-4">
-              特典クーポン
-            </span>
-            をプレゼントいたします！
-          </p>
+        {/* 카운트다운 */}
+        <div className="mx-auto mb-10 flex max-w-[680px] flex-col items-center justify-between gap-4 rounded-2xl border border-orange-200 bg-orange-50 px-6 py-4 md:flex-row">
+          <div className="flex items-center gap-2">
+            <Flame size={18} className="shrink-0 text-orange-500" />
+            <p className="text-sm font-bold text-orange-900">初期リリース限定価格 · 残り時間</p>
+          </div>
+          <CountdownTimer />
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          {/* Starter */}
-          <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
+        {/* 무료 */}
+        <div className="mx-auto mb-6 max-w-[680px] rounded-2xl border border-green-200 bg-green-50 px-6 py-5">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <div className="flex items-center gap-4">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#06C755]">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                  <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992z"/>
+                </svg>
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <p className="font-bold text-green-900">まず無料で試す</p>
+                  <span className="rounded-full bg-green-200 px-2 py-0.5 text-[10px] font-bold text-green-800">0円</span>
+                </div>
+                <p className="mt-0.5 text-sm text-green-700">体験版20ページをLINE登録後すぐ受け取れます</p>
+              </div>
+            </div>
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
+              className="shrink-0 rounded-full bg-[#06C755] px-6 py-2.5 text-sm font-bold text-white transition hover:opacity-90">
+              まず無料で20ページ体験する
+            </a>
+          </div>
+        </div>
+
+        {/* 2가지 유료 플랜 */}
+        <div className="mx-auto grid max-w-[680px] grid-cols-1 gap-5 md:grid-cols-2">
+
+          {/* Standard */}
+          <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-7 shadow-sm">
             <div>
-              <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
-                まずはここから
+              <span className="inline-block rounded-full bg-neutral-100 px-3 py-1 text-[11px] font-bold text-neutral-600">
+                自分のペースで進めたい方へ
+              </span>
+              <h3 className="mt-4 text-xl font-bold text-neutral-900">スタンダード</h3>
+              <p className="mt-1 text-sm text-neutral-400">教材 ＋ 毎週LINE単語帳</p>
+
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,480</span>
+                <span className="text-sm text-neutral-400">買い切り</span>
               </div>
 
-              <h3 className="text-xl font-bold text-neutral-900">Starter Pack</h3>
-              <p className="mt-2 text-sm text-neutral-500">一人で始めたい方へ</p>
-
-              <div className="mt-8">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="rounded-full bg-green-50 px-2 py-1 text-[10px] font-bold text-green-700">
-                    リリース記念価格
-                  </span>
-                </div>
-                <div className="flex items-end gap-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-                    ¥2,200
-                  </span>
-                </div>
-                <p className="mt-2 text-xs font-medium text-neutral-500">
-                  最初の一言を、自分のペースで作りたい方におすすめです。
-                </p>
-                <p className="mt-1 text-xs font-medium text-neutral-500">
-                  日本円でそのまま決済できます。
-                </p>
-              </div>
-
-              <ul className="mt-10 space-y-4 text-sm text-neutral-600">
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>メインテキスト eBook（日・英対応）</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>必須単語帳リスト</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>会話音声 MP3（日・英対応）</span>
-                </li>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "小説型メインテキスト eBook",
+                  "個別単語帳（毎週LINEで配信）",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-neutral-700">
+                    <Check size={16} className="mt-0.5 shrink-0 text-green-500" />
+                    {item}
+                  </li>
+                ))}
               </ul>
-
-              <p className="mt-6 text-sm font-medium text-neutral-800">
-                まずはここからで大丈夫です。
-              </p>
-
-              <p className="mt-3 text-[11px] leading-relaxed text-neutral-400">
-                ※ 単語帳と音声は、毎週LINEを通じて順次提供されます。
-              </p>
+              <p className="mt-4 text-xs text-neutral-400">※ 単語帳は毎週LINEで順次配信します</p>
             </div>
 
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="mt-10 h-14 w-full rounded-full text-base font-bold transition-all hover:bg-neutral-50"
-            >
-              <a href={CHECKOUT_URLS.starter} target="_blank" rel="noopener noreferrer">
-                Starterで始める
-              </a>
-            </Button>
+            <a href={CHECKOUT_URLS.starter} target="_blank" rel="noopener noreferrer"
+              className="mt-8 block w-full rounded-full border-2 border-neutral-900 py-3.5 text-center text-base font-bold text-neutral-900 transition hover:bg-neutral-900 hover:text-white">
+              スタンダードで始める
+            </a>
           </div>
 
           {/* Coaching */}
-          <div className="relative z-10 flex flex-col justify-between rounded-3xl border-2 border-neutral-900 bg-neutral-900 p-8 text-white shadow-xl lg:scale-105">
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2">
-              <div className="inline-flex flex-col items-center gap-1 rounded-2xl border border-white/20 bg-white/10 px-5 py-2 text-center backdrop-blur">
-                <span className="text-[10px] font-bold tracking-widest text-white/90">一番人気</span>
-                <span className="text-sm font-bold text-white">迷ったらこれ</span>
+          <div className="relative flex flex-col justify-between rounded-3xl border-2 border-orange-500 bg-neutral-900 p-7 text-white shadow-2xl">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+              <div className="flex items-center gap-1.5 rounded-full bg-orange-500 px-4 py-1.5 shadow">
+                <Flame size={12} className="text-white" />
+                <span className="text-[11px] font-black text-white">一番人気 · おすすめ</span>
               </div>
             </div>
 
             <div>
-              <h3 className="text-xl font-bold">Coaching バンドル</h3>
-              <p className="mt-2 text-sm text-white/70">
-                一人だと止まりやすい方へ
-              </p>
+              <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold text-white/80">
+                確実に続けたい方へ
+              </span>
+              <h3 className="mt-4 text-xl font-bold">コーチング</h3>
+              <p className="mt-1 text-sm text-white/50">教材 ＋ 単語帳 ＋ 6週間管理</p>
 
-              <div className="mt-8">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="rounded-full bg-white/10 px-2 py-1 text-[10px] font-bold text-white/90">
-                    初期リリース限定価格
-                  </span>
-                </div>
-                <div className="flex items-end gap-1">
-                  <span className="text-4xl font-bold tracking-tight md:text-5xl">¥4,900</span>
-                </div>
-                <p className="mt-2 text-xs font-medium text-white/60">
-                  教材だけで終わらず、学習の流れまで整えたい方におすすめです。
-                </p>
-                <p className="mt-1 text-xs font-medium text-white/60">
-                  日本円でそのまま決済できます。
-                </p>
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-4xl font-extrabold tracking-tight">¥2,980</span>
+                <span className="text-sm text-white/40">買い切り</span>
               </div>
 
-              <p className="mt-4 text-xs text-white/60">
-                ※ 6週間限定のサポートです。無期限サポートではありません。
-              </p>
-              <p className="mt-2 text-xs text-white/60">
-                ※ 本プランに含まれるサポートであり、別途課金はありません。
-              </p>
-              <p className="mt-2 text-xs text-white/60">
-                ※ 初期リリース限定価格です。今後は価格が変更される可能性があります。
-              </p>
-
-              <ul className="mt-8 space-y-4 text-sm text-white/90">
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-white" />
-                  <span>Starter Pack 全内容</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-white" />
-                  <span>6週間の学習計画作成（診断＋ロードマップ）</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-white" />
-                  <span>LINE質問サポート（通常24時間以内）</span>
-                </li>
+              <ul className="mt-6 space-y-3">
+                {[
+                  "スタンダードの全内容",
+                  "6週間の目標・週次プラン設定",
+                  "毎週フィードバック＋翌週プラン提供",
+                  "個別QnAコーチング（24h以内）",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-white/90">
+                    <Check size={16} className="mt-0.5 shrink-0 text-orange-400" />
+                    {item}
+                  </li>
+                ))}
               </ul>
 
-              <p className="mt-6 text-sm font-medium text-white">
-                「これで合ってるのかな？」がなくなります。
+              <p className="mt-5 text-xs leading-relaxed text-white/50">
+                ※ 韓国語ネイティブ講師が24時間以内に回答します（AIではありません）<br />
+                ※ 追加料金なし。すべてこの価格に含まれます
               </p>
             </div>
 
-            <Button
-              asChild
-              size="lg"
-              className="mt-10 h-14 w-full rounded-full bg-white text-base font-bold text-neutral-900 hover:bg-white/90"
-            >
-              <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer">
-                Coachingで進める
-              </a>
-            </Button>
-          </div>
-
-          {/* VIP */}
-          <div className="flex flex-col justify-between rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm">
-            <div>
-              <div className="mb-3 inline-flex rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
-                本気の人向け
-              </div>
-
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-xl font-bold text-neutral-900">VIP 集中管理</h3>
-                  <p className="mt-2 text-sm text-neutral-500">
-                    最短で変わりたい方へ
-                  </p>
-                </div>
-
-                <span className="inline-flex shrink-0 items-center rounded-full border border-neutral-200 bg-neutral-50 px-3 py-1 text-[10px] font-bold text-neutral-700">
-                  <Users size={12} className="mr-1" /> 先着20名限定
-                </span>
-              </div>
-
-              <div className="mt-8">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="rounded-full bg-amber-50 px-2 py-1 text-[10px] font-bold text-amber-700">
-                    初期リリース限定価格
-                  </span>
-                </div>
-                <div className="flex items-end gap-1">
-                  <span className="text-4xl font-bold tracking-tight text-neutral-900 md:text-5xl">
-                    ¥9,900
-                  </span>
-                </div>
-                <p className="mt-2 text-xs font-medium text-neutral-500">
-                  発音・学習管理まで、個別に深く見てほしい方向けです。
-                </p>
-                <p className="mt-1 text-xs font-medium text-neutral-500">
-                  日本円でそのまま決済できます。
-                </p>
-              </div>
-
-              <p className="mt-4 text-xs text-neutral-400">
-                ※ 6週間集中サポートプランです。
-              </p>
-              <p className="mt-2 text-xs text-neutral-400">
-                ※ 本プランに含まれるサポートであり、別途課金はありません。
-              </p>
-              <p className="mt-2 text-xs text-neutral-400">
-                ※ 初期リリース限定価格です。今後は価格が変更される可能性があります。
-              </p>
-
-              <ul className="mt-8 space-y-4 text-sm text-neutral-600">
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>バンドルプランの全内容</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>週1回の学習ログチェック＋個別フィードバック</span>
-                </li>
-                <li className="flex gap-3">
-                  <Check size={18} className="shrink-0 text-green-500" />
-                  <span>毎週の学習ログ確認＆次週ミッション提示</span>
-                </li>
-              </ul>
-
-              <p className="mt-6 text-sm font-medium text-neutral-800">
-                なんとなく勉強する時間を減らせます。
-              </p>
-            </div>
-
-            <div className="mt-10">
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="h-14 w-full rounded-full text-base font-bold transition-all hover:bg-neutral-50"
-              >
-                <a href={CHECKOUT_URLS.vip} target="_blank" rel="noopener noreferrer">
-                  VIPで申し込む
-                </a>
-              </Button>
-              <p className="mt-3 text-center text-[11px] font-medium italic text-neutral-400">
-                ※定員に達し次第、募集を終了いたします
-              </p>
-            </div>
+            <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer"
+              className="mt-8 block w-full rounded-full bg-orange-500 py-3.5 text-center text-base font-bold text-white shadow-lg shadow-orange-900/30 transition hover:bg-orange-400">
+              コーチングで進める
+            </a>
           </div>
         </div>
 
-        {/* CTA Push */}
-        <div className="mt-12 text-center">
-          <p className="text-sm font-semibold text-neutral-800 md:text-base">
-            最初の一歩を踏み出す人が、一番早く伸びます。
-          </p>
-          <p className="mt-2 text-xs text-neutral-500 md:text-sm">
-            完璧に準備する必要はありません。始めることが一番重要です。
-          </p>
-        </div>
-
-        {/* Why support plans exist */}
-        <div className="mx-auto mt-20 max-w-[980px] rounded-[28px] border border-neutral-200 bg-neutral-50 px-6 py-10 md:px-10 md:py-12">
-          <div className="mx-auto max-w-[760px] text-center">
-            <h3 className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
-              なぜサポートプランがあるのか？
-            </h3>
-            <p className="mt-5 text-sm leading-7 text-neutral-600 md:text-base">
-              教材だけでは続かない人がいるからです。
-              <br className="hidden md:block" />
-              「何をどの順番で学べばいいか分からない」
-              「一人で勉強すると続かない」
-              という不安を減らすために、サポート付きプランを用意しました。
-            </p>
-            <p className="mt-4 text-sm leading-7 text-neutral-600 md:text-base">
-              ただ教材を渡すのではなく、
-              <span className="font-bold text-neutral-900"> 学習が止まらない流れ </span>
-              まで一緒に作ります。
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6">
-              <h4 className="text-base font-bold text-neutral-900">学習ロードマップ</h4>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                何を・どの順番で・どれくらい学べばいいかを整理し、
-                毎回やることが明確になります。
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6">
-              <h4 className="text-base font-bold text-neutral-900">質問サポート</h4>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                発音・単語・文法・勉強方法まで、
-                つまずいた時にすぐ方向修正できます。
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6">
-              <h4 className="text-base font-bold text-neutral-900">学習フィードバック</h4>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                VIPプランでは週1回の確認を通して、
-                次にやるべきことまで具体的に提案します。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Support system */}
-        <div className="mx-auto mt-16 max-w-[980px]">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
-              質問サポートの仕組み
-            </h3>
-            <p className="mx-auto mt-4 max-w-[760px] text-sm leading-7 text-neutral-600 md:text-base">
-              「どんなふうに質問できるのか」「誰が答えるのか」を
-              事前に分かりやすくお伝えします。
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100">
-                <MessageCircle size={20} className="text-neutral-800" />
-              </div>
-              <h4 className="mt-4 text-base font-bold text-neutral-900">質問方法</h4>
-              <p className="mt-2 text-sm font-semibold text-neutral-800">LINEオープンチャット</p>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                LINEから気軽に質問できます。発音、単語、文法、勉強方法などに対応します。
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100">
-                <Clock3 size={20} className="text-neutral-800" />
-              </div>
-              <h4 className="mt-4 text-base font-bold text-neutral-900">回答時間</h4>
-              <p className="mt-2 text-sm font-semibold text-neutral-800">通常24時間以内</p>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                できるだけ早く確認し、学習が止まらないよう丁寧にお返事します。
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-neutral-100">
-                <BadgeCheck size={20} className="text-neutral-800" />
-              </div>
-              <h4 className="mt-4 text-base font-bold text-neutral-900">回答者</h4>
-              <p className="mt-2 text-sm font-semibold text-neutral-800">
-                韓国語ネイティブ講師＋運営チーム
-              </p>
-              <p className="mt-3 text-sm leading-6 text-neutral-600">
-                AIではなく、実際の韓国語ネイティブ講師と運営チームが学習に関する質問へ回答します。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Comparison table */}
-        <div className="mx-auto mt-16 max-w-[980px]">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold tracking-tight text-neutral-900 md:text-3xl">
-              プラン比較
-            </h3>
-            <p className="mx-auto mt-4 max-w-[720px] text-sm leading-7 text-neutral-600 md:text-base">
-              違いは教材の量ではなく、
-              <span className="font-semibold text-neutral-900"> どこまで一緒に進めるか </span>
-              です。
-            </p>
-          </div>
-
-          <div className="mt-8 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm">
-            <div className="overflow-x-auto">
-              <table className="min-w-full border-collapse text-sm">
-                <thead>
-                  <tr className="bg-neutral-50">
-                    <th className="px-6 py-4 text-left font-bold text-neutral-900">内容</th>
-                    <th className="px-4 py-4 text-center font-bold text-neutral-900">Starter</th>
-                    <th className="px-4 py-4 text-center font-bold text-neutral-900">Coaching</th>
-                    <th className="px-4 py-4 text-center font-bold text-neutral-900">VIP</th>
+        {/* 비교표 */}
+        <div className="mx-auto mt-12 max-w-[680px]">
+          <div className="overflow-hidden rounded-2xl border border-neutral-200 bg-white">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="bg-neutral-50">
+                  <th className="px-5 py-4 text-left font-bold text-neutral-700">内容</th>
+                  <th className="px-4 py-4 text-center font-bold text-neutral-700">スタンダード</th>
+                  <th className="px-4 py-4 text-center font-bold text-orange-600">コーチング ★</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  ["メインテキスト eBook", true, true],
+                  ["毎週LINE個別単語帳", true, true],
+                  ["6週間目標・週次プラン", false, true],
+                  ["毎週フィードバック＋翌週プラン", false, true],
+                  ["個別QnAコーチング", false, true],
+                ].map(([label, s, c]) => (
+                  <tr key={String(label)} className="border-t border-neutral-100">
+                    <td className="px-5 py-3.5 text-neutral-600">{label}</td>
+                    <td className="px-4 py-3.5 text-center">{s ? <Check size={16} className="mx-auto text-green-500" /> : <span className="text-neutral-300">—</span>}</td>
+                    <td className="bg-orange-50/50 px-4 py-3.5 text-center">{c ? <Check size={16} className="mx-auto text-green-500" /> : <span className="text-neutral-300">—</span>}</td>
                   </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row) => (
-                    <tr key={row.label} className="border-t border-neutral-200">
-                      <td className="px-6 py-4 text-neutral-700">{row.label}</td>
-                      <td className="px-4 py-4">
-                        <CellCheck active={row.starter} />
-                      </td>
-                      <td className="px-4 py-4">
-                        <CellCheck active={row.coaching} />
-                      </td>
-                      <td className="px-4 py-4">
-                        <CellCheck active={row.vip} />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
-        </div>
-
-        {/* Bottom note */}
-        <div className="mx-auto mt-12 max-w-[900px] text-center">
-          <p className="text-xs font-medium leading-relaxed text-neutral-400">
-            ※ リリース特別価格は30日間限定です。期間終了後は価格が変更される可能性があります。
-            <br />
-            ご購入後、すぐに教材をダウンロードいただけます。
-            <br />
-            ※ すべてのコーチングおよびサポートは購入プランに含まれており、追加料金は一切発生しません。
-          </p>
-
-          <p className="mt-4 text-xs font-medium leading-relaxed text-neutral-400">
-            ※ デジタルコンテンツの特性上、購入後の返金はできませんが、
-            アクセスやファイルに問題がある場合はサポートいたします。
+          <p className="mt-4 text-center text-xs text-neutral-400">
+            ※ 初期リリース限定価格です。期間終了後は変更予定。<br />
+            ※ サポートはすべて購入価格に含まれており、追加料金は一切発生しません。
           </p>
         </div>
+
+        <div className="mx-auto mt-10 max-w-[680px] rounded-2xl border border-amber-200 bg-amber-50 p-5 text-center">
+          <p className="flex items-center justify-center gap-2 text-sm font-bold text-amber-900">
+            <Star size={14} fill="currentColor" className="text-amber-500" />
+            購入後のレビュー投稿で、次回使える特典クーポンをプレゼント
+          </p>
+        </div>
+
       </div>
     </section>
   );
