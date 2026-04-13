@@ -58,8 +58,8 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
 
           {/* 서브 카피 */}
           <p className="mx-auto mb-3 max-w-xl text-base leading-relaxed text-neutral-600 md:text-lg">
-            韓国・大峙洞の家庭教師スタイルで設計した<br />
-            <strong className="text-neutral-900">「管理型」6週間韓国語プログラム。</strong>
+            韓国の受験教育の聖地・江南エリア<strong className="text-neutral-900">「大峙洞」</strong>の
+            家庭教師スタイルで設計した<strong className="text-neutral-900">「管理型」6週間韓国語プログラム。</strong>
           </p>
           <p className="mx-auto mb-10 max-w-xl text-sm leading-relaxed text-neutral-500 md:text-base">
             小説のように読める教材 × 毎週届く個別単語帳 × 個別QnAコーチング。<br />
