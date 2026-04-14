@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter from Yujin — 無料プレビュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F6F1EA;
+    --cream-dark: #EDE5D8;
+    --navy: #1C1C3A;
+    --orange: #E07A3A;
+    --orange-light: #F5D0B0;
+    --salmon: #F0E0D0;
+    --white: #FFFFFF;
+    --grey: #8A8A9A;
+    --yellow-tip: #FFF8D6;
+    --yellow-tip-border: #F5D060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--navy);
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--orange);
+    width: 0%;
+    z-index: 999;
+    transition: width 0.1s;
+  }
+
+  /* ── TOP NAV ── */
+  .top-nav {
+    position: fixed;
+    top: 3px; left: 0; right: 0;
+    background: rgba(246,241,234,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--cream-dark);
+    z-index: 100;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .top-nav .brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+  }
+
+  .top-nav .cta-small {
+    background: var(--orange);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── PAGE WRAPPER ── */
+  .page-container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 80px 24px 0;
+  }
+
+  /* ── TEXTBOOK PAGE ── */
+  .tb-page {
+    background: white;
+    margin-bottom: 4px;
+    position: relative;
+    min-height: 300px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+  }
+
+  .tb-page + .tb-page { margin-top: 0; }
+
+  /* Spread visual — two pages side by side feel */
+  .tb-spread {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover-page {
+    background: var(--cream);
+    min-height: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px 60px;
+    margin-bottom: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover-page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: var(--orange);
+  }
+
+  .cover-badge {
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 5px 16px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .cover-subtitle {
+    color: var(--orange);
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    margin-bottom: 40px;
+  }
+
+  .cover-products {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .product-card {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    padding: 28px 24px;
+    width: 240px;
+    text-align: left;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  }
+
+  .product-card .product-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--orange);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .product-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+
+  .product-card p {
+    font-size: 12px;
+    color: var(--grey);
+    line-height: 1.6;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    background: var(--salmon);
+    padding: 28px 36px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px;
+    height: 100%;
+    background: var(--orange);
+    opacity: 0.9;
+  }
+
+  .section-header-inner {
+    position: relative;
+    padding-left: 80px;
+  }
+
+  .section-header .label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--orange);
+    text-transform: uppercase;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--navy);
+    font-weight: 400;
+  }
+
+  /* ── LETTER PAGE ── */
+  .letter-page {
+    padding: 48px 52px;
+  }
+
+  .letter-title {
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 4px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid var(--orange);
+    display: inline-block;
+  }
+
+  .letter-subtitle {
+    font-weight: 700;
+    font-size: 16px;
+    margin: 20px 0 12px;
+    color: var(--navy);
+  }
+
+  .letter-body {
+    line-height: 2;
+    color: #333350;
+    font-size: 14.5px;
+  }
+
+  .letter-body p {
+    margin-bottom: 12px;
+  }
+
+  .letter-sign {
+    color: var(--orange);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 20px;
+  }
+
+  /* ── METHOD BOX ── */
+  .method-list {
+    margin: 20px 0;
+  }
+
+  .method-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .method-item:last-child { border-bottom: none; }
+
+  .method-num {
+    background: var(--orange);
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .method-desc {
+    font-size: 14px;
+    color: #333350;
+    line-height: 1.8;
+  }
+
+  .method-desc strong {
+    color: var(--navy);
+    font-weight: 700;
+  }
+
+  /* ── STORY PAGE ── */
+  .story-page {
+    padding: 44px 52px;
+  }
+
+  .story-header {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--grey);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--cream-dark);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .story-header .orange { color: var(--orange); }
+
+  .story-text {
+    font-size: 14px;
+    line-height: 2.2;
+    color: #1C1C3A;
+    margin-bottom: 20px;
+  }
+
+  .story-text p {
+    margin-bottom: 10px;
+  }
+
+  .story-text .ko {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  .story-text .ja {
+    color: var(--grey);
+    font-size: 13px;
+    margin-left: 2px;
+  }
+
+  .story-text .dialogue {
+    padding: 2px 0;
+  }
+
+  .story-text .dialogue .ko { font-size: 15px; }
+
+  .emphasis-quote {
+    border-left: 3px solid var(--orange);
+    padding: 16px 24px;
+    background: var(--cream);
+    margin: 24px 0;
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--navy);
+    font-style: italic;
+  }
+
+  /* ── LESSON HEADER ── */
+  .lesson-header {
+    background: var(--salmon);
+    padding: 32px 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lesson-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 80px;
+    height: 100%;
+    background: var(--orange);
+  }
+
+  .lesson-header-inner {
+    position: relative;
+    padding-left: 100px;
+  }
+
+  .lesson-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: white;
+    background: var(--orange);
+    display: inline-block;
+    padding: 2px 10px;
+    margin-bottom: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .lesson-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: white;
+    position: absolute;
+    left: 10px;
+    top: 24px;
+    line-height: 1;
+  }
+
+  .lesson-title-ko {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 36px;
+    color: var(--orange);
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  /* ── GOALS BOX ── */
+  .goals-box {
+    background: white;
+    padding: 28px 32px;
+  }
+
+  .goals-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1.5px solid var(--navy);
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 20px;
+  }
+
+  .goals-list {
+    list-style: none;
+    background: var(--cream);
+    border-radius: 4px;
+    padding: 20px 24px;
+  }
+
+  .goals-list li {
+    font-size: 13.5px;
+    color: #333350;
+    padding: 7px 0;
+    display: flex;
+    gap: 10px;
+    line-height: 1.7;
+  }
+
+  .goals-list li::before {
+    content: '•';
+    color: var(--orange);
+    font-weight: 900;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── VOCAB PAGE ── */
+  .vocab-cover {
+    background: var(--cream);
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px 40px;
+    text-align: center;
+  }
+
+  .vocab-cover h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 7vw, 64px);
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+  }
+
+  .vocab-cover .subtitle {
+    color: var(--orange);
+    font-size: 15px;
+    margin-top: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .vocab-cover .series-info {
+    margin-top: 36px;
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.08em;
+  }
+
+  .vocab-page {
+    padding: 36px 44px;
+    background: white;
+  }
+
+  .vocab-header-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--grey);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--navy);
+    margin-bottom: 28px;
+  }
+
+  .vocab-entry {
+    margin-bottom: 36px;
+  }
+
+  .vocab-num {
+    font-size: 13px;
+    color: var(--grey);
+    font-weight: 700;
+  }
+
+  .vocab-word {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 44px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.2;
+    margin: 4px 0 8px;
+  }
+
+  .vocab-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12.5px;
+    color: #555570;
+    padding-left: 2px;
+    margin-bottom: 16px;
+    border-left: 2px solid var(--orange);
+    padding-left: 10px;
+  }
+
+  .vocab-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .vocab-example-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .vocab-example-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .vocab-example-ko {
+    font-size: 13.5px;
+    color: #1C1C3A;
+  }
+
+  .vocab-example-ja {
+    font-size: 12px;
+    color: var(--grey);
+  }
+
+  /* ── TIP BOX (yellow sticky) ── */
+  .tip-box {
+    background: var(--yellow-tip);
+    border: 1.5px solid var(--yellow-tip-border);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #333350;
+    float: right;
+    width: 46%;
+    margin-left: 20px;
+    margin-bottom: 8px;
+  }
+
+  .tip-box .tip-header {
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ── MISSION BOX ── */
+  .mission-box {
+    background: white;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 6px;
+    padding: 18px 24px;
+    margin-top: 12px;
+    clear: both;
+  }
+
+  .mission-box .mission-header {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .mission-box .mission-text {
+    font-size: 14px;
+    color: #333350;
+  }
+
+  /* ── PAGE NUMBER ── */
+  .page-num {
+    font-size: 11px;
+    color: var(--grey);
+    text-align: right;
+    padding: 8px 36px 12px;
+    background: white;
+  }
+
+  /* ── BLUR/LOCK SECTION ── */
+  .locked-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .locked-section .blur-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 75%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(246,241,234,0.97) 60%, var(--cream) 100%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 32px;
+  }
+
+  .lock-message {
+    text-align: center;
+    padding: 0 24px;
+  }
+
+  .lock-message h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .lock-message p {
+    font-size: 13px;
+    color: var(--grey);
+    margin-bottom: 20px;
+  }
+
+  /* ── CTA SECTION ── */
+  .cta-section {
+    background: var(--navy);
+    padding: 72px 40px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .cta-section .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 5vw, 38px);
+    color: white;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .cta-section .cta-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 14px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .cta-main-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: white;
+    padding: 16px 44px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    margin-bottom: 16px;
+    transition: opacity 0.2s;
+  }
+
+  .cta-main-btn:hover { opacity: 0.88; }
+
+  .cta-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-top: 12px;
+  }
+
+  .price-highlight {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 14px 32px;
+    border-radius: 4px;
+    margin-bottom: 28px;
+  }
+
+  .price-highlight .plan {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .price-highlight .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: white;
+    font-weight: 700;
+  }
+
+  .price-highlight .per {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ── DIVIDER ── */
+  .chapter-divider {
+    text-align: center;
+    padding: 32px 0 20px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--grey);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .chapter-divider::before, .chapter-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--cream-dark);
+  }
+
+  /* ── PREVIEW BADGE ── */
+  .preview-ribbon {
+    text-align: center;
+    padding: 16px;
+    background: var(--orange);
+    color: white;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 0;
+  }
+
+  /* ── WHAT'S INCLUDED ── */
+  .included-section {
+    background: white;
+    padding: 48px 44px;
+  }
+
+  .included-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--navy);
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 1.5px solid var(--cream-dark);
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .included-item {
+    padding: 20px;
+    background: var(--cream);
+    border-left: 3px solid var(--orange);
+  }
+
+  .included-item .item-title {
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .included-item .item-desc {
+    font-size: 12.5px;
+    color: var(--grey);
+    line-height: 1.7;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .letter-page, .story-page, .vocab-page { padding: 32px 24px; }
+    .tip-box { float: none; width: 100%; margin-left: 0; }
+    .included-grid { grid-template-columns: 1fr; }
+    .cover-products { flex-direction: column; align-items: center; }
+    .product-card { width: 100%; }
+    .lesson-header-inner { padding-left: 80px; }
+    .lesson-number { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<!-- NAV -->
+<nav class="top-nav">
+  <span class="brand">A Letter from Yujin</span>
+  <a href="https://starter-pack-landing-jp.vercel.app" class="cta-small">詳細を見る →</a>
+</nav>
+
+<div class="preview-ribbon">
+  📖 &nbsp;無料プレビュー — Starter Pack (教材 + 単語帳)
+</div>
+
+<div class="page-container">
+
+  <!-- ═══════════════════════════════════════
+       COVER
+  ═══════════════════════════════════════ -->
+  <div class="cover-page">
+    <span class="cover-badge">Story-based Korean for Beginners</span>
+    <h1 class="cover-title">A Letter<br>from Yujin</h1>
+    <p class="cover-subtitle">Starter Pack — Hanguel &amp; Basic Greetings</p>
+
+    <div class="cover-products">
+      <div class="product-card">
+        <div class="product-label">BOOK 1</div>
+        <h3>A Letter<br>from Yujin</h3>
+        <p>ストーリーで学ぶ韓国語教材<br>Lesson 01〜05 収録</p>
+      </div>
+      <div class="product-card">
+        <div class="product-label">BOOK 2</div>
+        <h3>Vocabulary<br>from Yujin</h3>
+        <p>3スタイル対応の韓国語単語帳<br>TOPIK初級対応</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       YUJIN'S LETTER — MAIN TEXTBOOK
+  ═══════════════════════════════════════ -->
+  <div class="chapter-divider">Yujin's Letter</div>
+
+  <div class="tb-page">
+    <div class="letter-page">
+      <span class="letter-title">Yujin の手紙</span>
+      <p class="letter-subtitle">始まるにあたり</p>
+      <div class="letter-body">
+        <p>ユジンだよ。</p>
+        <p>この教材では、韓国語をストーリーとして学んでいくよ。<br>
+        登場人物の会話を通して、自然な韓国語の流れを感じてほしい。</p>
+        <p>文法を一つひとつ暗記するんじゃなくて、<br>
+        <strong>「あ、こういう場面でこう言うんだ」</strong>って感覚で覚えていく方法だよ。</p>
+        <p>完璧じゃなくていい。大切なのは、言葉が出てくるようになること。</p>
+        <p>最初の一言が出れば、あとは続く。<br>
+        じゃあ、一緒に始めてみようか。</p>
+        <p class="letter-sign">— Yujin</p>
+      </div>
+    </div>
+    <div class="page-num">2</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       PROLOGUE
+  ═══════════════════════════════════════ -->
+  <div class="chapter-divider">Prologue</div>
+
+  <div class="tb-page">
+    <div class="section-header">
+      <div class="section-header-inner">
+        <span class="label">Story</span>
+        <h2>Prologue</h2>
+      </div>
+    </div>
+    <div class="story-page">
+      <div class="story-text">
+        <p class="ko">내가 12살, Evan이 13살 때 우리는 처음 만났다.</p>
+        <p class="ja">僕が12歳、Evanが13歳の時、僕たちは初めて出会った。</p>
+
+        <p class="ko" style="margin-top:16px">그때 나는 역사를 정말 좋아했다.</p>
+        <p class="ja">あの頃、僕は夢中で歴史を学んでいた。</p>
+
+        <p class="ko" style="margin-top:16px">특히 한글을 만든 세종대왕을 좋아했다.</p>
+        <p class="ja">特にハングルを作った世宗大王が好きだった。</p>
+
+        <p class="ko" style="margin-top:16px">지금 생각하면 그때의 나는 조금 이상한 초등학생이었다.</p>
+        <p class="ja">今思い返すと、小学生の頃の僕は少し変わった子どもだったと思う。</p>
+      </div>
+
+      <div class="story-text" style="margin-top: 24px;">
+        <p class="ko">영어 학원이 끝난 날, 나는 오늘도 힘든 일정을 끝낸 나를 위로하며 요쿠르트를 마시고 있었다.</p>
+        <p class="ja">英語塾が終わった日、今日もハードスケジュールをこなした自分を慰めながらヤクルトを飲んでいた。</p>
+
+        <p class="ko" style="margin-top:12px">그때 나와 비슷한 나이의 외국인 한 명이 나에게 다가왔다.</p>
+        <p class="ja">その時、僕と同い年くらいの外国人らしき子が近づいてきた。</p>
+
+        <p class="ko" style="margin-top:12px">여기까지는 괜찮았다.</p>
+        <p class="ja">ここまでは良かった。</p>
+      </div>
+
+      <div class="story-text" style="margin-top: 24px;">
+        <p class="dialogue"><span class="ko">"니하오~"</span></p>
+        <p class="dialogue ja">「ニイハオ〜！」</p>
+        <p class="ko" style="margin-top:8px">나는 아무 말도 하지 않았다.</p>
+        <p class="ja">僕は返事をしなかった。</p>
+
+        <p class="dialogue" style="margin-top:12px"><span class="ko">"니하오~~"</span></p>
+        <p class="dialogue ja">「ニイハオ〜〜！」</p>
+        <p class="ko" style="margin-top:4px">그 친구는 내가 못 들은 줄 알고 다시 말했다.</p>
+        <p class="ja">聞こえてないと思ったようで、その子はまた声をかけてきた。</p>
+
+        <p class="dialogue" style="margin-top:12px"><span class="ko">"곤니찌와~~"</span></p>
+        <p class="dialogue ja">「こんにちは〜。」</p>
+        <p class="ko">내 얼굴이 안 좋아졌다.</p>
+        <p class="ja">僕は顔をしかめた。</p>
+      </div>
+    </div>
+    <div class="page-num">4 – 5</div>
+  </div>
+
+  <div class="tb-page">
+    <div class="story-page">
+      <div class="story-header">
+        <span>A Letter from Yujin</span>
+      </div>
+      <div class="story-text">
+        <p class="ko">내 표정이 썩 좋지 않자 그는 노선을 틀었다. 중국 아래에 바로 한국이 있거늘… 그는 바다를 건너 버렸다.</p>
+        <p class="ja">僕の顔色を見るや、彼は違う言葉で話しかけてきた。中国のすぐ下には韓国があるのに……なんと海を飛び越えて日本に行ってしまったのだ。</p>
+
+        <p class="ko" style="margin-top:16px">나중에 들은 이야기지만, '안녕하세요'라는 단어는 발음을 잘 못해서 그냥 안 해버렸다고 했다.</p>
+        <p class="ja">あとで分かったことだが、「안녕하세요」の発音の仕方が分からなかったから違う言葉を使ったらしい。</p>
+
+        <p class="ko" style="margin-top:16px">계속 내 표정이 좋지 않자, 그는 마지막으로 이야기했다.</p>
+        <p class="ja">僕がずっと嫌そうな顔をしていたからか、彼は最後にこう言った。</p>
+
+        <p class="dialogue" style="margin-top:8px"><span class="ko">"Hi!"</span></p>
+        <p class="dialogue ja">「Hi！」</p>
+
+        <p class="ko" style="margin-top:12px">나는 참지 못하고 말했다.</p>
+        <p class="ja">私もとうとう我慢の限界を迎えた。</p>
+
+        <p class="dialogue"><span class="ko">"야."</span></p>
+        <p class="dialogue ja">「おい。」</p>
+      </div>
+
+      <div class="emphasis-quote">
+        <span class="ko">"안녕하세요 해봐."</span><br>
+        <span style="color: var(--grey); font-size: 13px;">「안녕하세요、言ってみて。」</span>
+      </div>
+
+      <div class="story-text">
+        <p class="ko">그 친구가 말했다.</p>
+        <p class="dialogue"><span class="ko">"아, Korean?"</span></p>
+        <p class="dialogue"><span class="ko">"응. 안녕하세요 해봐."</span></p>
+        <p class="ja">「あ、Korean？」「うん。안녕하세요、言ってみて。」</p>
+
+        <p class="ko" style="margin-top:16px">나는 이 친구에게 한국어를 가르쳐 주기로 마음먹었다.</p>
+        <p class="ja">僕はその子に韓国語を教えることに決めた。</p>
+
+        <p class="dialogue" style="margin-top:8px"><span class="ko">"안녀옹하세요우?"</span></p>
+        <p class="ja">「안녀옹하세요う？」</p>
+
+        <p class="ko">나는 속으로 한숨을 쉬었다.</p>
+        <p class="ja">「英語塾の先生は韓国語が上手いのに……なんでこいつは……」</p>
+      </div>
+    </div>
+    <div class="page-num">5 – 6</div>
+  </div>
+
+  <div class="tb-page">
+    <div class="story-page">
+      <div class="story-header">
+        <span class="orange">Prologue</span>
+      </div>
+      <div class="story-text">
+        <p class="ko">그래도 포기하지 않았다. 나는 영어로 말했다.</p>
+        <p class="ja">でもそこで諦めなかった。僕は英語で話し続けた。</p>
+
+        <p class="dialogue" style="margin-top:12px"><span class="ko">"따라 해봐. 안!"</span></p>
+        <p class="dialogue"><span class="ko">"안!"</span></p>
+        <p class="ja">「真似してみて。안！」「안！」</p>
+
+        <p class="dialogue" style="margin-top:12px"><span class="ko">"오, 잘하네. 녕!"</span></p>
+        <p class="dialogue"><span class="ko">"뇨옹"</span></p>
+        <p class="dialogue"><span class="ko">"녕!!"</span></p>
+        <p class="dialogue"><span class="ko">"니영?"</span></p>
+        <p class="ja">「上手いじゃん。녕！」「뇨옹」「녕!!」「니영？」</p>
+      </div>
+
+      <div class="story-text" style="margin-top:20px;">
+        <p class="ko">놀랍게도 우리는 5분 전에 처음 만났다.</p>
+        <p class="ko">그리고 나는 5분 만에 결심했다.</p>
+        <p class="ja">驚くことに僕たちは5分前に初めて会ったのだ。そして僕はたった5分で決心した。</p>
+
+        <p class="emphasis-quote ko" style="font-style: normal; color: var(--navy);">
+          '그래. 이 친구한테 한국어를 가르쳐주자.'<br>
+          <span style="color: var(--grey); font-size: 13px; font-style: italic;">「よし。この子に韓国語を教えよう。」</span>
+        </p>
+
+        <p class="ko" style="margin-top:16px">그렇게 나는 Evan에게 한국어를 가르치는 첫 선생님이 되었다.</p>
+        <p class="ko">그리고 이 이야기가 바로, 그 수업의 시작이다.</p>
+        <p class="ja">そうして僕は、Evanに韓国語を教える最初の先生になった。</p>
+        <p class="ja">そしてこの物語こそ、授業の始まりだ。</p>
+      </div>
+    </div>
+    <div class="page-num">6 – 7</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       LESSON 01
+  ═══════════════════════════════════════ -->
+  <div class="chapter-divider">Lesson 01</div>
+
+  <div class="tb-page">
+    <div class="lesson-header">
+      <div class="lesson-header-inner">
+        <span class="lesson-label">Lesson</span>
+        <span class="lesson-number">01</span>
+        <h2 class="lesson-title-ko">안녕과 안녕</h2>
+      </div>
+    </div>
+    <div class="goals-box">
+      <div class="goals-header">📌 &nbsp;学習目標</div>
+      <ul class="goals-list">
+        <li>韓国語の挨拶表現「안녕」と「안녕하세요」の違いを理解できるようになります。</li>
+        <li>相手（友達 / 年上）に応じて挨拶を使い分けられるようになります。</li>
+        <li>韓国語の敬語の基本形である「〜요」を認識できるようになります。</li>
+        <li>韓国語は文末のトーンの変化で、普通文と疑問文を区別できるようになります。</li>
+      </ul>
+    </div>
+    <div class="page-num">8</div>
+  </div>
+
+  <div class="tb-page">
+    <div class="story-page">
+      <div class="story-header">
+        <span>Lesson 01</span>
+        <span class="orange">안녕과 안녕</span>
+      </div>
+      <div class="story-text">
+        <p class="ko">다음날, 나는 조금 떨리는 마음으로 약속 장소로 갔다.</p>
+        <p class="ja">次の日、僕は少し緊張しながら約束の場所に向かった。</p>
+
+        <p class="ko" style="margin-top:12px">하지만 Evan은 이미 나와 있었다. 나보다 먼저 와서 기다리고 있었다.</p>
+        <p class="ja">でも、Evanはすでにそこにいた。僕より先に来て待っていた。</p>
+
+        <p class="ko" style="margin-top:16px">"안..."</p>
+        <p class="ko">내가 인사를 하려는 순간, Evan이 먼저 말했다.</p>
+        <p class="ja">僕が挨拶をしようとした瞬間、Evanが先に言った。</p>
+
+        <p class="dialogue" style="margin-top:8px"><strong class="ko">"안녕!"</strong></p>
+        <p class="ja">「안녕！」</p>
+
+        <p class="ko" style="margin-top:8px">어제보다 훨씬 나아진 발음이었다.</p>
+        <p class="ko">누가 봐도 연습을 많이 한 티가 났다.</p>
+        <p class="ja">昨日よりも発音がすごく良くなっていた。誰が見てもたくさん練習したのが分かるほどだった。</p>
+
+        <p class="ko" style="margin-top:12px">"연습했어?"</p>
+        <p class="ko">"당연하지~ 네가 어제 알려줬잖아~"</p>
+        <p class="ja">「練習したの？」「もちろん、昨日きみが教えてくれただろ。」</p>
+      </div>
+    </div>
+    <div class="page-num">9</div>
+  </div>
+
+  <div class="tb-page">
+    <div class="story-page">
+      <div class="story-header">
+        <span>Lesson 01</span>
+        <span class="orange">안녕과 안녕</span>
+      </div>
+      <div class="story-text">
+        <p class="ko">"첫 번째 수업 시작할게!"</p>
+        <p class="ko">"오케이!"</p>
+        <p class="ja">「じゃあ、早速始めよう」「オッケー！」</p>
+
+        <p class="ko" style="margin-top:16px">"어제 네가 나 한테 뭐라고 했는지 기억나?"</p>
+        <p class="ko">"아 hi?"</p>
+        <p class="ja">「昨日、僕に何を言ったか覚えてる？」「hi？」</p>
+
+        <p class="ko" style="margin-top:12px">"그래. 근데 너는 선생님 같은 어른한테는 인사 어떻게 해?"</p>
+        <p class="ko">"hi"</p>
+        <p class="ja">「そう。じゃあ、先生とか目上の人にはなんて言う？」「hi」</p>
+
+        <div class="tip-box">
+          <div class="tip-header">💡 ここで学ぶポイント</div>
+          <p>英語の「hi」は友達にも先生にも使えるけど、<br>韓国語は<strong>相手によって言葉が変わる</strong>んだ。</p>
+          <p style="margin-top: 8px;">これが「敬語（けいご）」の考え方。<br>韓国語では文末に <strong>〜요</strong> をつけると丁寧になる。</p>
+        </div>
+
+        <p class="ko" style="margin-top:8px">"한국어에서는 달라. 친구한테는 '안녕', 어른한테는 '안녕하세요'."</p>
+        <p class="ja" style="font-size: 13px;">「韓国語では違う。友達には『안녕』、大人には『안녕하세요』。」</p>
+
+        <div style="clear:both; margin-top: 20px;"></div>
+
+        <div style="background: var(--cream); padding: 20px 24px; border-left: 3px solid var(--orange);">
+          <div style="display: flex; gap: 32px; flex-wrap: wrap;">
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--grey); margin-bottom: 6px;">友達・タメ語</div>
+              <div style="font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--navy); font-weight: 700;">안녕</div>
+              <div style="font-size: 12px; color: var(--grey);">カジュアル</div>
+            </div>
+            <div style="display: flex; align-items: center; color: var(--orange); font-size: 20px;">→</div>
+            <div>
+              <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--grey); margin-bottom: 6px;">先生・年上・初対面</div>
+              <div style="font-family: 'Noto Serif JP', serif; font-size: 28px; color: var(--orange); font-weight: 700;">안녕하세요</div>
+              <div style="font-size: 12px; color: var(--grey);">〜요 をつけた丁寧形</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">10 – 13</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       VOCABULARY BOOK INTRO
+  ═══════════════════════════════════════ -->
+  <div class="chapter-divider">Vocabulary from Yujin</div>
+
+  <div class="tb-page">
+    <div class="vocab-cover">
+      <h2>VOCABULARY<br>FROM YUJIN</h2>
+      <p class="subtitle">Story-based Korean for Beginners</p>
+      <p class="series-info">Starter pack — Hanguel &amp; Basic Greetings</p>
+    </div>
+  </div>
+
+  <div class="tb-page">
+    <div class="letter-page">
+      <span class="letter-title">Yujin の手紙</span>
+      <div class="letter-body" style="margin-top: 16px;">
+        <p>この本では、ひとつの単語を覚えるときに、<strong>同じ意味を3つの話し方</strong>で練習していくよ。</p>
+        <p>出てくる単語はすべて、<strong>TOPIK初級でよく出てくるもの</strong>を中心に選んであるんだ。</p>
+      </div>
+
+      <div class="method-list">
+        <div class="method-item">
+          <div class="method-num">①</div>
+          <div class="method-desc">
+            <strong>基本の例文</strong> → 実際の韓国でよく使われる自然な文
+          </div>
+        </div>
+        <div class="method-item">
+          <div class="method-num">②</div>
+          <div class="method-desc">
+            <strong>丁寧な言い方</strong> → 試験や授業、目上の人にも使える安全な表現<br>
+            <span style="color: var(--grey); font-size: 12px;">（TOPIK・課題・フォーマルな場面）</span>
+          </div>
+        </div>
+        <div class="method-item">
+          <div class="method-num">③</div>
+          <div class="method-desc">
+            <strong>カジュアルな言い方</strong> → 友達や同い年、親しい人との会話で使う表現<br>
+            <span style="color: var(--grey); font-size: 12px;">（ドラマ・YouTube・日常会話でよく出てくる話し方）</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="letter-body" style="margin-top: 16px;">
+        空欄を埋めるものもあれば、自分の考えを答えるものもある。完璧に話そうとしなくていい。<br>
+        ひとつだけ約束しよう——この単語帳を使うときは、<strong>必ず一度、声に出してみてほしい。</strong>
+      </p>
+      <p class="letter-sign">— Yujin</p>
+    </div>
+    <div class="page-num">2 – 3</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       VOCAB DAY 01
+  ═══════════════════════════════════════ -->
+  <div class="tb-page">
+    <div class="vocab-page">
+      <div class="vocab-header-bar">
+        <span>Vocabulary From Yujin</span>
+        <span style="color: var(--orange);">Day 01</span>
+      </div>
+
+      <div style="background: var(--cream); border-radius: 4px; padding: 14px 18px; margin-bottom: 28px; font-size: 13px; color: #555570; border-left: 3px solid var(--orange);">
+        <strong style="color: var(--navy);">Yujin's comment</strong><br>
+        오늘은 첫 날이니까 단어 5개만 외워보자. 많이 들어본 단어일거야.<br>
+        <span style="color: var(--grey);">今日は初日だから5つだけ覚えよう。きっと聞いたことある単語だよ。</span>
+      </div>
+
+      <div class="vocab-entry">
+        <div class="vocab-num">01.</div>
+        <div class="vocab-word">가다</div>
+        <div class="vocab-meta">
+          <span>[カタカナ発音] カダ</span>
+          <span>[品詞] 動詞</span>
+          <span>[意味] 行く</span>
+        </div>
+        <div class="vocab-examples">
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">例文</span>
+            <span class="vocab-example-ko">ex) 오늘은 수업 끝나고 바로 집에 가요.</span>
+            <span class="vocab-example-ja">（今日、授業が終わってすぐ家に行きます。）</span>
+          </div>
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">丁寧</span>
+            <span class="vocab-example-ko">ex) 오늘은 수업이 끝난 후 집에 갑니다.</span>
+            <span class="vocab-example-ja">（今日、授業が終わった後、家に行きます。）</span>
+          </div>
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">カジュアル</span>
+            <span class="vocab-example-ko">ex) 오늘 수업 끝나고 집 가.</span>
+            <span class="vocab-example-ja">（今日、授業が終わって家に行く。）</span>
+          </div>
+        </div>
+        <div class="mission-box">
+          <div class="mission-header">✏️ Today's Mission</div>
+          <div class="mission-text">오늘 너는 어디 가? &nbsp;<span style="color: var(--grey); font-size: 13px;">（今日はどこに行くの。）</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">4</div>
+  </div>
+
+  <div class="tb-page">
+    <div class="vocab-page">
+      <div class="vocab-header-bar">
+        <span>Vocabulary From Yujin</span>
+        <span style="color: var(--orange);">Day 01</span>
+      </div>
+
+      <div class="vocab-entry">
+        <div class="vocab-num">04.</div>
+        <div class="vocab-word">말하다</div>
+        <div class="vocab-meta">
+          <span>[カタカナ発音] マラダ</span>
+          <span>[品詞] 動詞</span>
+          <span>[意味] 話す・言う</span>
+        </div>
+
+        <div class="tip-box">
+          <div class="tip-header">💡 Yujin's Tip</div>
+          <p>「말해요」ってどういう形？</p>
+          <p style="margin-top:8px;">
+            말하 ＋ 아요 → <strong>말해요</strong><br>
+            つまり、「말하다」に「아요/어요」をつけた形なんだ。
+          </p>
+        </div>
+
+        <div class="vocab-examples">
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">例文</span>
+            <span class="vocab-example-ko">ex) 저는 편의점에서 한국어로 말했어요.</span>
+            <span class="vocab-example-ja">（私はコンビニで韓国語で話しました。）</span>
+          </div>
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">丁寧</span>
+            <span class="vocab-example-ko">ex) 저는 편의점에서 한국어로 말했습니다.</span>
+            <span class="vocab-example-ja">（私はコンビニで韓国語で話しました。）</span>
+          </div>
+          <div class="vocab-example-group">
+            <span class="vocab-example-label">カジュアル</span>
+            <span class="vocab-example-ko">ex) 난 편의점에서 한국어로 말했어.</span>
+            <span class="vocab-example-ja">（私、コンビニで韓国語で話した。）</span>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="mission-box" style="margin-top: 12px;">
+          <div class="mission-header">✏️ Today's Mission</div>
+          <div class="mission-text">한국어로 아무거나 한 단어 말해봐. &nbsp;<span style="color: var(--grey); font-size: 13px;">（韓国語で何でもいいから一言言ってみて。）</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-num">6</div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       LOCKED PREVIEW (BLUR)
+  ═══════════════════════════════════════ -->
+  <div class="chapter-divider">まだまだ続く...</div>
+
+  <div class="locked-section">
+    <div class="tb-page">
+      <div class="vocab-page" style="opacity: 0.4; pointer-events: none; user-select: none;">
+        <div class="vocab-header-bar">
+          <span>Vocabulary From Yujin</span>
+          <span style="color: var(--orange);">Day 02</span>
+        </div>
+        <div class="vocab-entry">
+          <div class="vocab-num">10.</div>
+          <div class="vocab-word">이다</div>
+          <div class="vocab-meta">
+            <span>[カタカナ発音] イダ</span>
+            <span>[品詞] 指定詞</span>
+            <span>[意味] 〜だ・〜である</span>
+          </div>
+          <div class="vocab-examples">
+            <div class="vocab-example-group">
+              <span class="vocab-example-label">例文</span>
+              <span class="vocab-example-ko">ex) 저는 학생이에요.</span>
+              <span class="vocab-example-ja">（私は学生です。）</span>
+            </div>
+          </div>
+        </div>
+        <div class="vocab-entry">
+          <div class="vocab-num">11.</div>
+          <div class="vocab-word">아니다</div>
+          <div class="vocab-meta">
+            <span>[カタカナ発音] アニダ</span>
+            <span>[品詞] 指定詞</span>
+            <span>[意味] 〜ではない</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blur-overlay">
+      <div class="lock-message">
+        <h3>この先は、フルパックで</h3>
+        <p>Lesson 02〜05、Day 02〜30、練習問題、サマリーページ…<br>全コンテンツはスターターパックに収録されています。</p>
+        <a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">フルパックを見る →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       WHAT'S INCLUDED
+  ═══════════════════════════════════════ -->
+  <div class="tb-page" style="margin-top: 32px;">
+    <div class="included-section">
+      <h3>スターターパックに含まれるもの</h3>
+      <div class="included-grid">
+        <div class="included-item">
+          <div class="item-title">📖 ストーリー教材</div>
+          <div class="item-desc">Lesson 01〜05 収録。ユジンとEvanの物語を読みながら、自然に韓国語の構造が身につく。</div>
+        </div>
+        <div class="included-item">
+          <div class="item-title">📝 単語帳（Vocabulary）</div>
+          <div class="item-desc">TOPIK初級対応の厳選単語。3スタイル（丁寧・カジュアル・例文）で覚える独自メソッド。</div>
+        </div>
+        <div class="included-item">
+          <div class="item-title">🎯 Today's Mission</div>
+          <div class="item-desc">各単語にユジンからのミッション付き。声に出すことで、読むだけで終わらない設計。</div>
+        </div>
+        <div class="included-item">
+          <div class="item-title">💡 Yujin's Tips</div>
+          <div class="item-desc">教科書には載っていない「なぜそうなるか」の解説。文法の感覚が自然につく。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page-container -->
+
+<!-- ═══════════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════════ -->
+<div class="cta-section">
+  <p class="eyebrow">Starter Pack</p>
+  <h2>ストーリーで、<br>韓国語を話せるようになる。</h2>
+  <p class="cta-sub">
+    何度挑戦しても続かなかった人へ。<br>
+    教材を開くのが楽しみになる、新しい韓国語学習の形。
+  </p>
+
+  <div class="price-highlight">
+    <span class="plan">スタンダードプラン</span>
+    <span class="price">¥1,480</span>
+    <span class="per">〜 / 月</span>
+  </div>
+
+  <br>
+  <a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">
+    詳細・購入ページへ →
+  </a>
+  <p class="cta-note">7日間の無料体験あり &nbsp;·&nbsp; いつでもキャンセル可</p>
+</div>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (scrollTop / docHeight) * 100;
+    document.getElementById('progress-bar').style.width = progress + '%';
+  });
+</script>
+
+</body>
+</html>
