@@ -65,16 +65,24 @@
     letter-spacing: 0.05em;
   }
 
-  .top-nav .cta-small {
-    background: var(--orange);
-    color: white;
-    padding: 8px 20px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    letter-spacing: 0.02em;
-  }
+  /* ✅ 기존 코드에 box-shadow 속성만 추가해주세요 */
+.top-nav .cta-small {
+  background: var(--orange);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  box-shadow: 0 4px 12px rgba(224, 122, 58, 0.3); /* 추가된 그림자 */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 탭 반응성 추가 */
+}
+
+.top-nav .cta-small:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 6px rgba(224, 122, 58, 0.2);
+}
 
   /* ── PAGE WRAPPER ── */
   .page-container {
@@ -1359,7 +1367,7 @@
       <div class="lock-message">
         <h3>この先は、フルパックで</h3>
         <p>Lesson 02〜05、Day 02〜30、練習問題、サマリーページ…<br>全コンテンツはスターターパックに収録されています。</p>
-        <a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">フルパックを見る →</a>
+        <a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">続きを読んでみる（購入ページへ） →</a>
       </div>
     </div>
   </div>
@@ -1405,16 +1413,16 @@
   </p>
 
   <div class="price-highlight">
-    <span class="plan">スタンダードプラン</span>
-    <span class="price">¥1,480</span>
-    <span class="per">〜 / 月</span>
-  </div>
+  <span class="plan">スタンダードプラン</span>
+  <span class="price">¥1,480</span>
+  <span class="per">（買い切り）</span>
+</div>
 
-  <br>
-  <a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">
-    詳細・購入ページへ →
-  </a>
-  <p class="cta-note">7日間の無料体験あり &nbsp;·&nbsp; いつでもキャンセル可</p>
+<br>
+<a href="https://starter-pack-landing-jp.vercel.app" class="cta-main-btn">
+  詳細・購入ページへ →
+</a>
+<p class="cta-note">追加料金なし &nbsp;·&nbsp; 決済後すぐにダウンロード可能</p>
 </div>
 
 <script>
