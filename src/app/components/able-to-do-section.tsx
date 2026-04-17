@@ -30,37 +30,37 @@ export function AbleToDoSection({
   lineUrl?: string;
 }) {
   return (
-    <section className="w-full bg-white px-4 py-20 md:px-6 md:py-28">
+    <section className="w-full bg-white px-4 py-16 md:px-6 md:py-28">
       <div className="mx-auto w-full max-w-[960px]">
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center">
           <p className="mb-3 text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">
             What Changes
           </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h2 className="text-[28px] font-extrabold tracking-tight text-neutral-900 md:text-5xl">
             この教材で、変わること
           </h2>
-          <p className="mx-auto mt-5 max-w-[600px] text-base leading-relaxed text-neutral-500 md:text-xl">
+          <p className="mx-auto mt-4 max-w-[600px] text-[15px] leading-[1.85] text-neutral-500 md:text-xl">
             「続かない」という壁を、構造で超えます。
           </p>
         </div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           {ableItems.map((item, idx) => (
             <div
               key={idx}
-              className="group relative overflow-hidden rounded-[28px] border border-neutral-200 bg-white px-7 py-8 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md md:px-8 md:py-9"
+              className="group relative overflow-hidden rounded-[24px] border border-neutral-200 bg-white px-5 py-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md md:px-8 md:py-9"
             >
-              <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-8">
+              <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-8">
                 <div className="shrink-0 md:w-40">
                   <span className="inline-block rounded-full bg-orange-50 px-3 py-1 text-xs font-bold text-orange-600">
                     {item.week}
                   </span>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold leading-snug text-neutral-900 md:text-2xl">
+                <div className="flex-1">
+                  <h3 className="text-[17px] font-bold leading-snug text-neutral-900 md:text-xl">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-neutral-600 md:text-base">
+                  <p className="mt-2 text-[15px] leading-[1.85] text-neutral-600 md:text-base">
                     {item.desc}
                   </p>
                 </div>
@@ -69,19 +69,18 @@ export function AbleToDoSection({
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-10 text-center">
           <a
             href={lineUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-neutral-900 px-8 py-4 text-sm font-bold text-white transition hover:bg-neutral-700 md:text-base"
+            className="inline-flex items-center gap-2 rounded-full bg-[#06C755] px-7 py-4 text-sm font-bold text-white shadow-lg shadow-green-200 transition hover:scale-105"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
               <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992z"/>
             </svg>
-            まず無料で20ページ体験する
+            まず無料で体験する
           </a>
-          <p className="mt-3 text-xs text-neutral-400">LINE登録後すぐに受け取れます</p>
         </div>
       </div>
     </section>

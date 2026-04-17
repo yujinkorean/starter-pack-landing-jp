@@ -46,23 +46,23 @@ const faqs = [
 
 export function FaqSection() {
   return (
-    <section className="w-full flex justify-center bg-white px-4 py-20 md:px-6 md:py-28" id="faq">
+    <section className="w-full flex justify-center bg-white px-4 py-16 md:px-6 md:py-28" id="faq">
       <div className="w-full max-w-[760px]">
         <div className="mb-10 flex flex-col items-center gap-3 text-center">
           <p className="text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">FAQ</p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">よくある質問</h2>
-          <p className="max-w-[480px] text-base text-neutral-500 md:text-lg">
+          <h2 className="text-[28px] font-extrabold tracking-tight text-neutral-900 md:text-5xl">よくある質問</h2>
+          <p className="max-w-[480px] text-[15px] leading-relaxed text-neutral-500 md:text-lg">
             購入前の不安を、ここで解消しておきましょう。
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="flex flex-col gap-3">
+        <Accordion type="single" collapsible className="flex flex-col gap-2">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-neutral-200 bg-white px-6">
+            <AccordionItem key={i} value={`item-${i}`} className="rounded-2xl border border-neutral-200 bg-white px-5 md:px-6">
               <AccordionTrigger className="py-5 text-left hover:no-underline">
-                <span className="text-base font-semibold text-neutral-900">{faq.question}</span>
+                <span className="text-[15px] font-semibold leading-snug text-neutral-900 pr-2">{faq.question}</span>
               </AccordionTrigger>
-              <AccordionContent className="pb-5 text-sm leading-relaxed text-neutral-600 md:text-base">
+              <AccordionContent className="pb-5 text-[14px] leading-[1.85] text-neutral-600 md:text-base">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>
@@ -70,7 +70,7 @@ export function FaqSection() {
         </Accordion>
 
         <div className="mt-8 rounded-2xl border border-neutral-100 bg-neutral-50 p-6 text-center">
-          <p className="text-sm font-bold text-neutral-900">他にご不明な点がありましたら</p>
+          <p className="text-[15px] font-bold text-neutral-900">他にご不明な点がありましたら</p>
           <a href="mailto:yujinkoreanstories@gmail.com"
             className="mt-2 inline-block text-sm font-semibold text-neutral-700 underline underline-offset-4">
             yujinkoreanstories@gmail.com

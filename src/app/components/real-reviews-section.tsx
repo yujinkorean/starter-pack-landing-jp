@@ -15,7 +15,7 @@ const realReviews = [
 
 export function RealReviewsSection() {
   return (
-    <section className="w-full bg-white px-4 py-20 md:px-6 md:py-28" id="real-reviews">
+    <section className="w-full bg-white px-4 py-16 md:px-6 md:py-28" id="real-reviews">
       <div className="mx-auto w-full max-w-[860px]">
         <div className="mb-10 flex flex-col items-center gap-3 text-center">
           <span className="text-xs font-bold tracking-[0.2em] text-indigo-500/80 uppercase">User Voice</span>
@@ -26,11 +26,11 @@ export function RealReviewsSection() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {realReviews.map((r, i) => (
-            <div key={i} className="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-7 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div key={i} className="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-indigo-50">
                 <Quote size={18} className="text-indigo-400" />
               </div>
-              <p className="flex-1 text-base font-semibold leading-relaxed text-neutral-800">
+              <p className="flex-1 text-[15px] font-semibold leading-[1.85] text-neutral-800">
                 「{r.content}」
               </p>
               <div className="mt-6 border-t border-neutral-100 pt-5">

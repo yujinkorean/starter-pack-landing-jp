@@ -15,24 +15,24 @@ const steps = [
 
 export function CoachingSpotlightSection() {
   return (
-    <section className="w-full bg-neutral-50 px-4 py-20 md:px-6 md:py-28">
+    <section className="w-full bg-neutral-50 px-4 py-16 md:px-6 md:py-28">
       <div className="mx-auto w-full max-w-[960px]">
 
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center">
           <p className="mb-3 text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">Coaching</p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h2 className="text-[28px] font-extrabold tracking-tight text-neutral-900 md:text-5xl">
             コーチングって、<br className="md:hidden" />こういうことです。
           </h2>
-          <p className="mx-auto mt-4 max-w-[540px] text-base leading-relaxed text-neutral-500 md:text-lg">
+          <p className="mx-auto mt-4 max-w-[540px] text-[15px] leading-[1.85] text-neutral-500 md:text-lg">
             文法の授業ではありません。<br />
             あなた専用の、週次管理＋個別サポートです。
           </p>
         </div>
 
         {/* 4단계 */}
-        <div className="mb-14 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mb-10 grid grid-cols-1 gap-4 md:grid-cols-2">
           {steps.map((s) => (
-            <div key={s.num} className="rounded-2xl border border-neutral-200 bg-white p-6">
+            <div key={s.num} className="rounded-2xl border border-neutral-200 bg-white p-5 md:p-6">
               <div className="flex items-start gap-4">
                 <span className="text-3xl font-black text-neutral-200">{s.num}</span>
                 <div>

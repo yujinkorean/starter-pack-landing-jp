@@ -21,7 +21,7 @@ export function FinalCTASection({
   previewId = "preview",
 }: FinalCTASectionProps) {
   return (
-    <section id={id} className="w-full bg-neutral-50 px-4 py-20 md:px-6 md:py-28">
+    <section id={id} className="w-full bg-neutral-50 px-4 py-16 md:px-6 md:py-28">
       <div className="mx-auto w-full max-w-[960px]">
 
         {/* ━━━ メインカード ━━━ */}

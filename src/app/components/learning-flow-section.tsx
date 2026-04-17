@@ -45,36 +45,36 @@ const weekItems: WeekItem[] = [
 
 export function LearningFlowSection() {
   return (
-    <section className="w-full bg-white px-4 py-20 md:px-6 md:py-28">
+    <section className="w-full bg-white px-4 py-16 md:px-6 md:py-28">
       <div className="mx-auto w-full max-w-[860px]">
-        <div className="mb-12 text-center">
+        <div className="mb-10 text-center">
           <p className="mb-3 text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">
             6-Week Journey
           </p>
-          <h2 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h2 className="text-[28px] font-extrabold tracking-tight text-neutral-900 md:text-5xl">
             6週間で、何が起きるか。
           </h2>
-          <p className="mx-auto mt-5 max-w-[560px] text-base leading-relaxed text-neutral-500 md:text-xl">
+          <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-[1.85] text-neutral-500 md:text-xl">
             コーチングプランでは、毎週この変化が起きます。
           </p>
         </div>
 
         {/* タイムライン */}
         <div className="relative">
-          {/* 세로선 */}
+          {/* 세로선 - desktop only */}
           <div className="absolute left-[27px] top-8 hidden h-[calc(100%-64px)] w-0.5 bg-neutral-200 md:block" />
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {weekItems.map((item, idx) => (
               <div
                 key={idx}
-                className={`relative flex flex-col gap-4 rounded-[24px] border p-6 md:flex-row md:items-start md:gap-6 md:pl-20 ${
+                className={`relative flex flex-col gap-3 rounded-[20px] border p-5 md:flex-row md:items-start md:gap-6 md:pl-20 ${
                   item.highlight
                     ? "border-orange-200 bg-orange-50"
                     : "border-neutral-200 bg-white"
                 }`}
               >
-                {/* 위크 뱃지 (타임라인 dot) */}
+                {/* 타임라인 dot - desktop only */}
                 <div
                   className={`absolute left-5 top-6 hidden h-5 w-5 items-center justify-center rounded-full text-[9px] font-black md:flex ${
                     item.highlight ? "bg-orange-500 text-white" : "bg-neutral-300 text-neutral-600"
@@ -96,14 +96,14 @@ export function LearningFlowSection() {
                     </span>
                   </div>
                   <h3
-                    className={`mt-2 text-lg font-bold leading-snug md:text-xl ${
+                    className={`mt-2 text-[17px] font-bold leading-snug md:text-xl ${
                       item.highlight ? "text-orange-900" : "text-neutral-900"
                     }`}
                   >
                     {item.title}
                   </h3>
                   <p
-                    className={`mt-2 text-sm leading-relaxed md:text-base ${
+                    className={`mt-2 text-[15px] leading-[1.85] md:text-base ${
                       item.highlight ? "text-orange-800" : "text-neutral-600"
                     }`}
                   >
@@ -115,11 +115,11 @@ export function LearningFlowSection() {
           </div>
         </div>
 
-        <div className="mt-10 rounded-[20px] border border-neutral-200 bg-neutral-50 p-6 text-center">
-          <p className="text-sm font-bold text-neutral-900 md:text-base">
+        <div className="mt-8 rounded-[20px] border border-neutral-200 bg-neutral-50 p-6 text-center">
+          <p className="text-[15px] font-bold text-neutral-900 md:text-base">
             6週間後、「続けられる自分」が残ります。
           </p>
-          <p className="mt-2 text-xs leading-relaxed text-neutral-500 md:text-sm">
+          <p className="mt-2 text-sm leading-[1.85] text-neutral-500 md:text-sm">
             コーチングが終わっても、学習のリズムは続きます。<br />
             それが、このプログラムの本当のゴールです。
           </p>

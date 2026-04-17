@@ -1,3 +1,20 @@
 html, body {
-  font-family: Inter, "Noto Sans JP", system-ui, -apple-system, sans-serif;
+  font-family: "Noto Sans JP", Inter, system-ui, -apple-system, sans-serif;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.75;
+}
+
+/* Japanese text renders better with slightly larger line-height */
+p, li, span {
+  line-height: 1.8;
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.35;
+  word-break: keep-all;
 }
