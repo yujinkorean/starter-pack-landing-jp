@@ -66,12 +66,12 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             </div>
             <div className="rounded-xl bg-orange-50 border border-orange-200 px-3 py-4">
               <p className="text-[11px] font-bold text-orange-600">このプログラム</p>
-              <p className="mt-1 text-xl font-black text-orange-600">¥2,980</p>
-              <p className="mt-1 text-[11px] text-orange-500 font-semibold">6週間フル管理</p>
+              <p className="mt-1 text-xl font-black text-orange-600">¥5,800</p>
+              <p className="mt-1 text-[11px] text-orange-500 font-semibold">6週間コーチング</p>
             </div>
           </div>
           <p className="mt-4 text-center text-[13px] font-semibold text-neutral-700">
-            個人レッスン<span className="text-orange-500">1回分以下</span>で、6週間のプロ管理プログラム。
+            語学スクール1か月の<span className="text-orange-500">約1/5の価格</span>で、プロが6週間伴走。
           </p>
         </div>
 
@@ -123,7 +123,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <div className="mt-5">
                 <p className="text-xs text-neutral-400 line-through">正規価格 ¥3,980</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,480</span>
+                  <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,980</span>
                   <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-bold text-neutral-600">初期特価</span>
                 </div>
               </div>
@@ -173,9 +173,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <p className="mt-1 text-[11px] font-semibold text-orange-400">初心者〜TOPIK5・6級合格目標まで対応</p>
 
               <div className="mt-5">
-                <p className="text-xs text-white/40 line-through">正規価格 ¥9,800</p>
+                <p className="text-xs text-white/40 line-through">正規価格 ¥12,800</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold tracking-tight">¥2,980</span>
+                  <span className="text-4xl font-extrabold tracking-tight">¥5,800</span>
                   <span className="rounded-full border border-orange-400/50 bg-orange-500/20 px-2 py-0.5 text-[11px] font-bold text-orange-400">初期特価</span>
                 </div>
               </div>
@@ -196,7 +196,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
               <div className="mt-5 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                 <p className="text-xs leading-relaxed text-white/60">
-                  💡 個人レッスン<strong className="text-white">1回分以下</strong>の価格で、プロが6週間伴走します。
+                  💡 語学スクール<strong className="text-white">1か月分の1/5</strong>の価格で、プロが6週間伴走します。
                 </p>
               </div>
 

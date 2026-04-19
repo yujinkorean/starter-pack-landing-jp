@@ -1,160 +1,98 @@
-import { Quote } from "lucide-react";
+const LINE_URL = "https://lin.ee/YaJg73C";
 
 export function StorySection() {
   return (
-    <section className="w-full bg-neutral-50/50 px-6 py-20 md:py-32">
-      <div className="mx-auto w-full max-w-[1100px]">
+    <section className="w-full bg-[#FAFAF8] px-4 py-16 md:px-6 md:py-24">
+      <div className="mx-auto w-full max-w-[780px]">
 
-        {/* 1. Header */}
-        <div className="mx-auto max-w-[900px] text-center mb-10">
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center rounded-full border border-neutral-200 bg-neutral-50 px-4 py-2 text-xs font-semibold tracking-widest text-neutral-700 md:text-sm">
-              STORY
-            </span>
-          </div>
-
-          <h2 className="text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 to-neutral-600 md:text-6xl md:leading-[1.2]">
-            すべては、<br />
-            最初の一言から。
+        <div className="mb-8 text-center">
+          <p className="mb-2 text-xs font-semibold tracking-[0.25em] text-neutral-400 uppercase">About</p>
+          <h2 className="text-[26px] font-extrabold tracking-tight text-neutral-900 md:text-4xl">
+            なぜ、この教材を作ったのか。
           </h2>
+        </div>
 
-          <p className="mt-8 text-lg leading-relaxed text-neutral-600 md:text-2xl">
-            外国語を話すとき、<br />
-            言葉はいつも少し遅れて出てきます。
-          </p>
+        <div className="overflow-hidden rounded-[2rem] border border-neutral-200 bg-white shadow-sm">
 
-          <p className="mt-6 text-xl font-bold text-neutral-900 md:text-3xl">
-            <span className="inline-block border-b-4 border-blue-200 pb-1">
-              でも——それでいい。
+          {/* 배지 */}
+          <div className="flex flex-wrap gap-2 border-b border-neutral-100 px-6 py-4">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-neutral-900 px-3 py-1.5 text-xs font-bold text-white">
+              📍 大峙洞・서초동 現役講師
             </span>
-          </p>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-orange-100 px-3 py-1.5 text-xs font-bold text-orange-700">
+              📚 指導歴5年 / 현재도 현역
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-100 px-3 py-1.5 text-xs font-bold text-indigo-700">
+              ✍️ Webノベル ロマンス1位
+            </span>
+          </div>
+
+          <div className="space-y-6 px-6 py-6 md:px-8 md:py-7">
+
+            {/* 경력 */}
+            <div className="space-y-2">
+              <p className="text-[15px] leading-[1.85] text-neutral-700">
+                2021年から、<strong className="text-neutral-900">大峙洞（テチドン）</strong>——韓国の受験教育の最激戦区——で教え始め、
+                翌年は<strong className="text-neutral-900">서초동の大手学院</strong>へ。
+                高3を<strong className="text-neutral-900">5等級→2等級</strong>に引き上げた実績、3科目同時指導で<strong className="text-neutral-900">3問ミス</strong>の成績を出したこともあります。
+              </p>
+              <p className="text-[15px] leading-[1.85] text-neutral-700">
+                今も韓国で高校生・中学生を現役で教えながら、この教材を作っています。
+              </p>
+            </div>
+
+            <div className="border-t border-neutral-100" />
+
+            {/* origin story */}
+            <div className="space-y-2">
+              <p className="text-[15px] leading-[1.85] text-neutral-700">
+                LAに住むアメリカ人俳優に韓国語を教えたとき、既存の教材を見て驚きました。
+                <strong className="text-neutral-900">文法の羅列ばかりで、言葉が生きていない。</strong>
+              </p>
+              <p className="text-[15px] leading-[1.85] text-neutral-700">
+                受験指導で磨いてきた<strong className="text-neutral-900">ストーリーテリング</strong>を使ったところ、反応が全く変わりました。
+                「やっとわかった」と。——それが、この教材の出発点です。
+              </p>
+            </div>
+
+            <div className="border-t border-neutral-100" />
+
+            {/* 웹소설 */}
+            <div className="space-y-2">
+              <p className="text-[15px] leading-[1.85] text-neutral-700">
+                私はWebノベル作家でもあります。ロマンスカテゴリで<strong className="text-neutral-900">プラットフォーム1位</strong>を記録。
+                「人が自然に読み続けてしまう文章」の設計を知っているから、この教材は<strong className="text-neutral-900">小説のように読める</strong>のです。
+              </p>
+            </div>
+
+          </div>
+
+          {/* 하단 CTA */}
+          <div className="border-t border-neutral-100 bg-neutral-50 px-6 py-5 md:px-8">
+            <div className="flex flex-col items-start gap-3 md:flex-row md:items-center md:justify-between">
+              <p className="text-[14px] leading-relaxed text-neutral-600">
+                まず20ページ、無料で読んでみてください。
+              </p>
+              <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
+                className="shrink-0 rounded-full bg-[#06C755] px-5 py-3 text-sm font-bold text-white transition-opacity hover:opacity-90">
+                無料で試す →
+              </a>
+            </div>
+          </div>
         </div>
 
-
-        {/* ✨ 추가 설명 (아동 교재 오해 방지) */}
-        <div className="mx-auto mt-10 max-w-[700px] text-center">
-          <p className="text-base leading-relaxed text-neutral-600 md:text-lg">
-            この物語の主人公は
-            <span className="font-semibold text-neutral-900">12〜13歳の少年たち</span>
-            です。
-          </p>
-
-          <p className="mt-3 text-base leading-relaxed text-neutral-600 md:text-lg">
-            でも、この教材は子ども向けではありません。
-            韓国語を初めて学ぶ大人でも、
-            自然に入り込めるように作られた
-            <span className="font-semibold text-neutral-900">ストーリー型の韓国語教材</span>
-            です。
-          </p>
-        </div>
-
-
-        {/* 2. Characters */}
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2">
-
-          {/* Yujin */}
-          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-[opacity,background-color] md:hover:-translate-y-1 hover:shadow-md md:p-10">
-            <div>
-              <h3 className="text-2xl font-bold text-neutral-900">
-                ユジン
-              </h3>
-
-              <p className="mt-2 text-base font-semibold text-amber-600">
-                韓国で暮らす、明るく率直な少年
-              </p>
+        {/* 수치 */}
+        <div className="mt-4 grid grid-cols-3 gap-3">
+          {[
+            { num: "5年", label: "現役指導歴" },
+            { num: "5→2", label: "等級改善実績（高3）" },
+            { num: "1位", label: "Webノベル\nロマンス部門" },
+          ].map((stat, i) => (
+            <div key={i} className="rounded-2xl border border-neutral-200 bg-white px-3 py-4 text-center">
+              <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">{stat.num}</p>
+              <p className="mt-1 text-[11px] leading-snug whitespace-pre-line text-neutral-500">{stat.label}</p>
             </div>
-
-            <div className="mt-8 border-t border-neutral-50 pt-6">
-              <p className="text-base leading-[1.8] text-neutral-600 md:text-lg">
-                人と話すことが好きで、
-                エヴァンに少しずつ
-                韓国語の世界を広げていく。
-              </p>
-            </div>
-          </div>
-
-
-          {/* Evan */}
-          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-[opacity,background-color] md:hover:-translate-y-1 hover:shadow-md md:p-10">
-            <div>
-              <h3 className="text-2xl font-bold text-neutral-900">
-                エヴァン
-              </h3>
-
-              <p className="mt-2 text-base font-semibold text-emerald-600">
-                韓国語に少しずつ興味を持ち始める少年
-              </p>
-            </div>
-
-            <div className="mt-8 border-t border-neutral-50 pt-6">
-              <p className="text-base leading-[1.8] text-neutral-600 md:text-lg">
-                ユジンと出会い、
-                「まだ話せない」気持ちを抱えながら
-                最初の一言を探していく。
-              </p>
-            </div>
-          </div>
-
-        </div>
-
-
-        {/* 3. WHY 12歳 */}
-        <div className="relative mx-auto mt-24 max-w-[850px] overflow-hidden rounded-[2.5rem] bg-slate-900 px-6 py-16 text-center shadow-lg md:shadow-2xl md:px-16 md:py-24">
-
-          <div className="absolute -left-6 -top-6 text-white/5">
-            <Quote size={160} strokeWidth={2} className="rotate-180" />
-          </div>
-
-          <div className="absolute -bottom-6 -right-6 text-white/5">
-            <Quote size={160} strokeWidth={2} />
-          </div>
-
-          <div className="relative z-10">
-
-            <div className="mb-10 flex justify-center">
-              <span className="rounded-full border border-white/30 bg-white/10 px-6 py-2.5 text-sm font-bold tracking-widest text-white shadow-sm md:backdrop-blur-md md:text-base">
-                なぜ少年の物語なのか
-              </span>
-            </div>
-
-            <p className="text-2xl font-bold leading-[2] text-white md:text-3xl lg:text-4xl lg:leading-[1.9]">
-              外国語を話すとき、<br />
-              私たちは少しだけ<br />
-              <span className="relative mt-2 inline-block">
-                <span className="relative z-10 text-blue-300">子ども</span>
-                <span className="absolute bottom-1 left-0 -z-10 h-4 w-full rounded-full bg-blue-500/30 blur-[2px]"></span>
-              </span>
-              になります。
-            </p>
-
-            <div className="mx-auto my-12 h-px w-16 bg-white/20"></div>
-
-            <p className="text-lg font-medium leading-relaxed text-slate-100 md:text-xl">
-              語彙はまだ少なく、発音もぎこちない。<br />
-              でもそれは、誰もが通る最初の時間です。
-            </p>
-
-            <div className="mt-8">
-              <p className="text-xl font-bold text-white md:text-2xl">
-                だからこの物語は
-              </p>
-
-              <p className="mt-4 text-2xl font-bold text-white md:text-3xl">
-                ユジンとエヴァン
-              </p>
-
-              <p className="mt-3 text-base font-medium tracking-widest text-slate-200">
-                の物語から始まります。
-              </p>
-            </div>
-
-            <p className="mt-10 text-sm text-slate-300 md:text-base">
-              年齢に関係なく、
-              韓国語を初めて学ぶ人なら
-              誰でもこの物語の主人公になれます。
-            </p>
-
-          </div>
+          ))}
         </div>
 
       </div>
