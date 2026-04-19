@@ -1,4 +1,4 @@
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Target } from "lucide-react";
 
 const qna = [
   { label: "発音の質問", q: "ㅇパッチムの発音が上手くできません……", a: "「みかん」を何度も言ってみてください。その「ん」の感覚が、ㅇパッチムです。舌が上に上がらない「ん」です。" },
@@ -11,6 +11,27 @@ const steps = [
   { num: "02", title: "毎週の学習プラン提供", desc: "1週間ごとに「今週やること」を具体的に提示。何をすればいいか迷う時間がゼロになります。" },
   { num: "03", title: "週末フィードバック＋翌週プラン", desc: "毎週末に進捗を確認し、フィードバックします。そのフィードバックを踏まえて、翌週のプランを再提供します。" },
   { num: "04", title: "個別QnAコーチング", desc: "文法説明ではありません。「ㅇパッチムが難しい」→「みかんで練習してください」のように、あなたの詰まりをその場で解決します。" },
+];
+
+const targets = [
+  {
+    tag: "初心者〜初中級",
+    title: "何度やっても続かなかった方",
+    desc: "独学で何度か挑戦したけれど、また止まってしまった。そんな方のために教材とコーチングを設計しています。",
+    color: "border-neutral-200 bg-white",
+    tagColor: "bg-neutral-100 text-neutral-600",
+    titleColor: "text-neutral-900",
+    descColor: "text-neutral-600",
+  },
+  {
+    tag: "中級〜上級 / TOPIK5・6級目標",
+    title: "短期間で合格したい方",
+    desc: "コーチングはあなたのレベルと目標に完全対応。TOPIK5・6級を短期合格したい方にも、専用プランを組みます。韓国の入試指導出身だからこそできる、試験特化サポートです。",
+    color: "border-orange-200 bg-orange-50",
+    tagColor: "bg-orange-100 text-orange-700",
+    titleColor: "text-orange-900",
+    descColor: "text-orange-800",
+  },
 ];
 
 export function CoachingSpotlightSection() {
@@ -36,7 +57,7 @@ export function CoachingSpotlightSection() {
               <div className="flex items-start gap-4">
                 <span className="text-3xl font-black text-neutral-200">{s.num}</span>
                 <div>
-                  <p className="text-base font-bold text-neutral-900">{s.title}</p>
+                  <p className="text-[15px] font-bold text-neutral-900">{s.title}</p>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-600">{s.desc}</p>
                 </div>
               </div>
@@ -44,8 +65,30 @@ export function CoachingSpotlightSection() {
           ))}
         </div>
 
+        {/* 대상 레벨 섹션 - 핵심 추가 */}
+        <div className="mb-10">
+          <div className="mb-5 flex items-center gap-2">
+            <Target size={18} className="text-neutral-500" />
+            <p className="text-[15px] font-bold text-neutral-800">こんな方に対応しています</p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {targets.map((t, i) => (
+              <div key={i} className={`rounded-2xl border p-5 md:p-6 ${t.color}`}>
+                <span className={`inline-block rounded-full px-3 py-1 text-[11px] font-bold ${t.tagColor}`}>
+                  {t.tag}
+                </span>
+                <h3 className={`mt-3 text-[17px] font-bold leading-snug ${t.titleColor}`}>{t.title}</h3>
+                <p className={`mt-2 text-[14px] leading-[1.85] ${t.descColor}`}>{t.desc}</p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-3 text-[12px] leading-relaxed text-neutral-400">
+            ※ メインテキストは入門〜初中級向けの設計です。中級以上の方はコーチングでレベルに合わせた追加教材・プランをご提供します。
+          </p>
+        </div>
+
         {/* QnA 채팅 */}
-        <div className="mb-8 text-center">
+        <div className="mb-6 text-center">
           <p className="text-sm font-bold text-neutral-700">実際のコーチングはこんな感じです</p>
         </div>
         <div className="space-y-4">
@@ -81,8 +124,8 @@ export function CoachingSpotlightSection() {
               <MessageSquare size={22} className="text-orange-500" />
             </div>
             <div>
-              <p className="text-base font-bold text-orange-900">AIではなく、人間が答えます</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-orange-800">
+              <p className="text-[15px] font-bold text-orange-900">AIではなく、人間が答えます</p>
+              <p className="mt-1.5 text-sm leading-[1.85] text-orange-800">
                 韓国語ネイティブ講師が、一人ひとりの詰まりを具体的に解決します。<br />
                 「正しいやり方」を教えるのではなく、<strong>あなた専用の解決策</strong>をその場で提示します。<br />
                 <span className="mt-1.5 inline-block font-bold text-orange-900">※ AIではなく、韓国語ネイティブ講師が24時間以内に回答します。</span>
@@ -94,11 +137,11 @@ export function CoachingSpotlightSection() {
         {/* 실제 피드백 이미지 */}
         <div className="mt-8 grid grid-cols-1 gap-5 md:grid-cols-2">
           <div className="overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-100 p-2">
-            <img src="/images/feedback-pronunciation-1.JPG" alt="発音フィードバック実例" className="h-auto w-full rounded-[16px] object-contain" />
+            <img src="/images/feedback-pronunciation-1.JPG" alt="発音フィードバック実例" loading="lazy" decoding="async" className="h-auto w-full rounded-[16px] object-contain" />
             <p className="mt-2 pb-1 text-center text-xs text-neutral-400">実際のLINEサポートより</p>
           </div>
           <div className="overflow-hidden rounded-[20px] border border-neutral-200 bg-neutral-100 p-2">
-            <img src="/images/feedback-study-1.JPG" alt="学習サポート実例" className="h-auto w-full rounded-[16px] object-contain" />
+            <img src="/images/feedback-study-1.JPG" alt="学習サポート実例" loading="lazy" decoding="async" className="h-auto w-full rounded-[16px] object-contain" />
             <p className="mt-2 pb-1 text-center text-xs text-neutral-400">実際のLINEサポートより</p>
           </div>
         </div>

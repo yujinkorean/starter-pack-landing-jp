@@ -53,7 +53,7 @@ export function StorySection() {
         <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2">
 
           {/* Yujin */}
-          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md md:p-10">
+          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-[opacity,background-color] md:hover:-translate-y-1 hover:shadow-md md:p-10">
             <div>
               <h3 className="text-2xl font-bold text-neutral-900">
                 ユジン
@@ -75,7 +75,7 @@ export function StorySection() {
 
 
           {/* Evan */}
-          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:shadow-md md:p-10">
+          <div className="group rounded-[2rem] border border-neutral-100 bg-white p-8 shadow-sm transition-[opacity,background-color] md:hover:-translate-y-1 hover:shadow-md md:p-10">
             <div>
               <h3 className="text-2xl font-bold text-neutral-900">
                 エヴァン
@@ -99,7 +99,7 @@ export function StorySection() {
 
 
         {/* 3. WHY 12歳 */}
-        <div className="relative mx-auto mt-24 max-w-[850px] overflow-hidden rounded-[2.5rem] bg-slate-900 px-6 py-16 text-center shadow-2xl md:px-16 md:py-24">
+        <div className="relative mx-auto mt-24 max-w-[850px] overflow-hidden rounded-[2.5rem] bg-slate-900 px-6 py-16 text-center shadow-lg md:shadow-2xl md:px-16 md:py-24">
 
           <div className="absolute -left-6 -top-6 text-white/5">
             <Quote size={160} strokeWidth={2} className="rotate-180" />
@@ -112,7 +112,7 @@ export function StorySection() {
           <div className="relative z-10">
 
             <div className="mb-10 flex justify-center">
-              <span className="rounded-full border border-white/30 bg-white/10 px-6 py-2.5 text-sm font-bold tracking-widest text-white shadow-sm backdrop-blur-md md:text-base">
+              <span className="rounded-full border border-white/30 bg-white/10 px-6 py-2.5 text-sm font-bold tracking-widest text-white shadow-sm md:backdrop-blur-md md:text-base">
                 なぜ少年の物語なのか
               </span>
             </div>

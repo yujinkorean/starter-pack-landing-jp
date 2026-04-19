@@ -14,11 +14,11 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
   return (
     <>
       {/* Sticky Bar */}
-      <div className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${showSticky ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}>
+      <div className={`fixed top-0 left-0 right-0 z-50 transition-[opacity,transform] duration-300 ${showSticky ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"}`}>
         <div className="flex items-center justify-between bg-neutral-900 px-4 py-3 shadow-lg md:px-8">
           <p className="text-xs font-semibold text-white md:text-sm">
-            🔥 <span className="text-orange-400">初期リリース限定価格</span>
-            <span className="ml-2 hidden text-white/60 md:inline">· 期間終了後は価格変更予定</span>
+            🔥 <span className="text-orange-400">初期特価 · コーチング残り5名</span>
+            <span className="ml-2 hidden text-white/60 md:inline">· 期間終了後は正規価格に変更</span>
           </p>
           <div className="flex items-center gap-2">
             <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
@@ -35,9 +35,9 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-[#FAFAF8] px-5 pb-16 pt-14 md:px-6 md:pb-32 md:pt-24">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-orange-100/50 blur-[80px]" />
-          <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-blue-100/30 blur-[80px]" />
+        <div className="pointer-events-none absolute inset-0 overflow-hidden hidden md:block">
+          <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-orange-100/50 hidden md:block md:blur-[80px]" />
+          <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-blue-100/30 hidden md:block md:blur-[80px]" />
         </div>
 
         <div className="relative mx-auto max-w-3xl text-center">
@@ -88,7 +88,6 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
             ))}
           </div>
 
-
           {/* LA 배우 추천사 */}
           <div className="mx-auto mb-8 max-w-xl overflow-hidden rounded-2xl border border-neutral-200 bg-white px-5 py-5 shadow-sm text-left md:px-6">
             <div className="flex items-start gap-4">
@@ -113,7 +112,7 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
           {/* CTA */}
           <div className="flex flex-col items-center gap-4">
             <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
-              className="group flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-[#06C755] py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition hover:scale-105 md:text-lg">
+              className="group flex w-full max-w-sm items-center justify-center gap-2 rounded-full bg-[#06C755] py-4 text-base font-bold text-white shadow-lg shadow-green-200 transition-transform hover:scale-105 md:text-lg">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
                 <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.843 2.572-5.992z"/>
               </svg>
@@ -125,12 +124,12 @@ export const HeroSection = ({ previewId, pricingId }: { previewId: string; prici
             </button>
           </div>
 
-          {/* 소셜 프루프 */}
+          {/* 소셜 프루프 + 희소성 */}
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4 text-xs text-neutral-400 md:gap-7">
             <span>★★★★★ ベータ読者より</span>
+            <span className="font-semibold text-orange-500">⚡ コーチング残り5名</span>
             <span>✓ 完全初心者OK</span>
             <span>✓ スマホ・PC対応</span>
-            <span>✓ 日本円決済</span>
             <span>✓ 追加課金なし</span>
           </div>
         </div>

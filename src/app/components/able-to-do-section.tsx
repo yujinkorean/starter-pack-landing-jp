@@ -48,7 +48,7 @@ export function AbleToDoSection({
           {ableItems.map((item, idx) => (
             <div
               key={idx}
-              className="group relative overflow-hidden rounded-[24px] border border-neutral-200 bg-white px-5 py-7 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md md:px-8 md:py-9"
+              className="group relative overflow-hidden rounded-[24px] border border-neutral-200 bg-white px-5 py-7 shadow-sm md:hover:-translate-y-0.5 md:hover:shadow-md md:px-8 md:py-9"
             >
               <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-8">
                 <div className="shrink-0 md:w-40">

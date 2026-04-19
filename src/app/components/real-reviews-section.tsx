@@ -26,7 +26,7 @@ export function RealReviewsSection() {
 
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           {realReviews.map((r, i) => (
-            <div key={i} className="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+            <div key={i} className="flex flex-col rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm md:hover:-translate-y-0.5 md:hover:shadow-md">
               <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-2xl bg-indigo-50">
                 <Quote size={18} className="text-indigo-400" />
               </div>

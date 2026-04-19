@@ -7,14 +7,28 @@ html, body {
   word-break: break-word;
   overflow-wrap: break-word;
   line-height: 1.75;
+  font-size: 16px; /* iOS 자동 확대 방지 (16px 미만이면 자동 확대됨) */
 }
 
-/* Japanese text renders better with slightly larger line-height */
 p, li, span {
-  line-height: 1.8;
+  line-height: 1.85;
 }
 
 h1, h2, h3, h4 {
   line-height: 1.35;
   word-break: keep-all;
+}
+
+/* 모바일: text-xs (12px) → 최소 13px 보장 */
+@media (max-width: 767px) {
+  .text-xs {
+    font-size: 13px !important;
+    line-height: 1.7 !important;
+  }
+  
+  /* 섹션 레이블 (UPPERCASE 트래킹) - 예외 허용 */
+  .tracking-\[0\.25em\].text-xs,
+  .tracking-widest.text-xs {
+    font-size: 11px !important;
+  }
 }

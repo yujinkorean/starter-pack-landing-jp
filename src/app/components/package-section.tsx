@@ -26,7 +26,7 @@ export function PackageSection() {
         <div className="flex flex-col gap-4">
 
           {/* Block 01 */}
-          <div className="group flex flex-col items-start gap-5 rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-md md:flex-row md:items-center md:gap-10 md:p-10">
+          <div className="group flex flex-col items-start gap-5 rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm md:hover:shadow-md md:flex-row md:items-center md:gap-10 md:p-10">
             <div className="flex shrink-0 items-center gap-4">
               <span className="text-4xl font-black text-neutral-200 transition-colors group-hover:text-neutral-400 md:text-5xl">01</span>
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-100">
@@ -44,7 +44,7 @@ export function PackageSection() {
           </div>
 
           {/* Block 02 */}
-          <div className="group flex flex-col items-start gap-5 rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-md md:flex-row md:items-center md:gap-10 md:p-10">
+          <div className="group flex flex-col items-start gap-5 rounded-[2rem] border border-neutral-200 bg-white p-6 shadow-sm md:hover:shadow-md md:flex-row md:items-center md:gap-10 md:p-10">
             <div className="flex shrink-0 items-center gap-4">
               <span className="text-4xl font-black text-neutral-200 transition-colors group-hover:text-neutral-400 md:text-5xl">02</span>
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-neutral-100">
@@ -68,7 +68,7 @@ export function PackageSection() {
           <button
             type="button"
             onClick={() => scrollToId("pricing")}
-            className="group inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-6 py-3.5 text-sm font-bold text-neutral-600 transition-all hover:bg-neutral-900 hover:text-white"
+            className="group inline-flex cursor-pointer items-center gap-2 rounded-full border border-neutral-200 bg-neutral-50 px-6 py-3.5 text-sm font-bold text-neutral-600 transition-[opacity,background-color,color] hover:bg-neutral-900 hover:text-white"
           >
             2つが揃って、はじめて「続く」が始まります。
             <ArrowDown size={16} className="transition-transform group-hover:translate-y-0.5" />

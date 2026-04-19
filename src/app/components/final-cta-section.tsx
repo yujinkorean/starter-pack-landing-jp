@@ -28,8 +28,8 @@ export function FinalCTASection({
         <div className="relative overflow-hidden rounded-[3rem] bg-neutral-900 px-6 py-16 text-center shadow-2xl md:px-16 md:py-24">
 
           {/* 배경 글로우 */}
-          <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-orange-500/10 blur-[80px]" />
-          <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/5 blur-[80px]" />
+          <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-orange-500/10 hidden md:block md:blur-[80px]" />
+          <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-white/5 hidden md:block md:blur-[80px]" />
 
           <div className="relative z-10">
             {/* 긴급 배지 */}

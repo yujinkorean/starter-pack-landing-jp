@@ -1,4 +1,4 @@
-import { Check, Flame, Star } from "lucide-react";
+import { Check, Flame, Star, Users, Clock } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type PricingSectionProps = { id?: string };
@@ -50,11 +50,36 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           </p>
         </div>
 
+        {/* 가치 비교 앵커 */}
+        <div className="mx-auto mb-8 max-w-[680px] rounded-2xl border border-neutral-200 bg-white px-5 py-5">
+          <p className="mb-4 text-center text-xs font-bold tracking-widest text-neutral-400 uppercase">比較してみてください</p>
+          <div className="grid grid-cols-3 gap-3 text-center">
+            <div className="rounded-xl bg-neutral-50 px-3 py-4">
+              <p className="text-[11px] font-semibold text-neutral-500">個人レッスン</p>
+              <p className="mt-1 text-xl font-black text-neutral-900">¥5,000<span className="text-xs font-normal">/回</span></p>
+              <p className="mt-1 text-[11px] text-neutral-400">1時間のみ</p>
+            </div>
+            <div className="rounded-xl bg-neutral-50 px-3 py-4">
+              <p className="text-[11px] font-semibold text-neutral-500">語学スクール</p>
+              <p className="mt-1 text-xl font-black text-neutral-900">¥30,000<span className="text-xs font-normal">/月</span></p>
+              <p className="mt-1 text-[11px] text-neutral-400">週2〜3回程度</p>
+            </div>
+            <div className="rounded-xl bg-orange-50 border border-orange-200 px-3 py-4">
+              <p className="text-[11px] font-bold text-orange-600">このプログラム</p>
+              <p className="mt-1 text-xl font-black text-orange-600">¥2,980</p>
+              <p className="mt-1 text-[11px] text-orange-500 font-semibold">6週間フル管理</p>
+            </div>
+          </div>
+          <p className="mt-4 text-center text-[13px] font-semibold text-neutral-700">
+            個人レッスン<span className="text-orange-500">1回分以下</span>で、6週間のプロ管理プログラム。
+          </p>
+        </div>
+
         {/* 카운트다운 */}
-        <div className="mx-auto mb-8 flex max-w-[680px] flex-col items-center justify-between gap-3 rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 md:flex-row md:gap-4">
+        <div className="mx-auto mb-6 flex max-w-[680px] flex-col items-center justify-between gap-3 rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 md:flex-row md:gap-4">
           <div className="flex items-center gap-2">
             <Flame size={18} className="shrink-0 text-orange-500" />
-            <p className="text-[15px] font-bold text-orange-900">初期リリース限定価格 · 残り時間</p>
+            <p className="text-[15px] font-bold text-orange-900">初期リリース特別価格 · 残り時間</p>
           </div>
           <CountdownTimer />
         </div>
@@ -69,16 +94,16 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                 </svg>
               </div>
               <div>
-                <div className="flex items-center gap-2">
-                  <p className="text-[15px] font-bold text-green-900">まず無料で試す</p>
-                  <span className="rounded-full bg-green-200 px-2 py-0.5 text-[11px] font-bold text-green-800">0円</span>
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-[15px] font-bold text-green-900">まず20ページ無料で読む</p>
+                  <span className="rounded-full bg-green-200 px-2 py-0.5 text-[11px] font-bold text-green-800">完全無料</span>
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-green-700">体験版20ページをLINE登録後すぐ受け取れます</p>
+                <p className="mt-1 text-sm leading-relaxed text-green-700">LINE登録後すぐ体験版20ページを受け取れます。納得してから購入を。</p>
               </div>
             </div>
             <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
               className="block w-full rounded-full bg-[#06C755] px-6 py-3 text-center text-sm font-bold text-white transition hover:opacity-90 md:w-auto md:shrink-0">
-              まず無料で20ページ体験する
+              無料で試す →
             </a>
           </div>
         </div>
@@ -95,9 +120,12 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <h3 className="mt-4 text-xl font-bold text-neutral-900">スタンダード</h3>
               <p className="mt-1 text-sm text-neutral-400">教材 ＋ 毎週LINE単語帳</p>
 
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,480</span>
-                <span className="text-sm text-neutral-400">買い切り</span>
+              <div className="mt-5">
+                <p className="text-xs text-neutral-400 line-through">正規価格 ¥3,980</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,480</span>
+                  <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-bold text-neutral-600">初期特価</span>
+                </div>
               </div>
 
               <ul className="mt-5 space-y-3">
@@ -121,8 +149,8 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           </div>
 
           {/* Coaching */}
-          <div className="relative flex flex-col justify-between rounded-3xl border-2 border-orange-500 bg-neutral-900 p-6 text-white shadow-2xl md:p-7">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+          <div className="relative flex flex-col justify-between rounded-3xl border-2 border-orange-500 bg-neutral-900 p-6 text-white shadow-lg md:shadow-2xl md:p-7">
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 whitespace-nowrap">
               <div className="flex items-center gap-1.5 rounded-full bg-orange-500 px-4 py-1.5 shadow">
                 <Flame size={12} className="text-white" />
                 <span className="text-[11px] font-black text-white">一番人気 · おすすめ</span>
@@ -133,12 +161,23 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold text-white/80">
                 確実に続けたい方へ
               </span>
-              <h3 className="mt-4 text-xl font-bold">コーチング</h3>
-              <p className="mt-1 text-sm text-white/50">教材 ＋ 単語帳 ＋ 6週間管理</p>
 
-              <div className="mt-5 flex items-baseline gap-1">
-                <span className="text-4xl font-extrabold tracking-tight">¥2,980</span>
-                <span className="text-sm text-white/40">買い切り</span>
+              {/* 잔여석 */}
+              <div className="mt-3 flex items-center gap-1.5">
+                <Users size={13} className="text-orange-400" />
+                <span className="text-xs font-bold text-orange-400">コーチング枠 残り5名</span>
+              </div>
+
+              <h3 className="mt-2 text-xl font-bold">コーチング</h3>
+              <p className="mt-1 text-sm text-white/50">教材 ＋ 単語帳 ＋ 6週間プロ管理</p>
+              <p className="mt-1 text-[11px] font-semibold text-orange-400">初心者〜TOPIK5・6級合格目標まで対応</p>
+
+              <div className="mt-5">
+                <p className="text-xs text-white/40 line-through">正規価格 ¥9,800</p>
+                <div className="flex items-baseline gap-2">
+                  <span className="text-4xl font-extrabold tracking-tight">¥2,980</span>
+                  <span className="rounded-full border border-orange-400/50 bg-orange-500/20 px-2 py-0.5 text-[11px] font-bold text-orange-400">初期特価</span>
+                </div>
               </div>
 
               <ul className="mt-5 space-y-3">
@@ -155,14 +194,20 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                 ))}
               </ul>
 
-              <p className="mt-5 text-xs leading-relaxed text-white/50">
-                ※ 韓国語ネイティブ講師が24時間以内に回答します（AIではありません）<br />
+              <div className="mt-5 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+                <p className="text-xs leading-relaxed text-white/60">
+                  💡 個人レッスン<strong className="text-white">1回分以下</strong>の価格で、プロが6週間伴走します。
+                </p>
+              </div>
+
+              <p className="mt-4 text-xs leading-relaxed text-white/40">
+                ※ 韓国語ネイティブ講師が24時間以内に回答（AIではありません）<br />
                 ※ 追加料金なし。すべてこの価格に含まれます
               </p>
             </div>
 
             <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer"
-              className="mt-8 block w-full rounded-full bg-orange-500 py-4 text-center text-base font-bold text-white shadow-lg shadow-orange-900/30 transition hover:bg-orange-400">
+              className="mt-6 block w-full rounded-full bg-orange-500 py-4 text-center text-base font-bold text-white shadow-lg shadow-orange-900/30 transition hover:bg-orange-400">
               コーチングで進める
             </a>
           </div>
@@ -170,7 +215,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
         {/* 비교표 - mobile card list, desktop table */}
         <div className="mx-auto mt-10 max-w-[680px]">
-          {/* Mobile: card list (hidden on md+) */}
+          {/* Mobile */}
           <div className="flex flex-col gap-2 md:hidden">
             {[
               ["メインテキスト eBook", true, true],
@@ -195,7 +240,7 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             ))}
           </div>
 
-          {/* Desktop: table (hidden on mobile) */}
+          {/* Desktop */}
           <div className="hidden overflow-hidden rounded-2xl border border-neutral-200 bg-white md:block">
             <table className="min-w-full text-sm">
               <thead>
@@ -224,8 +269,8 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
           </div>
 
           <p className="mt-4 text-center text-xs leading-relaxed text-neutral-400">
-            ※ 初期リリース限定価格です。期間終了後は変更予定。<br />
-            ※ サポートはすべて購入価格に含まれており、追加料金は一切発生しません。
+            ※ 初期リリース特別価格のため、期間終了後は正規価格に変更予定です。<br />
+            ※ 追加料金は一切発生しません。
           </p>
         </div>
 

@@ -102,7 +102,7 @@ export function TrustSection() {
             {reviews.map((r, idx) => (
               <div
                 key={idx}
-                className="group relative flex h-full flex-col rounded-[2.5rem] border border-neutral-200/60 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.06)] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.12)]"
+                className="group relative flex h-full flex-col rounded-[2.5rem] border border-neutral-200/60 bg-white p-8 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.06)] transition-[opacity,background-color,border-color] duration-300 md:hover:-translate-y-2 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.12)]"
               >
                 <div className="mb-6 flex gap-1 text-amber-300">
                   {[...Array(5)].map((_, i) => (
