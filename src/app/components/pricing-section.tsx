@@ -1,4 +1,4 @@
-import { Check, Flame, Star, Users, Clock } from "lucide-react";
+import { Check, Flame, Star, Users } from "lucide-react";
 import { useState, useEffect } from "react";
 
 type PricingSectionProps = { id?: string };
@@ -79,12 +79,12 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
         <div className="mx-auto mb-6 flex max-w-[680px] flex-col items-center justify-between gap-3 rounded-2xl border border-orange-200 bg-orange-50 px-5 py-4 md:flex-row md:gap-4">
           <div className="flex items-center gap-2">
             <Flame size={18} className="shrink-0 text-orange-500" />
-            <p className="text-[15px] font-bold text-orange-900">初期リリース特別価格 · 残り時間</p>
+            <p className="text-[15px] font-bold text-orange-900">ローンチ特別価格 · 残り時間</p>
           </div>
           <CountdownTimer />
         </div>
 
-        {/* 무료 */}
+        {/* 무료 체험 */}
         <div className="mx-auto mb-5 max-w-[680px] rounded-2xl border border-green-200 bg-green-50 px-5 py-5">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-start gap-4">
@@ -95,10 +95,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               </div>
               <div>
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className="text-[15px] font-bold text-green-900">まず20ページ無料で読む</p>
+                  <p className="text-[15px] font-bold text-green-900">まず10ページ、無料で読む</p>
                   <span className="rounded-full bg-green-200 px-2 py-0.5 text-[11px] font-bold text-green-800">完全無料</span>
                 </div>
-                <p className="mt-1 text-sm leading-relaxed text-green-700">LINE登録後すぐ体験版20ページを受け取れます。納得してから購入を。</p>
+                <p className="mt-1 text-sm leading-relaxed text-green-700">LINEで受け取り。「続きが読みたい」と思えたら、そのまま購入を。</p>
               </div>
             </div>
             <a href={LINE_URL} target="_blank" rel="noopener noreferrer"
@@ -121,31 +121,34 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <p className="mt-1 text-sm text-neutral-400">教材 ＋ 毎週LINE単語帳</p>
 
               <div className="mt-5">
-                <p className="text-xs text-neutral-400 line-through">正規価格 ¥3,980</p>
+                <p className="text-xs text-neutral-400 line-through">定価 ¥2,980</p>
                 <div className="flex items-baseline gap-2">
-                  <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,980</span>
-                  <span className="rounded-full bg-neutral-100 px-2 py-0.5 text-[11px] font-bold text-neutral-600">初期特価</span>
+                  <span className="text-4xl font-extrabold tracking-tight text-neutral-900">¥1,480</span>
+                  <span className="rounded-full bg-orange-100 px-2 py-0.5 text-[11px] font-bold text-orange-600">ローンチ価格</span>
                 </div>
+                <p className="mt-1 text-xs text-neutral-400">コーヒー1杯分で、6週間分の教材</p>
               </div>
 
               <ul className="mt-5 space-y-3">
                 {[
-                  "小説型メインテキスト eBook",
-                  "個別単語帳（毎週LINEで配信）",
-                ].map((item) => (
+                  "小説型メインテキスト eBook（全章）",
+                  "毎週LINE個別単語帳",
+                  ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[15px] text-neutral-700">
                     <Check size={16} className="mt-1 shrink-0 text-green-500" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <p className="mt-4 text-xs text-neutral-400">※ 単語帳は毎週LINEで順次配信します</p>
             </div>
 
-            <a href={CHECKOUT_URLS.starter} target="_blank" rel="noopener noreferrer"
-              className="mt-8 block w-full rounded-full border-2 border-neutral-900 py-4 text-center text-base font-bold text-neutral-900 transition hover:bg-neutral-900 hover:text-white">
-              スタンダードで始める
-            </a>
+            <div className="mt-6">
+              <a href={CHECKOUT_URLS.starter} target="_blank" rel="noopener noreferrer"
+                className="block w-full rounded-full border-2 border-neutral-900 py-4 text-center text-base font-bold text-neutral-900 transition hover:bg-neutral-900 hover:text-white">
+                スタンダードで始める
+              </a>
+              <p className="mt-2 text-center text-[11px] text-neutral-400">購入後すぐにダウンロード可能</p>
+            </div>
           </div>
 
           {/* Coaching */}
@@ -159,10 +162,9 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
 
             <div>
               <span className="inline-block rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-bold text-white/80">
-                確実に続けたい方へ
+                確実に結果を出したい方へ
               </span>
 
-              {/* 잔여석 */}
               <div className="mt-3 flex items-center gap-1.5">
                 <Users size={13} className="text-orange-400" />
                 <span className="text-xs font-bold text-orange-400">コーチング枠 残り5名</span>
@@ -173,10 +175,10 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
               <p className="mt-1 text-[11px] font-semibold text-orange-400">初心者〜TOPIK5・6級合格目標まで対応</p>
 
               <div className="mt-5">
-                <p className="text-xs text-white/40 line-through">正規価格 ¥12,800</p>
+                <p className="text-xs text-white/40 line-through">定価 ¥12,800</p>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-extrabold tracking-tight">¥5,800</span>
-                  <span className="rounded-full border border-orange-400/50 bg-orange-500/20 px-2 py-0.5 text-[11px] font-bold text-orange-400">初期特価</span>
+                  <span className="rounded-full border border-orange-400/50 bg-orange-500/20 px-2 py-0.5 text-[11px] font-bold text-orange-400">ローンチ価格</span>
                 </div>
               </div>
 
@@ -185,8 +187,8 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                   "スタンダードの全内容",
                   "6週間の目標・週次プラン設定",
                   "毎週フィードバック＋翌週プラン提供",
-                  "個別QnAコーチング（24h以内）",
-                ].map((item) => (
+                  "個別QnAコーチング（24h以内返答）",
+                  ].map((item) => (
                   <li key={item} className="flex items-start gap-2.5 text-[15px] text-white/90">
                     <Check size={16} className="mt-1 shrink-0 text-orange-400" />
                     {item}
@@ -194,92 +196,33 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
                 ))}
               </ul>
 
-              <div className="mt-5 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
+              <div className="mt-4 rounded-xl border border-white/10 bg-white/5 px-4 py-3">
                 <p className="text-xs leading-relaxed text-white/60">
-                  💡 語学スクール<strong className="text-white">1か月分の1/5</strong>の価格で、プロが6週間伴走します。
+                  💡 語学スクール1か月分の<strong className="text-white">1/5の価格</strong>で、プロが6週間伴走します。
                 </p>
               </div>
 
-              <p className="mt-4 text-xs leading-relaxed text-white/40">
-                ※ 韓国語ネイティブ講師が24時間以内に回答（AIではありません）<br />
+              <p className="mt-3 text-[11px] leading-relaxed text-white/40">
+                ※ 韓国語ネイティブ講師が直接回答（AIではありません）<br />
                 ※ 追加料金なし。すべてこの価格に含まれます
               </p>
             </div>
 
-            <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer"
-              className="mt-6 block w-full rounded-full bg-orange-500 py-4 text-center text-base font-bold text-white shadow-lg shadow-orange-900/30 transition hover:bg-orange-400">
-              コーチングで進める
-            </a>
+            <div className="mt-5">
+              <a href={CHECKOUT_URLS.coaching} target="_blank" rel="noopener noreferrer"
+                className="block w-full rounded-full bg-orange-500 py-4 text-center text-base font-bold text-white shadow-lg shadow-orange-900/30 transition hover:bg-orange-400">
+                コーチングで進める
+              </a>
+              <p className="mt-2 text-center text-[11px] text-white/40">残り5名 · ローンチ特別価格</p>
+            </div>
           </div>
         </div>
-
-        {/* 비교표 - mobile card list, desktop table */}
-        <div className="mx-auto mt-10 max-w-[680px]">
-          {/* Mobile */}
-          <div className="flex flex-col gap-2 md:hidden">
-            {[
-              ["メインテキスト eBook", true, true],
-              ["毎週LINE個別単語帳", true, true],
-              ["6週間目標・週次プラン", false, true],
-              ["毎週フィードバック＋翌週プラン", false, true],
-              ["個別QnAコーチング", false, true],
-            ].map(([label, s, c]) => (
-              <div key={String(label)} className="flex items-center justify-between rounded-xl border border-neutral-200 bg-white px-4 py-3.5 text-sm">
-                <span className="font-medium text-neutral-700 pr-2">{label}</span>
-                <div className="flex items-center gap-4 shrink-0">
-                  <div className="flex flex-col items-center gap-0.5">
-                    <span className="text-[10px] text-neutral-400">標準</span>
-                    {s ? <Check size={15} className="text-green-500" /> : <span className="text-neutral-300 text-base">—</span>}
-                  </div>
-                  <div className="flex flex-col items-center gap-0.5">
-                    <span className="text-[10px] text-orange-500 font-bold">コーチ</span>
-                    {c ? <Check size={15} className="text-green-500" /> : <span className="text-neutral-300 text-base">—</span>}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Desktop */}
-          <div className="hidden overflow-hidden rounded-2xl border border-neutral-200 bg-white md:block">
-            <table className="min-w-full text-sm">
-              <thead>
-                <tr className="bg-neutral-50">
-                  <th className="px-5 py-4 text-left font-bold text-neutral-700">内容</th>
-                  <th className="px-4 py-4 text-center font-bold text-neutral-700">スタンダード</th>
-                  <th className="px-4 py-4 text-center font-bold text-orange-600">コーチング ★</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ["メインテキスト eBook", true, true],
-                  ["毎週LINE個別単語帳", true, true],
-                  ["6週間目標・週次プラン", false, true],
-                  ["毎週フィードバック＋翌週プラン", false, true],
-                  ["個別QnAコーチング", false, true],
-                ].map(([label, s, c]) => (
-                  <tr key={String(label)} className="border-t border-neutral-100">
-                    <td className="px-5 py-3.5 text-neutral-600">{label}</td>
-                    <td className="px-4 py-3.5 text-center">{s ? <Check size={16} className="mx-auto text-green-500" /> : <span className="text-neutral-300">—</span>}</td>
-                    <td className="bg-orange-50/50 px-4 py-3.5 text-center">{c ? <Check size={16} className="mx-auto text-green-500" /> : <span className="text-neutral-300">—</span>}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p className="mt-4 text-center text-xs leading-relaxed text-neutral-400">
-            ※ 初期リリース特別価格のため、期間終了後は正規価格に変更予定です。<br />
-            ※ 追加料金は一切発生しません。
-          </p>
         </div>
 
-        <div className="mx-auto mt-8 max-w-[680px] rounded-2xl border border-amber-200 bg-amber-50 p-5 text-center">
-          <p className="flex items-center justify-center gap-2 text-sm font-bold text-amber-900">
-            <Star size={14} fill="currentColor" className="text-amber-500" />
-            購入後のレビュー投稿で、次回使える特典クーポンをプレゼント
-          </p>
-        </div>
+        <p className="mt-5 text-center text-xs leading-relaxed text-neutral-400">
+          ※ ローンチ特別価格のため、期間終了後は定価に変更予定です。<br />
+          ※ 追加料金は一切発生しません。
+        </p>
 
       </div>
     </section>
