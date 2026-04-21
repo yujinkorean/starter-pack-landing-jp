@@ -217,7 +217,6 @@ export function PricingSection({ id = "pricing" }: PricingSectionProps) {
             </div>
           </div>
         </div>
-        </div>
 
         <p className="mt-5 text-center text-xs leading-relaxed text-neutral-400">
           ※ ローンチ特別価格のため、期間終了後は定価に変更予定です。<br />
